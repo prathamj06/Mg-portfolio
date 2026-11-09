@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -18,7 +17,7 @@ export default function Navbar() {
   const isHome = pathname === "/";
 
   const navLinks = [
-    { name: "About", href: "/#about", id: "about" },
+    { name: "About", href: "/about", id: "about" },
     { name: "Projects", href: "/#projects", id: "projects" },
     { name: "Sessions", href: "/#sessions", id: "sessions" },
     { name: "Founders", href: "/#founders", id: "founders" },
@@ -53,6 +52,13 @@ export default function Navbar() {
   const handleNavClick = (link: typeof navLinks[0]) => {
     playHaptic(580, 0.03);
     setMobileMenuOpen(false);
+
+    if (link.href === "/about") {
+      if (pathname !== "/about") {
+        router.push("/about");
+      }
+      return;
+    }
 
     if (isHome) {
       const target = document.getElementById(link.id);
@@ -89,7 +95,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`pointer-events-auto relative hidden md:flex items-center gap-1 pl-3 pr-2.5 py-1.5 rounded-full transition-all duration-500 ${
+        className={`pointer-events-auto relative hidden md:flex items-center gap-1 pl-3 pr-2 py-1.5 rounded-full transition-all duration-500 ${
           scrolled
             ? "bg-[#0d0709]/90 backdrop-blur-xl border border-white/[0.12] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.85),0_0_1px_1px_rgba(223,170,162,0.14)]"
             : "bg-[#0d0709]/65 backdrop-blur-md border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
@@ -117,7 +123,9 @@ export default function Navbar() {
           onMouseLeave={() => setHoveredSection(null)}
         >
           {navLinks.map((link) => {
-            const isActive = isHome && activeSection === link.id;
+            const isActive = pathname === "/about"
+              ? link.href === "/about"
+              : (isHome && activeSection === link.id);
             const isHovered = hoveredSection === link.id;
 
             return (
@@ -156,22 +164,6 @@ export default function Navbar() {
               </button>
             );
           })}
-        </div>
-
-        {/* Right: Dedicated About Page Link */}
-        <div className="flex items-center pl-1">
-          <span className="h-3.5 w-[1px] bg-border-subtle mr-2" />
-          <Link
-            href="/about"
-            onClick={() => playHaptic(680, 0.04)}
-            className={`font-mono text-[11px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full transition-all ${
-              pathname === "/about"
-                ? "bg-accent/20 text-accent border border-accent/40 font-medium"
-                : "text-accent bg-accent/[0.1] hover:bg-accent/[0.18] border border-accent/25 hover:border-accent/40"
-            }`}
-          >
-            About
-          </Link>
         </div>
       </motion.nav>
 
@@ -219,7 +211,9 @@ export default function Navbar() {
               className="w-full mt-2 p-2.5 rounded-2xl bg-[#0e070a]/95 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/90 flex flex-col gap-1 text-center"
             >
               {navLinks.map((link) => {
-                const isActive = isHome && activeSection === link.id;
+                const isActive = pathname === "/about"
+                  ? link.href === "/about"
+                  : (isHome && activeSection === link.id);
                 return (
                   <button
                     key={link.name}
@@ -236,15 +230,6 @@ export default function Navbar() {
                   </button>
                 );
               })}
-
-              <Link
-                href="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="mt-1 font-mono text-xs uppercase tracking-[0.2em] py-2.5 px-4 rounded-xl bg-accent/20 text-accent border border-accent/35 flex items-center justify-between"
-              >
-                <span>About</span>
-                <span className="text-[10px]">✦</span>
-              </Link>
             </motion.div>
           )}
         </AnimatePresence>
