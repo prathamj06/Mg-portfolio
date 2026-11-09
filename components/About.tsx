@@ -5,20 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Sparkles, 
-  Leaf, 
-  Radio, 
-  Compass, 
-  Bot, 
-  Cpu, 
-  CheckCircle2,
   Maximize2,
   X,
-  ArrowRight,
-  Binary,
-  Microchip,
-  ShieldCheck,
-  Layers
+  ArrowRight
 } from "lucide-react";
 import { playHaptic } from "@/lib/audio";
 
@@ -110,21 +99,6 @@ export default function About() {
   const row1 = drivePhotos.slice(0, 5);
   const row2 = drivePhotos.slice(5, 10);
 
-  const pillars = [
-    {
-      title: "First-Principles Inquiry",
-      desc: "Demystifying deep engineering without prepackaged abstractions. Members build neural autodiff engines, circuit netlists, and RF demodulators from raw silicon and mathematical derivations.",
-    },
-    {
-      title: "Senior Guidance & Research Publishing",
-      desc: "Direct mentorship on architecting real-world prototypes, preparing reproducible research preprints, and submitting to peer-reviewed student symposiums.",
-    },
-    {
-      title: "Hands-on Benchwork & Open Hardware",
-      desc: "All circuit schematics, logic synthesis scripts, and firmware nets are released openly. Laboratory benches are open to first-year fellows from day one.",
-    },
-  ];
-
   const handleOpenPhoto = (photo: DrivePhoto) => {
     setSelectedImage(photo);
     playHaptic(640, 0.04);
@@ -138,7 +112,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 pt-24 sm:pt-32 lg:pt-36 pb-24 sm:pb-32 relative overflow-hidden bg-[#080406]"
+      className="scroll-mt-24 pt-24 sm:pt-32 lg:pt-36 pb-20 sm:pb-28 relative overflow-hidden bg-[#080406]"
     >
       {/* Ambient Radial Illumination */}
       <div
@@ -189,7 +163,7 @@ export default function About() {
       {/* ========================================================= */}
       {/* 2. LUXURY KINETIC PHOTO GALLERY (FROM GOOGLE DRIVE)       */}
       {/* ========================================================= */}
-      <div className="w-full my-8 sm:my-12 py-8 bg-[#0b0608]/70 border-y border-white/[0.06] overflow-hidden relative select-none">
+      <div className="w-full my-6 sm:my-10 py-8 bg-[#0b0608]/70 border-y border-white/[0.06] overflow-hidden relative select-none">
         {/* Gallery Section Label */}
         <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted">
@@ -197,7 +171,7 @@ export default function About() {
             <span>Laboratory Hardware Specimens & Field Artifacts</span>
           </div>
           <span className="font-mono text-[11px] text-accent/70 hidden sm:inline-block">
-            10 Authentic Plates // Drag or Hover to Pause
+            10 Authentic Plates // Hover to Pause
           </span>
         </div>
 
@@ -287,60 +261,17 @@ export default function About() {
       </div>
 
       {/* ========================================================= */}
-      {/* 3. SUBSTANCE: OPERATING PILLARS & FOUNDATIONAL ETHOS      */}
+      {/* 3. MORE BUTTON (REDIRECTS TO DEDICATED ABOUT US PAGE)     */}
       {/* ========================================================= */}
-      <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mt-16 sm:mt-20 relative z-10">
-        
-        {/* Section Heading */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-4 border-b border-border-subtle">
-          <div>
-            <div className="font-mono text-xs text-accent uppercase tracking-widest mb-1.5">
-              Operating Ethos
-            </div>
-            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink font-normal">
-              Three Core Tenets of the Atelier
-            </h3>
-          </div>
-          <Link
-            href="#domains"
-            className="text-xs font-mono text-accent hover:text-ink inline-flex items-center gap-1.5 uppercase tracking-wider group"
-          >
-            <span>Explore The 6 Research Disciplines</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        {/* 3 Full-Width High-Status Pillar Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {pillars.map((pillar, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: 0.08 * idx, ease: [0.16, 1, 0.3, 1] }}
-              className="p-7 sm:p-8 rounded-2xl border border-border-subtle bg-surface/40 hover:bg-surface/80 hover:border-accent/35 transition-all duration-300 flex flex-col justify-between gap-6 group shadow-lg shadow-black/40"
-            >
-              <div className="flex flex-col gap-3">
-                <span className="font-mono text-xs text-accent/80 font-medium">
-                  TENET 0{idx + 1}
-                </span>
-                <h4 className="font-serif text-2xl text-ink font-normal group-hover:text-accent transition-colors leading-snug">
-                  {pillar.title}
-                </h4>
-                <p className="font-sans text-sm text-ink-secondary/90 leading-relaxed">
-                  {pillar.desc}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-border-subtle/80 flex items-center justify-between text-xs font-mono text-muted">
-                <span>Verified Bench Standard</span>
-                <span className="text-accent">✦</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
+      <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mt-10 sm:mt-14 flex justify-center relative z-10">
+        <Link
+          href="/about"
+          onClick={() => playHaptic(640, 0.04)}
+          className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full border border-accent/35 bg-accent/[0.08] hover:bg-accent/[0.18] hover:border-accent/60 text-ink font-mono text-xs uppercase tracking-[0.22em] transition-all duration-300 group shadow-xl shadow-black/60"
+        >
+          <span>More About Melerigamy</span>
+          <ArrowRight className="w-4 h-4 text-accent group-hover:translate-x-1.5 transition-transform" />
+        </Link>
       </div>
 
       {/* ========================================================= */}

@@ -4,7 +4,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Domains from "@/components/Domains";
+import Projects from "@/components/Projects";
 import Sessions from "@/components/Sessions";
 import Founders from "@/components/Founders";
 import Directory from "@/components/Directory";
@@ -19,7 +19,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Domains />
+        <Projects />
         <Sessions />
         <Founders />
         <Directory />

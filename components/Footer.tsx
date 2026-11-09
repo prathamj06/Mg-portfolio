@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -24,39 +24,45 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-muted text-xs leading-relaxed max-w-[34ch]">
-              An unofficial, student-led technical and research community exploring RF, intelligence, silicon, and empirical science.
+              An autonomous, student-led technical collective and research guild exploring RF, intelligence, silicon, and empirical science.
             </p>
             <span className="font-mono text-[11px] text-accent">
               FOLIO 01 // 08 · 30+ FIRST-YEAR UNDERGRADUATES
             </span>
           </div>
 
-          {/* Research Domains */}
+          {/* Research Disciplines */}
           <div className="flex flex-col gap-3">
-            <h4 className="font-mono text-xs text-accent uppercase tracking-wider">
-              Disciplines
-            </h4>
+            <div className="flex items-center justify-between">
+              <h4 className="font-mono text-xs text-accent uppercase tracking-wider">
+                Disciplines
+              </h4>
+              <Link href="/about" className="text-[10px] font-mono text-accent/70 hover:text-accent flex items-center gap-0.5">
+                <span>In About Us</span>
+                <ArrowUpRight className="w-2.5 h-2.5" />
+              </Link>
+            </div>
             <ul className="flex flex-col gap-2 text-xs text-muted">
-              <li><Link href="#domains" className="hover:text-ink transition-colors">RF & Wireless Systems</Link></li>
-              <li><Link href="#domains" className="hover:text-ink transition-colors">Machine Learning & Autodiff</Link></li>
-              <li><Link href="#domains" className="hover:text-ink transition-colors">Electronics & FPGA Logic</Link></li>
-              <li><Link href="#domains" className="hover:text-ink transition-colors">Higher Mathematics</Link></li>
-              <li><Link href="#domains" className="hover:text-ink transition-colors">Cybersecurity & Firmware</Link></li>
-              <li><Link href="#domains" className="hover:text-ink transition-colors">Scientific Research</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">RF & Wireless Systems</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">Machine Learning & Autodiff</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">Electronics & FPGA Logic</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">Higher Mathematics</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">Cybersecurity & Firmware</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">Scientific Research</Link></li>
             </ul>
           </div>
 
-          {/* Community Links */}
+          {/* Navigation & Archives */}
           <div className="flex flex-col gap-3">
             <h4 className="font-mono text-xs text-accent uppercase tracking-wider">
               Navigation
             </h4>
             <ul className="flex flex-col gap-2 text-xs text-muted">
-              <li><Link href="#about" className="hover:text-ink transition-colors">About & Culture</Link></li>
-              <li><Link href="#domains" className="hover:text-ink transition-colors">Disciplines</Link></li>
-              <li><Link href="#sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
-              <li><Link href="#founders" className="hover:text-ink transition-colors">Founding Stewards</Link></li>
-              <li><Link href="#directory" className="hover:text-ink transition-colors">Members Directory</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">About Us (Full Monograph)</Link></li>
+              <li><Link href="/#projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
+              <li><Link href="/#sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
+              <li><Link href="/#founders" className="hover:text-ink transition-colors">Founding Stewards</Link></li>
+              <li><Link href="/#directory" className="hover:text-ink transition-colors">Members Directory</Link></li>
             </ul>
           </div>
 
@@ -99,25 +105,35 @@ export default function Footer() {
                   <ExternalLink className="w-3 h-3 text-accent" />
                 </a>
               </li>
+              <li className="pt-2">
+                <a
+                  href="https://github.com/melerigamy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-accent hover:text-ink transition-colors font-mono text-[11px]"
+                >
+                  <span>github.com/melerigamy</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Monograph Motto Inscription */}
-        <div className="py-5 border-t border-border-subtle text-center">
-          <p className="font-serif italic text-xs text-accent/90 tracking-wide">
-            &ldquo;Investigating the science behind technology, experimenting with its applications, and building across disciplines.&rdquo;
-          </p>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-6 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
-          <div>
-            <span>© 2025–2026 Melerigamy Technical Community.</span>
-            <span className="text-subtle"> Unofficial Student Collective.</span>
+        {/* Bottom Colophon Bar */}
+        <div className="pt-8 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-muted font-mono">
+          <div className="flex items-center gap-3">
+            <span>© {new Date().getFullYear()} Melerigamy</span>
+            <span>·</span>
+            <span>Autonomous Student Research Collective</span>
           </div>
-          <div className="font-mono text-[11px] text-muted">
-            Monograph Edition · Next.js · Tailwind CSS
+
+          <div className="flex items-center gap-4">
+            <Link href="/about" className="hover:text-accent transition-colors">Atelier Monograph</Link>
+            <span>·</span>
+            <a href="mailto:melerigamy.research@gmail.com" className="hover:text-accent transition-colors">
+              Dispatch
+            </a>
           </div>
         </div>
       </div>
