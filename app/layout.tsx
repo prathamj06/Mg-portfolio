@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "@/components/ScrollProgress";
+import Navbar from "@/components/Navbar";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -39,6 +41,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${jakarta.variable} ${jetbrainsMono.variable} dark`}>
       <body className="font-sans text-ink bg-bg antialiased selection:bg-accent selection:text-bg">
+        <ScrollProgress />
+        <Navbar />
         {children}
       </body>
     </html>

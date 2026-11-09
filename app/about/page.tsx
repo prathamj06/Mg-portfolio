@@ -19,9 +19,7 @@ import {
   Layers,
   BookOpen
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ScrollProgress from "@/components/ScrollProgress";
 import { COMMUNITY_DATA, Domain } from "@/lib/data";
 import { playHaptic } from "@/lib/audio";
 
@@ -140,9 +138,6 @@ export default function AboutUsPage() {
 
   return (
     <>
-      <ScrollProgress />
-      <Navbar />
-
       <main className="min-h-screen pt-32 pb-24 relative overflow-hidden bg-[#080406]">
         {/* Ambient Radial Illumination */}
         <div

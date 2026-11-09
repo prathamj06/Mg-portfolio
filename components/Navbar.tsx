@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -15,6 +15,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isHome = pathname === "/";
+  const isClickScrolling = useRef(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const navLinks = [
     { name: "About", href: "/about", id: "about" },
@@ -24,29 +26,45 @@ export default function Navbar() {
     { name: "Directory", href: "/#directory", id: "directory" },
   ];
 
+  // Only track on-page sections on the homepage.
+  // "About" is purposefully excluded from automatic scroll-spy so scrolling through the homepage never triggers it!
+  const scrollTrackedSections = ["projects", "sessions", "founders", "directory"];
+
+  // Whenever route changes, sync active state
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+    if (pathname === "/about") {
+      setActiveSection("about");
+    } else if (isHome && !isClickScrolling.current) {
+      handleScroll();
+    }
+  }, [pathname, isHome]);
 
-      if (isHome) {
-        const sections = navLinks.map((link) => document.getElementById(link.id));
-        const scrollPosition = window.scrollY + 140;
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 40);
 
-        let current = "";
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const section = sections[i];
-          if (section && section.offsetTop <= scrollPosition) {
-            current = navLinks[i].id;
-            break;
-          }
+    if (isHome && !isClickScrolling.current) {
+      const scrollPosition = window.scrollY + 160;
+
+      let current = "";
+      for (let i = scrollTrackedSections.length - 1; i >= 0; i--) {
+        const id = scrollTrackedSections[i];
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= scrollPosition) {
+          current = id;
+          break;
         }
-        setActiveSection(current);
       }
-    };
+      setActiveSection(current);
+    }
+  };
 
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
   }, [isHome]);
 
   const handleNavClick = (link: typeof navLinks[0]) => {
@@ -54,23 +72,36 @@ export default function Navbar() {
     setMobileMenuOpen(false);
 
     if (link.href === "/about") {
+      setActiveSection("about");
       if (pathname !== "/about") {
         router.push("/about");
       }
       return;
     }
 
+    // Navigating to an on-page section
+    setActiveSection(link.id);
+
     if (isHome) {
       const target = document.getElementById(link.id);
       if (target) {
+        isClickScrolling.current = true;
+        if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
         const offset = 90;
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = target.getBoundingClientRect().top;
         const offsetPosition = elementRect - bodyRect - offset;
+
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
+
+        // Release scroll lock after smooth scrolling completes
+        scrollTimeout.current = setTimeout(() => {
+          isClickScrolling.current = false;
+        }, 900);
       }
     } else {
       router.push(link.href);
@@ -79,9 +110,9 @@ export default function Navbar() {
 
   const scrollToTop = () => {
     playHaptic(440, 0.03);
+    setActiveSection("");
+    setHoveredSection(null);
     if (isHome) {
-      setActiveSection("");
-      setHoveredSection(null);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       router.push("/");
@@ -123,9 +154,7 @@ export default function Navbar() {
           onMouseLeave={() => setHoveredSection(null)}
         >
           {navLinks.map((link) => {
-            const isActive = pathname === "/about"
-              ? link.href === "/about"
-              : (isHome && activeSection === link.id);
+            const isActive = activeSection === link.id;
             const isHovered = hoveredSection === link.id;
 
             return (
@@ -146,7 +175,12 @@ export default function Navbar() {
                 {isActive && (
                   <motion.div
                     layoutId="activeNavPill"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 340,
+                      damping: 30,
+                      mass: 0.8,
+                    }}
                     className="absolute inset-0 rounded-full bg-accent/[0.14] border border-accent/30 shadow-[0_0_12px_rgba(223,170,162,0.12)] -z-10"
                   />
                 )}
@@ -155,8 +189,12 @@ export default function Navbar() {
                 {isHovered && !isActive && (
                   <motion.div
                     layoutId="hoverNavPill"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                    className="absolute inset-0 rounded-full bg-white/[0.05] border border-white/[0.08] -z-10"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 32,
+                    }}
+                    className="absolute inset-0 rounded-full bg-white/[0.05] border border-white/[0.08] -z-10 pointer-events-none"
                   />
                 )}
 
@@ -211,9 +249,7 @@ export default function Navbar() {
               className="w-full mt-2 p-2.5 rounded-2xl bg-[#0e070a]/95 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/90 flex flex-col gap-1 text-center"
             >
               {navLinks.map((link) => {
-                const isActive = pathname === "/about"
-                  ? link.href === "/about"
-                  : (isHome && activeSection === link.id);
+                const isActive = activeSection === link.id;
                 return (
                   <button
                     key={link.name}
