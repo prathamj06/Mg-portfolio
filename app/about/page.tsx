@@ -34,8 +34,29 @@ interface DrivePhoto {
 export default function AboutUsPage() {
   const [selectedImage, setSelectedImage] = useState<DrivePhoto | null>(null);
 
-  // 10 authentic lab photos from Google Drive
+  // 13 authentic lab photos from active benchwork & Google Drive
   const drivePhotos: DrivePhoto[] = [
+    {
+      src: "/assets/drone-telemetry-h12.jpg",
+      alt: "ArduPilot H12 Ground Control Station & Quadcopter Telemetry",
+      tag: "Plate 01 · Flight Telemetry",
+      title: "ArduPilot H12 Ground Station & UAV Telemetry",
+      desc: "Real-time dual-joystick ground control station establishing bi-directional telemetry links, GPS coordinates, and flight envelope testing with autonomous quadcopter airframe.",
+    },
+    {
+      src: "/assets/pixhawk-drone-lab.jpg",
+      alt: "Pixhawk 2.4.8 Autopilot & GPS Mast Avionics",
+      tag: "Plate 02 · Avionics & Guidance",
+      title: "Pixhawk 2.4.8 Autopilot & Sensor Rig",
+      desc: "Benchtop calibration of 32-bit Pixhawk flight controller, compass mast, power distribution bus, and brushless ESC harness.",
+    },
+    {
+      src: "/assets/workshop-fabrication-collage.jpg",
+      alt: "Workshop Mechatronics & Control Panel Instrumentation",
+      tag: "Plate 03 · Rapid Fabrication",
+      title: "Mechatronics, Metalworking & Control Suite",
+      desc: "Field fabrication suite featuring pneumatic filtration manifold ducting, high-voltage DIN-rail enclosure wiring, angle grinding, and pilot console instrumentation.",
+    },
     {
       src: "/assets/drive/robotics-chassis.jpg",
       alt: "Autonomous Robotics Rover Chassis & Power Distribution",
@@ -108,8 +129,8 @@ export default function AboutUsPage() {
     },
   ];
 
-  const row1 = drivePhotos.slice(0, 5);
-  const row2 = drivePhotos.slice(5, 10);
+  const row1 = drivePhotos.slice(0, 7);
+  const row2 = drivePhotos.slice(7);
 
   const pillars = [
     {
@@ -430,43 +451,6 @@ export default function AboutUsPage() {
                   </div>
                 </article>
               ))}
-            </div>
-          </section>
-
-          {/* ========================================================= */}
-          {/* 6. CALL TO ACTION: BROWSE PROJECTS OR INITIATION           */}
-          {/* ========================================================= */}
-          <section className="bg-surface border border-border-wine/40 rounded-3xl p-8 sm:p-14 lg:p-16 flex flex-col md:flex-row md:items-center justify-between gap-8 shadow-2xl shadow-black/70">
-            <div className="max-w-2xl">
-              <span className="font-mono text-xs uppercase tracking-widest text-accent font-medium block mb-2">
-                Laboratory Initiation
-              </span>
-              <h3 className="font-serif text-3xl sm:text-4xl text-ink font-normal mb-3">
-                Explore our active hardware systems or join the collective.
-              </h3>
-              <p className="text-ink-secondary text-sm sm:text-base leading-relaxed">
-                Whether you wish to inspect open-source netlists, audit cryptographic primitives, or participate in our weekly paper reading teardowns, Melerigamy welcomes rigorous inquiry.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
-              <Link
-                href="/#projects"
-                onClick={() => playHaptic(640, 0.04)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-accent hover:text-ink px-6 py-4 rounded-full border border-accent/35 bg-accent/[0.1] hover:bg-accent/[0.2] transition-all"
-              >
-                <span>View Prototypes</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-
-              <Link
-                href="/#join"
-                onClick={() => playHaptic(640, 0.04)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-ink hover:text-accent px-6 py-4 rounded-full border border-white/10 hover:border-white/30 bg-white/[0.04] transition-all"
-              >
-                <span>Initiation Protocol</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
             </div>
           </section>
 
