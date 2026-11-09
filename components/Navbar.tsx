@@ -37,24 +37,55 @@ function MagneticNavLink({
   const ref = useRef<HTMLButtonElement>(null);
 
   // Proximity distance calculation from cursor to center of this nav item
-  const distance = useTransform(mouseX, (val) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 80 };
-    return val - (bounds.x + bounds.width / 2);
+  // Gracefully handles Infinity and NaN when mouse leaves the dock
+  const distance = useTransform(mouseX, (val: number) => {
+    if (!ref.current || val === Infinity || isNaN(val)) return 1000;
+    const bounds = ref.current.getBoundingClientRect();
+    return Math.abs(val - (bounds.x + bounds.width / 2));
   });
 
-  // Scale factor: smooth magnetic dock magnification (peaks at 1.14x when cursor is over it)
-  const scaleSync = useTransform(distance, [-130, 0, 130], [1, 1.14, 1]);
-  const scale = useSpring(scaleSync, {
-    stiffness: 320,
-    damping: 22,
+  // Scale factor: smooth magnetic dock magnification
+  // Direct hover (0px) => 1.16x
+  // Adjacent proximity (65px) => 1.07x
+  // Resting threshold (>= 130px) => exactly 1.0x (clamped)
+  const targetScale = useTransform(
+    distance,
+    [0, 65, 130],
+    [1.16, 1.07, 1.0],
+    { clamp: true }
+  );
+
+  const scale = useSpring(targetScale, {
+    stiffness: 340,
+    damping: 24,
+    mass: 0.15,
+  });
+
+  // Dynamic horizontal padding: options expand and push adjacent items smoothly
+  const targetPadding = useTransform(
+    distance,
+    [0, 65, 130],
+    [22, 19, 16],
+    { clamp: true }
+  );
+
+  const paddingX = useSpring(targetPadding, {
+    stiffness: 340,
+    damping: 24,
     mass: 0.15,
   });
 
   // Subtle magnetic Y lift when hovered
-  const ySync = useTransform(distance, [-130, 0, 130], [0, -2, 0]);
-  const y = useSpring(ySync, {
-    stiffness: 320,
-    damping: 22,
+  const targetY = useTransform(
+    distance,
+    [0, 65, 130],
+    [-2.5, -1, 0],
+    { clamp: true }
+  );
+
+  const y = useSpring(targetY, {
+    stiffness: 340,
+    damping: 24,
     mass: 0.15,
   });
 
@@ -62,10 +93,15 @@ function MagneticNavLink({
     <motion.button
       ref={ref}
       type="button"
-      style={{ scale, y }}
+      style={{
+        scale,
+        y,
+        paddingLeft: paddingX,
+        paddingRight: paddingX,
+      }}
       onClick={onClick}
       onMouseEnter={onHover}
-      className={`relative px-4 sm:px-4.5 py-2 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-200 z-10 flex items-center justify-center text-center cursor-pointer select-none ${
+      className={`relative py-2 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-200 z-10 flex items-center justify-center text-center cursor-pointer select-none origin-bottom ${
         isActive
           ? "text-accent font-medium"
           : isHovered
@@ -100,7 +136,7 @@ function MagneticNavLink({
         />
       )}
 
-      <span className="relative z-10">{link.name}</span>
+      <span className="relative z-10 whitespace-nowrap">{link.name}</span>
     </motion.button>
   );
 }
@@ -114,15 +150,35 @@ function MagneticMonogram({
 }) {
   const ref = useRef<HTMLButtonElement>(null);
 
-  const distance = useTransform(mouseX, (val) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 40 };
-    return val - (bounds.x + bounds.width / 2);
+  const distance = useTransform(mouseX, (val: number) => {
+    if (!ref.current || val === Infinity || isNaN(val)) return 1000;
+    const bounds = ref.current.getBoundingClientRect();
+    return Math.abs(val - (bounds.x + bounds.width / 2));
   });
 
-  const scaleSync = useTransform(distance, [-130, 0, 130], [1, 1.15, 1]);
-  const scale = useSpring(scaleSync, {
-    stiffness: 320,
-    damping: 22,
+  const targetScale = useTransform(
+    distance,
+    [0, 65, 130],
+    [1.16, 1.07, 1.0],
+    { clamp: true }
+  );
+
+  const scale = useSpring(targetScale, {
+    stiffness: 340,
+    damping: 24,
+    mass: 0.15,
+  });
+
+  const targetY = useTransform(
+    distance,
+    [0, 65, 130],
+    [-2, -0.8, 0],
+    { clamp: true }
+  );
+
+  const y = useSpring(targetY, {
+    stiffness: 340,
+    damping: 24,
     mass: 0.15,
   });
 
@@ -130,9 +186,9 @@ function MagneticMonogram({
     <motion.button
       ref={ref}
       type="button"
-      style={{ scale }}
+      style={{ scale, y }}
       onClick={onClick}
-      className="font-serif text-sm font-semibold tracking-wider text-accent hover:text-ink transition-colors px-2.5 py-1 rounded-full hover:bg-white/[0.04] cursor-pointer"
+      className="font-serif text-sm font-semibold tracking-wider text-accent hover:text-ink transition-colors px-2.5 py-1 rounded-full hover:bg-white/[0.04] cursor-pointer origin-bottom"
       aria-label="Melerigamy Home"
     >
       MG
@@ -145,6 +201,7 @@ export default function Navbar() {
   const router = useRouter();
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDockHovered, setIsDockHovered] = useState(false);
 
   // Mouse coordinate for magnetic dock magnification physics
   const mouseX = useMotionValue(Infinity);
@@ -157,6 +214,31 @@ export default function Navbar() {
     { name: "Sessions", href: "/sessions", id: "sessions" },
     { name: "Directory", href: "/directory", id: "directory" },
   ];
+
+  // Dynamic spring-animated padding for dock expansion in tandem with options
+  const targetDockPaddingY = useTransform(
+    mouseX,
+    (val: number) => (val === Infinity || isNaN(val) ? 6 : 9),
+    { clamp: true }
+  );
+
+  const dockPaddingY = useSpring(targetDockPaddingY, {
+    stiffness: 300,
+    damping: 26,
+    mass: 0.18,
+  });
+
+  const targetDockPaddingX = useTransform(
+    mouseX,
+    (val: number) => (val === Infinity || isNaN(val) ? 12 : 18),
+    { clamp: true }
+  );
+
+  const dockPaddingX = useSpring(targetDockPaddingX, {
+    stiffness: 300,
+    damping: 26,
+    mass: 0.18,
+  });
 
   const handleNavClick = (link: NavLinkItem) => {
     playHaptic(580, 0.03);
@@ -184,15 +266,34 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        onMouseMove={(e) => mouseX.set(e.clientX)}
+        onMouseMove={(e) => {
+          mouseX.set(e.clientX);
+          if (!isDockHovered) setIsDockHovered(true);
+        }}
+        onMouseEnter={() => setIsDockHovered(true)}
         onMouseLeave={() => {
           mouseX.set(Infinity);
           setHoveredSection(null);
+          setIsDockHovered(false);
         }}
-        className="pointer-events-auto relative hidden md:flex items-center gap-1 pl-3 pr-2.5 py-1.5 rounded-full bg-[#0d0709]/90 backdrop-blur-xl border border-white/[0.12] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.85),0_0_1px_1px_rgba(223,170,162,0.14)]"
+        style={{
+          paddingTop: dockPaddingY,
+          paddingBottom: dockPaddingY,
+          paddingLeft: dockPaddingX,
+          paddingRight: dockPaddingX,
+        }}
+        className={`pointer-events-auto relative hidden md:flex items-center gap-1.5 rounded-full bg-[#0d0709]/92 backdrop-blur-xl border transition-all duration-300 ${
+          isDockHovered
+            ? "border-white/[0.2] shadow-[0_20px_50px_-8px_rgba(0,0,0,0.92),0_0_24px_1px_rgba(223,170,162,0.22)]"
+            : "border-white/[0.12] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.85),0_0_1px_1px_rgba(223,170,162,0.14)]"
+        }`}
       >
-        {/* Subtle Top Rim Light */}
-        <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/35 to-transparent pointer-events-none" />
+        {/* Subtle Top Rim Light that brightens on dock hover */}
+        <div
+          className={`absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent pointer-events-none transition-opacity duration-300 ${
+            isDockHovered ? "opacity-100" : "opacity-60"
+          }`}
+        />
 
         {/* Left: Brand Monogram Link to Home with Magnetic Scaling */}
         <div className="flex items-center pr-2">
