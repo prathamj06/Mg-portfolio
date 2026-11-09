@@ -59,10 +59,10 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-2 text-xs text-muted">
               <li><Link href="/about" className="hover:text-ink transition-colors">About (Full Monograph)</Link></li>
-              <li><Link href="/#projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
-              <li><Link href="/#sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
+              <li><Link href="/projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
+              <li><Link href="/sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
               <li><Link href="/#founders" className="hover:text-ink transition-colors">Founding Stewards</Link></li>
-              <li><Link href="/#directory" className="hover:text-ink transition-colors">Members Directory</Link></li>
+              <li><Link href="/directory" className="hover:text-ink transition-colors">Members Directory</Link></li>
             </ul>
           </div>
 
