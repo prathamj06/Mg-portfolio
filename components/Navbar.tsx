@@ -45,63 +45,30 @@ function MagneticNavLink({
   });
 
   // Scale factor: smooth magnetic dock magnification
-  // Direct hover (0px) => 1.16x
-  // Adjacent proximity (65px) => 1.07x
-  // Resting threshold (>= 130px) => exactly 1.0x (clamped)
+  // Direct hover (0px) => 1.14x
+  // Adjacent proximity (60px) => 1.05x
+  // Resting threshold (>= 120px) => exactly 1.0x (clamped)
   const targetScale = useTransform(
     distance,
-    [0, 65, 130],
-    [1.16, 1.07, 1.0],
+    [0, 60, 120],
+    [1.14, 1.05, 1.0],
     { clamp: true }
   );
 
   const scale = useSpring(targetScale, {
-    stiffness: 340,
-    damping: 24,
-    mass: 0.15,
-  });
-
-  // Dynamic horizontal padding: options expand and push adjacent items smoothly
-  const targetPadding = useTransform(
-    distance,
-    [0, 65, 130],
-    [22, 19, 16],
-    { clamp: true }
-  );
-
-  const paddingX = useSpring(targetPadding, {
-    stiffness: 340,
-    damping: 24,
-    mass: 0.15,
-  });
-
-  // Subtle magnetic Y lift when hovered
-  const targetY = useTransform(
-    distance,
-    [0, 65, 130],
-    [-2.5, -1, 0],
-    { clamp: true }
-  );
-
-  const y = useSpring(targetY, {
-    stiffness: 340,
-    damping: 24,
-    mass: 0.15,
+    stiffness: 380,
+    damping: 26,
+    mass: 0.1,
   });
 
   return (
     <motion.button
       ref={ref}
       type="button"
-      style={{
-        scale,
-        y,
-        paddingLeft: paddingX,
-        paddingRight: paddingX,
-      }}
+      style={{ scale }}
       onClick={onClick}
       onMouseEnter={onHover}
-      className={`relative py-2 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-200 z-10 flex items-center justify-center text-center cursor-pointer select-none origin-bottom ${
+      className={`relative px-4 py-2 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-200 z-10 flex items-center justify-center text-center cursor-pointer select-none origin-center transform-gpu ${
         isActive
           ? "text-accent font-medium"
           : isHovered
@@ -115,11 +82,11 @@ function MagneticNavLink({
           layoutId="activeNavPill"
           transition={{
             type: "spring",
-            stiffness: 340,
+            stiffness: 380,
             damping: 30,
             mass: 0.8,
           }}
-          className="absolute inset-0 rounded-full bg-accent/[0.14] border border-accent/30 shadow-[0_0_12px_rgba(223,170,162,0.12)] -z-10"
+          className="absolute inset-0 rounded-full bg-accent/[0.14] border border-accent/30 shadow-[0_0_14px_rgba(223,170,162,0.15)] -z-10 pointer-events-none"
         />
       )}
 
@@ -129,14 +96,14 @@ function MagneticNavLink({
           layoutId="hoverNavPill"
           transition={{
             type: "spring",
-            stiffness: 380,
+            stiffness: 400,
             damping: 32,
           }}
           className="absolute inset-0 rounded-full bg-white/[0.05] border border-white/[0.08] -z-10 pointer-events-none"
         />
       )}
 
-      <span className="relative z-10 whitespace-nowrap">{link.name}</span>
+      <span className="relative z-10 whitespace-nowrap leading-none">{link.name}</span>
     </motion.button>
   );
 }
@@ -158,37 +125,24 @@ function MagneticMonogram({
 
   const targetScale = useTransform(
     distance,
-    [0, 65, 130],
-    [1.16, 1.07, 1.0],
+    [0, 60, 120],
+    [1.14, 1.05, 1.0],
     { clamp: true }
   );
 
   const scale = useSpring(targetScale, {
-    stiffness: 340,
-    damping: 24,
-    mass: 0.15,
-  });
-
-  const targetY = useTransform(
-    distance,
-    [0, 65, 130],
-    [-2, -0.8, 0],
-    { clamp: true }
-  );
-
-  const y = useSpring(targetY, {
-    stiffness: 340,
-    damping: 24,
-    mass: 0.15,
+    stiffness: 380,
+    damping: 26,
+    mass: 0.1,
   });
 
   return (
     <motion.button
       ref={ref}
       type="button"
-      style={{ scale, y }}
+      style={{ scale }}
       onClick={onClick}
-      className="font-serif text-sm font-semibold tracking-wider text-accent hover:text-ink transition-colors px-2.5 py-1 rounded-full hover:bg-white/[0.04] cursor-pointer origin-bottom"
+      className="font-serif text-sm font-semibold tracking-wider text-accent hover:text-ink transition-colors px-3 py-1.5 rounded-full hover:bg-white/[0.04] cursor-pointer origin-center transform-gpu flex items-center justify-center select-none leading-none"
       aria-label="Melerigamy Home"
     >
       MG
@@ -215,29 +169,11 @@ export default function Navbar() {
     { name: "Directory", href: "/directory", id: "directory" },
   ];
 
-  // Dynamic spring-animated padding for dock expansion in tandem with options
-  const targetDockPaddingY = useTransform(
-    mouseX,
-    (val: number) => (val === Infinity || isNaN(val) ? 6 : 9),
-    { clamp: true }
-  );
-
-  const dockPaddingY = useSpring(targetDockPaddingY, {
-    stiffness: 300,
+  // Spring-animated dock vessel magnification that scales smoothly in tandem with options
+  const dockScale = useSpring(isDockHovered ? 1.018 : 1.0, {
+    stiffness: 350,
     damping: 26,
-    mass: 0.18,
-  });
-
-  const targetDockPaddingX = useTransform(
-    mouseX,
-    (val: number) => (val === Infinity || isNaN(val) ? 12 : 18),
-    { clamp: true }
-  );
-
-  const dockPaddingX = useSpring(targetDockPaddingX, {
-    stiffness: 300,
-    damping: 26,
-    mass: 0.18,
+    mass: 0.15,
   });
 
   const handleNavClick = (link: NavLinkItem) => {
@@ -277,32 +213,26 @@ export default function Navbar() {
           setIsDockHovered(false);
         }}
         style={{
-          paddingTop: dockPaddingY,
-          paddingBottom: dockPaddingY,
-          paddingLeft: dockPaddingX,
-          paddingRight: dockPaddingX,
+          scale: dockScale,
         }}
-        className={`pointer-events-auto relative hidden md:flex items-center gap-1.5 rounded-full bg-[#0d0709]/92 backdrop-blur-xl border transition-all duration-300 ${
+        className={`pointer-events-auto relative hidden md:flex items-center rounded-full bg-[#0d0709]/92 backdrop-blur-xl border px-3.5 py-1.5 transition-colors duration-300 origin-center transform-gpu ${
           isDockHovered
-            ? "border-white/[0.2] shadow-[0_20px_50px_-8px_rgba(0,0,0,0.92),0_0_24px_1px_rgba(223,170,162,0.22)]"
-            : "border-white/[0.12] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.85),0_0_1px_1px_rgba(223,170,162,0.14)]"
+            ? "border-white/[0.22] shadow-[0_20px_50px_-8px_rgba(0,0,0,0.95),0_0_24px_1px_rgba(223,170,162,0.22)]"
+            : "border-white/[0.12] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.85),0_0_1px_1px_rgba(223,170,162,0.12)]"
         }`}
       >
         {/* Subtle Top Rim Light that brightens on dock hover */}
         <div
-          className={`absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent pointer-events-none transition-opacity duration-300 ${
+          className={`absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none transition-opacity duration-300 ${
             isDockHovered ? "opacity-100" : "opacity-60"
           }`}
         />
 
-        {/* Left: Brand Monogram Link to Home with Magnetic Scaling */}
-        <div className="flex items-center pr-2">
-          <MagneticMonogram mouseX={mouseX} onClick={handleHomeClick} />
-          <span className="h-3.5 w-[1px] bg-border-subtle ml-1.5" />
-        </div>
-
-        {/* Navigation Links with Componentry Magnetic Proximity Physics & Active Glow */}
+        {/* Unified Magnetic Row: Monogram + Baseline Divider + Navigation Options */}
         <div className="flex items-center gap-1">
+          <MagneticMonogram mouseX={mouseX} onClick={handleHomeClick} />
+          <span className="h-3.5 w-[1px] bg-white/15 mx-1 select-none pointer-events-none self-center" />
+
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             const isHovered = hoveredSection === link.id;
