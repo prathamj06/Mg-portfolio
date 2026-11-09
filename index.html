@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Melerigamy — An unofficial technical collective of 30+ first-year students exploring RF, AI/ML, electronics, mathematics, cybersecurity, and scientific research.">
+  <title>Melerigamy — Technical Community & Research Guild</title>
+  
+  <!-- Favicon / Brand Icon -->
+  <link rel="icon" type="image/jpeg" href="assets/melerigamy-emblem.jpg">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-nav" id="siteNav" role="banner">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Melerigamy Home">
+        <div class="nav-logo-wrap">
+          <img src="assets/melerigamy-emblem.jpg" alt="Melerigamy Star Emblem" width="32" height="32">
+        </div>
+        <span class="nav-brand-title">MELERIGAMY</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinksContainer">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#domains" class="nav-link">Domains</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#sessions" class="nav-link">Sessions</a></li>
+          <li><a href="#founders" class="nav-link">Founders</a></li>
+          <li><a href="#directory" class="nav-link">Directory</a></li>
+          <li><a href="#join" class="nav-link">Join</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Quick Search Command Trigger -->
+        <button class="cmd-trigger" id="cmdTrigger" aria-label="Open Command Palette (Ctrl+K)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>Search</span>
+          <kbd>Ctrl+K</kbd>
+        </button>
+
+        <!-- Laboratory Audio Acoustic Feedback Toggle -->
+        <button class="audio-toggle" id="audioToggle" aria-label="Toggle Laboratory Acoustic Feedback" title="Toggle UI Acoustic Feedback">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
+
+        <!-- Call to Action -->
+        <a href="#join" class="btn btn-primary btn-sm">Join Group</a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="section hero-section" id="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Left Column: Editorial Manifesto -->
+          <div class="hero-content reveal">
+            <div class="hero-emblem-badge">
+              <span class="star-symbol">
+                <svg viewBox="0 0 100 100"><path d="M 50,0 Q 50,50 100,50 Q 50,50 50,100 Q 50,50 0,50 Q 50,50 50,0 Z"/></svg>
+              </span>
+              <span>STUDENT RESEARCH & TECHNOLOGY GUILD</span>
+            </div>
+
+            <h1 class="hero-headline" id="hero-title">
+              Exploring deep technology, physics, and <span class="italic">higher mathematics</span>.
+            </h1>
+
+            <p class="hero-subhead">
+              Melerigamy is an unofficial collective of 30+ first-year undergraduate students investigating RF systems, machine learning architectures, and physical mathematics from first principles.
+            </p>
+
+            <!-- Metrics Bar -->
+            <div class="hero-meta-bar" role="region" aria-label="Community Statistics">
+              <div class="hero-meta-item">
+                <span class="hero-meta-value">30+</span>
+                <span class="hero-meta-label">Researchers</span>
+              </div>
+              <div class="hero-meta-item">
+                <span class="hero-meta-value">6</span>
+                <span class="hero-meta-label">Domains</span>
+              </div>
+              <div class="hero-meta-item">
+                <span class="hero-meta-value">14</span>
+                <span class="hero-meta-label">Prototypes</span>
+              </div>
+              <div class="hero-meta-item">
+                <span class="hero-meta-value">8</span>
+                <span class="hero-meta-label">Seminars</span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="hero-actions">
+              <a href="#directory" class="btn btn-accent">
+                <span>Browse Directory</span>
+                <span class="star-symbol">✦</span>
+              </a>
+              <a href="#projects" class="btn btn-ghost">Selected Projects</a>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: Refined Minimalist Signal Viewport -->
+          <div class="signal-viewport-container reveal" role="region" aria-label="Interactive Cross-Domain Signal Viewport">
+            <div class="signal-modes-bar" role="tablist" aria-label="Signal Modes">
+              <button class="signal-mode-pill active" data-mode="rf" role="tab" aria-selected="true">RF Carrier</button>
+              <button class="signal-mode-pill" data-mode="math" role="tab" aria-selected="false">Fourier</button>
+              <button class="signal-mode-pill" data-mode="ai" role="tab" aria-selected="false">Neural Loss</button>
+              <button class="signal-mode-pill" data-mode="electronics" role="tab" aria-selected="false">RLC Circuit</button>
+              <button class="signal-mode-pill" data-mode="cyber" role="tab" aria-selected="false">Entropy</button>
+              <button class="signal-mode-pill" data-mode="research" role="tab" aria-selected="false">Wave Packet</button>
+            </div>
+
+            <div class="signal-canvas-frame" id="signalCanvasFrame">
+              <canvas id="interactiveCanvas" width="600" height="250" aria-label="Real-time interactive mathematical waveform rendering"></canvas>
+            </div>
+
+            <div class="signal-bottom-bar">
+              <span class="signal-math-text" id="canvasFormula">s(t) = A_c \cos(2\pi f_c t + \beta \sin(2\pi f_m t))</span>
+              <span class="signal-interaction-cue" id="canvasLiveCoords">Drag or hover over canvas to modulate</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <span class="star-symbol">✦</span>
+            <span>ORIGIN & ETHOS</span>
+          </div>
+          <h2 class="section-title" id="about-title">
+            Peer mentorship rooted in first-principles discovery.
+          </h2>
+          <p class="section-intro">
+            An informal collective where undergraduate freshers collaborate directly with founders on substantive hardware, software, and physical research.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Text and Pillars -->
+          <div class="about-text-block reveal">
+            <p>
+              We deconstruct concepts from axioms: deriving backpropagation before coding neural networks, synthesizing microstrip matching before printing circuit boards, and tracing continuous Lie algebras before modeling physical dynamics.
+            </p>
+            <p>
+              Comprising <strong>30+ first-year undergraduate students</strong>, the collective connects theoretical curiosity with laboratory reality through weekly seminars, reading circles, and hands-on hardware sprints.
+            </p>
+
+            <ul class="about-features-list">
+              <li class="about-feature-item">
+                <div class="about-feature-icon">✦</div>
+                <div>
+                  <h4 class="about-feature-title">Foundational Derivations</h4>
+                  <p class="about-feature-desc">Deconstructing mathematical axioms and physical limits before executing code.</p>
+                </div>
+              </li>
+              <li class="about-feature-item">
+                <div class="about-feature-icon">✦</div>
+                <div>
+                  <h4 class="about-feature-title">Laboratory Benchwork</h4>
+                  <p class="about-feature-desc">Demystifying physical systems with VNAs, SDR transceivers, logic probes, and FPGAs.</p>
+                </div>
+              </li>
+              <li class="about-feature-item">
+                <div class="about-feature-icon">✦</div>
+                <div>
+                  <h4 class="about-feature-title">Fresher-First Mentorship</h4>
+                  <p class="about-feature-desc">Every first-year researcher collaborates with a founder to design and ship an open prototype.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Academic Quote & Insignia Card -->
+          <div style="display:flex; flex-direction:column; gap:1.75rem;" class="reveal">
+            <div class="about-quote-card">
+              <p class="about-quote-text">
+                "The most consequential insights occur at the boundary where electromagnetic waves, silicon pipelines, and topological invariants converge."
+              </p>
+              <div class="about-quote-meta">
+                <span>— The Founding Stewards, Melerigamy</span>
+              </div>
+            </div>
+
+            <!-- Identity Emblem Showcase -->
+            <div style="background-color:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.35rem; display:flex; align-items:center; gap:1.25rem;">
+              <div style="width:68px; height:68px; border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--border-strong); flex-shrink:0;">
+                <img src="assets/melerigamy-emblem.jpg" alt="Melerigamy Official Brand Insignia" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+              <div>
+                <h4 style="font-size:1.05rem; color:var(--ink); margin-bottom:0.25rem;">The Insignia</h4>
+                <p style="font-size:0.8125rem; color:var(--muted); line-height:1.5;">
+                  A classical Roman wordmark bathed in central starlight, grounded by deep obsidian charcoal and balanced with a single four-point celestial star.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Domains Section -->
+    <section class="section" id="domains" aria-labelledby="domains-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <span class="star-symbol">✦</span>
+            <span>RESEARCH DOMAINS</span>
+          </div>
+          <h2 class="section-title" id="domains-title">
+            Six interconnected fields of investigation.
+          </h2>
+          <p class="section-intro">
+            Interdisciplinary study across computational, physical, and abstract disciplines, connecting theoretical equations directly with lab implementations.
+          </p>
+        </div>
+
+        <div class="domains-grid" id="domainsGrid">
+          <!-- Dynamically populated via js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship Projects Section -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="projects-header-bar reveal">
+          <div class="section-header" style="margin-bottom:0;">
+            <div class="section-label">
+              <span class="star-symbol">✦</span>
+              <span>TECHNICAL PORTFOLIO</span>
+            </div>
+            <h2 class="section-title" id="projects-title">
+              Selected projects and hardware prototypes.
+            </h2>
+            <p class="section-intro">
+              Engineered by founders and first-year student cohorts across software-defined radio, edge ML, processor architecture, and cryptographic protocols.
+            </p>
+          </div>
+
+          <!-- Project Filter Nav -->
+          <div class="projects-filter-nav" id="projectFilterNav" role="tablist" aria-label="Filter Projects by Domain">
+            <button class="project-filter-btn active" data-domain="all">All Projects</button>
+            <button class="project-filter-btn" data-domain="rf-wireless">RF & SDR</button>
+            <button class="project-filter-btn" data-domain="ai-ml">TinyML</button>
+            <button class="project-filter-btn" data-domain="electronics-embedded">FPGA & Silicon</button>
+            <button class="project-filter-btn" data-domain="higher-mathematics">Topology</button>
+            <button class="project-filter-btn" data-domain="cybersecurity-systems">Cryptography</button>
+            <button class="project-filter-btn" data-domain="scientific-research">Instrumentation</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Dynamically populated via js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sessions & Knowledge Archives Section -->
+    <section class="section" id="sessions" aria-labelledby="sessions-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <span class="star-symbol">✦</span>
+            <span>SEMINARS & WORKSHOPS</span>
+          </div>
+          <h2 class="section-title" id="sessions-title">
+            Knowledge-sharing sessions and lab teardowns.
+          </h2>
+          <p class="section-intro">
+            Regular masterclasses and reading seminars conducted by founding members to introduce freshers to advanced paradigms and laboratory instrumentation.
+          </p>
+        </div>
+
+        <div class="sessions-timeline" id="sessionsTimeline">
+          <!-- Dynamically populated via js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Founders & Stewards Section -->
+    <section class="section" id="founders" aria-labelledby="founders-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <span class="star-symbol">✦</span>
+            <span>FOUNDING MEMBERS</span>
+          </div>
+          <h2 class="section-title" id="founders-title">
+            The stewards guiding Melerigamy's research.
+          </h2>
+          <p class="section-intro">
+            The founding members lead technical seminars, mentor first-year members through custom project development, and conduct their own research investigations.
+          </p>
+        </div>
+
+        <div class="founders-grid" id="foundersGrid">
+          <!-- Dynamically populated via js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Members Directory Section -->
+    <section class="section" id="directory" aria-labelledby="directory-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <span class="star-symbol">✦</span>
+            <span>STUDENT ROSTER</span>
+          </div>
+          <h2 class="section-title" id="directory-title">
+            Directory of first-year cohort members.
+          </h2>
+          <p class="section-intro">
+            Explore the 30+ undergraduate researchers currently exploring projects, mastering laboratory tools, and contributing to Melerigamy.
+          </p>
+        </div>
+
+        <!-- Directory Controls: Live Search & Domain Filter -->
+        <div class="directory-controls reveal">
+          <div class="directory-search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="directorySearchInput" placeholder="Search members by name, skill (e.g. GNU Radio, KiCad, PyTorch, Rust), or project..." aria-label="Search members directory">
+          </div>
+
+          <div class="directory-filter-tabs" id="directoryFilterTabs" role="tablist" aria-label="Filter members by discipline">
+            <button class="directory-tab active" data-domain="all">All Cohort (32)</button>
+            <button class="directory-tab" data-domain="rf-wireless">RF & Wireless (6)</button>
+            <button class="directory-tab" data-domain="ai-ml">AI & ML (6)</button>
+            <button class="directory-tab" data-domain="electronics-embedded">Electronics & FPGA (6)</button>
+            <button class="directory-tab" data-domain="higher-mathematics">Higher Math (5)</button>
+            <button class="directory-tab" data-domain="cybersecurity-systems">Cybersecurity (5)</button>
+            <button class="directory-tab" data-domain="scientific-research">Scientific Research (5)</button>
+          </div>
+        </div>
+
+        <div class="directory-results-count" id="directoryResultsCount" aria-live="polite">
+          Showing 32 of 32 First-Year Members
+        </div>
+
+        <!-- Members Grid -->
+        <div class="members-grid" id="membersGrid">
+          <!-- Dynamically populated via js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Join or Contact Section -->
+    <section class="section" id="join" aria-labelledby="join-title">
+      <div class="container">
+        <div class="join-grid reveal">
+          
+          <!-- Information Column -->
+          <div class="join-info-col">
+            <div class="section-label">
+              <span class="star-symbol">✦</span>
+              <span>COMMUNITY INITIATION</span>
+            </div>
+            <h2 class="section-title" id="join-title" style="font-size:clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem);">
+              Join our technical collective.
+            </h2>
+            <p>
+              Melerigamy is open to students driven by genuine curiosity in physical science, systems engineering, and mathematics. We require no prior credentials—only a willingness to read foundational texts, write code, build hardware, and experiment collaboratively.
+            </p>
+
+            <ul class="join-points-list">
+              <li class="join-point-item">
+                <span class="bullet">✦</span>
+                <p><strong>First-Year Friendly:</strong> Every new member is mentored by founders and integrated into hands-on reading groups and lab sprints.</p>
+              </li>
+              <li class="join-point-item">
+                <span class="bullet">✦</span>
+                <p><strong>Open Hardware & Code:</strong> All project artifacts, schematics, and simulation models are archived openly for peer review.</p>
+              </li>
+              <li class="join-point-item">
+                <span class="bullet">✦</span>
+                <p><strong>Weekly Technical Sessions:</strong> Participate in live teardowns, math seminars, and paper discussions every weekend.</p>
+              </li>
+            </ul>
+
+            <div class="join-direct-contacts">
+              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--muted); text-transform:uppercase;">Direct Inquiries</span>
+              <a href="mailto:melerigamy.research@gmail.com" class="join-contact-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>melerigamy.research@gmail.com</span>
+              </a>
+              <a href="https://discord.gg/melerigamy" target="_blank" rel="noopener noreferrer" class="join-contact-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>Melerigamy Student Discussion Server</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Application Form Column -->
+          <div class="join-form-col">
+            <h3 style="font-size:1.35rem; color:var(--ink); margin-bottom:0.25rem;">Express Your Curiosity</h3>
+            <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+              Tell us what questions you want to explore. Our founders review all submissions personally.
+            </p>
+
+            <form id="joinForm" novalidate>
+              <div class="form-group">
+                <label for="applicantName" class="form-label">Full Name *</label>
+                <input type="text" id="applicantName" name="name" class="form-input" placeholder="e.g. Aryaman Sen" required>
+              </div>
+
+              <div class="form-group">
+                <label for="applicantEmail" class="form-label">Email Address *</label>
+                <input type="email" id="applicantEmail" name="email" class="form-input" placeholder="e.g. aryaman@university.edu" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Domains of Primary Interest</label>
+                <div class="form-checkbox-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="domains" value="Radio Frequency"> RF & Wireless
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="domains" value="AI & Machine Learning"> AI & Machine Learning
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="domains" value="Electronics & Embedded"> Embedded & FPGA
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="domains" value="Higher Mathematics"> Higher Mathematics
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="domains" value="Cybersecurity"> Cybersecurity & Systems
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="domains" value="Scientific Research"> Applied Physics / Research
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="applicantBackground" class="form-label">What is something technical you recently explored or want to build?</label>
+                <textarea id="applicantBackground" name="background" rows="3" class="form-textarea" placeholder="Tell us about a paper you read, a circuit you experimented with, a code repository, or a question you've been pondering..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">
+                <span>Submit Expression of Interest</span>
+                <span class="star-symbol">✦</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <div class="footer-brand-header">
+            <div class="nav-logo-wrap" style="width:28px; height:28px;">
+              <img src="assets/melerigamy-emblem.jpg" alt="Melerigamy Emblem" width="28" height="28">
+            </div>
+            <span class="footer-brand-title">MELERIGAMY</span>
+          </div>
+          <p class="footer-brand-desc">
+            An unofficial, community-driven student research collective. Dedicated to the rigorous exploration of radio frequency systems, artificial intelligence, embedded electronics, mathematics, and empirical science.
+          </p>
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent);">
+            Cohort: 30+ First-Year Undergraduates
+          </div>
+        </div>
+
+        <!-- Research Domains -->
+        <div>
+          <h4 class="footer-col-title">Research Domains</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#domains" class="footer-nav-link">RF & Wireless Systems</a></li>
+            <li><a href="#domains" class="footer-nav-link">Artificial Intelligence & ML</a></li>
+            <li><a href="#domains" class="footer-nav-link">Electronics & Embedded</a></li>
+            <li><a href="#domains" class="footer-nav-link">Higher Mathematics</a></li>
+            <li><a href="#domains" class="footer-nav-link">Cybersecurity & Systems</a></li>
+            <li><a href="#domains" class="footer-nav-link">Scientific Research</a></li>
+          </ul>
+        </div>
+
+        <!-- Community Links -->
+        <div>
+          <h4 class="footer-col-title">Community</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#about" class="footer-nav-link">About & Culture</a></li>
+            <li><a href="#projects" class="footer-nav-link">Flagship Projects</a></li>
+            <li><a href="#sessions" class="footer-nav-link">Sessions Archive</a></li>
+            <li><a href="#directory" class="footer-nav-link">Members Directory</a></li>
+            <li><a href="#join" class="footer-nav-link">Join the Collective</a></li>
+          </ul>
+        </div>
+
+        <!-- Founding Members (LinkedIn verified links) -->
+        <div>
+          <h4 class="footer-col-title">Founding Members</h4>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/ishaan-chaturvedi-972948310/" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                Ishaan Chaturvedi ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/dhruv-ghosal-841353247/" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                Dhruv Ghoshal ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/keshav-gupta-83201431a/" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                Keshav Gupta ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>
+          <span>© 2025–2026 Melerigamy Technical Community.</span>
+          <span style="color:var(--subtle);"> Unofficial Student Collective.</span>
+        </div>
+        <div class="footer-credits">
+          Designed with first-principles aesthetics & anti-slop typography.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Dialog Backdrop -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog" id="modalDialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="modalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal Backdrop -->
+  <div class="modal-backdrop" id="cmdPaletteBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cmd-palette-dialog">
+      <div class="cmd-input-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmdInput" placeholder="Jump to member, domain, project, or section..." aria-label="Command search">
+      </div>
+      <ul class="cmd-results-list" id="cmdResultsList" role="listbox">
+        <!-- Injected via JavaScript -->
+      </ul>
+      <div class="cmd-footer-help">
+        <span>Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
+        <span>Press <kbd>Enter</kbd> to select</span>
+        <span>Press <kbd>Esc</kbd> to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main JavaScript Application Bundle -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

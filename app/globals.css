@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0607;
+  --bg-subtle: #100a0c;
+  --surface: #150d10;
+  --surface-elevated: #1d1216;
+  --wine-rich: #3e1418;
+  --ink: #f6efeb;
+  --ink-secondary: #c4b4ae;
+  --muted: #88756f;
+  --accent: #dfaaa2;
+  --accent-parchment: #f5ebe1;
+  --border: rgba(223, 170, 162, 0.08);
+  --border-strong: rgba(223, 170, 162, 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+  color: var(--ink);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 50% 5%, rgba(62, 20, 24, 0.35) 0%, rgba(10, 6, 7, 0) 55%),
+    radial-gradient(circle at 85% 65%, rgba(62, 20, 24, 0.2) 0%, rgba(10, 6, 7, 0) 45%),
+    radial-gradient(circle at 15% 85%, rgba(42, 14, 19, 0.25) 0%, rgba(10, 6, 7, 0) 40%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle Film Grain Texture Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  z-index: 999;
+}
+
+::selection {
+  background-color: #3e1418;
+  color: #f5ebe1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0607;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(223, 170, 162, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(223, 170, 162, 0.4);
+}
