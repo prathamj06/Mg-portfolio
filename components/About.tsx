@@ -187,20 +187,6 @@ export default function About() {
         {/* ========================================================= */}
         <div className="max-w-5xl mb-16 sm:mb-20">
           
-          {/* Subtle Monogram Tag */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-accent/30 bg-accent/[0.08] mb-6 backdrop-blur-md"
-          >
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent font-medium">
-              Autonomous Student Research Collective
-            </span>
-          </motion.div>
-
           {/* MASSIVE HEROIC TITLE: "About Melerigamy" */}
           <motion.h2
             initial={{ opacity: 0, y: 32 }}
