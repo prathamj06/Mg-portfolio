@@ -38,7 +38,7 @@ export default function Footer() {
                 Disciplines
               </h4>
               <Link href="/about" className="text-[10px] font-mono text-accent/70 hover:text-accent flex items-center gap-0.5">
-                <span>In About Us</span>
+                <span>In About</span>
                 <ArrowUpRight className="w-2.5 h-2.5" />
               </Link>
             </div>
@@ -58,7 +58,7 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="flex flex-col gap-2 text-xs text-muted">
-              <li><Link href="/about" className="hover:text-ink transition-colors">About Us (Full Monograph)</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">About (Full Monograph)</Link></li>
               <li><Link href="/#projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
               <li><Link href="/#sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
               <li><Link href="/#founders" className="hover:text-ink transition-colors">Founding Stewards</Link></li>

@@ -158,7 +158,7 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right: Dedicated About Us / Initiation Link */}
+        {/* Right: Dedicated About Page Link */}
         <div className="flex items-center pl-1">
           <span className="h-3.5 w-[1px] bg-border-subtle mr-2" />
           <Link
@@ -170,7 +170,7 @@ export default function Navbar() {
                 : "text-accent bg-accent/[0.1] hover:bg-accent/[0.18] border border-accent/25 hover:border-accent/40"
             }`}
           >
-            About Us
+            About
           </Link>
         </div>
       </motion.nav>
@@ -242,7 +242,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-1 font-mono text-xs uppercase tracking-[0.2em] py-2.5 px-4 rounded-xl bg-accent/20 text-accent border border-accent/35 flex items-center justify-between"
               >
-                <span>Full About Us Page</span>
+                <span>About</span>
                 <span className="text-[10px]">✦</span>
               </Link>
             </motion.div>

@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  ArrowLeft, 
   ArrowRight, 
   ArrowUpRight, 
   Maximize2, 
@@ -156,26 +155,29 @@ export default function AboutUsPage() {
 
         <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 relative z-10">
           
-          {/* Breadcrumb Navigation */}
-          <div className="mb-10">
-            <Link
-              href="/"
-              onClick={() => playHaptic(440, 0.03)}
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-muted hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Return to Main Monograph</span>
-            </Link>
-          </div>
+          {/* Path-based Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumb" className="mb-12">
+            <ol className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.22em]">
+              <li>
+                <Link
+                  href="/"
+                  onClick={() => playHaptic(440, 0.03)}
+                  className="text-muted hover:text-accent transition-colors flex items-center gap-1.5 py-1"
+                >
+                  <span>Home</span>
+                </Link>
+              </li>
+              <li className="text-border-strong select-none text-[11px]">/</li>
+              <li className="text-accent font-medium py-1">
+                <span>About</span>
+              </li>
+            </ol>
+          </nav>
 
           {/* ========================================================= */}
           {/* 1. HERO SPREAD: IN-DEPTH PHILOSOPHY & FOUNDING ORIGIN    */}
           {/* ========================================================= */}
           <div className="max-w-5xl mb-16 sm:mb-20">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-accent tracking-widest uppercase mb-4">
-              <span>✦</span>
-              <span>ATELIER MONOGRAPH // ETHOS, FOUNDING ORIGIN & DISCIPLINES</span>
-            </div>
 
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-normal text-ink mb-8 leading-[1.08] tracking-tight">
               An autonomous guild dedicated to deep engineering & empirical science.
