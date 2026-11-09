@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Sparkles, 
@@ -13,7 +14,11 @@ import {
   CheckCircle2,
   Maximize2,
   X,
-  ArrowUpRight
+  ArrowRight,
+  Binary,
+  Microchip,
+  ShieldCheck,
+  Layers
 } from "lucide-react";
 import { playHaptic } from "@/lib/audio";
 
@@ -28,7 +33,7 @@ interface DrivePhoto {
 export default function About() {
   const [selectedImage, setSelectedImage] = useState<DrivePhoto | null>(null);
 
-  // Curated genuine lab photos downloaded directly from Google Drive
+  // 10 authentic lab photos downloaded directly from Google Drive
   const drivePhotos: DrivePhoto[] = [
     {
       src: "/assets/drive/robotics-chassis.jpg",
@@ -102,58 +107,29 @@ export default function About() {
     },
   ];
 
-  // Split into two counter-scrolling ribbons for a luxury multi-plane cinematic motion
   const row1 = drivePhotos.slice(0, 5);
   const row2 = drivePhotos.slice(5, 10);
 
-  const domains = [
+  const pillars = [
     {
-      icon: Sparkles,
-      title: "Artificial Intelligence & Machine Learning (AI–ML)",
+      title: "First-Principles Inquiry",
+      desc: "Demystifying deep engineering without prepackaged abstractions. Members build neural autodiff engines, circuit netlists, and RF demodulators from raw silicon and mathematical derivations.",
     },
     {
-      icon: Leaf,
-      title: "Sustainable & Green Technologies",
+      title: "Senior Guidance & Research Publishing",
+      desc: "Direct mentorship on architecting real-world prototypes, preparing reproducible research preprints, and submitting to peer-reviewed student symposiums.",
     },
     {
-      icon: Radio,
-      title: "Communication & Signal Processing Systems",
-    },
-    {
-      icon: Compass,
-      title: "Antenna Design & Electromagnetics",
-    },
-    {
-      icon: Bot,
-      title: "Robotics & Intelligent Automation",
-    },
-    {
-      icon: Cpu,
-      title: "Electronics, IoT & Embedded Systems",
+      title: "Hands-on Benchwork & Open Hardware",
+      desc: "All circuit schematics, logic synthesis scripts, and firmware nets are released openly. Laboratory benches are open to first-year fellows from day one.",
     },
   ];
 
-  const pillars = [
-    {
-      title: "Foundational Learning From Scratch",
-      desc: "Demystifying advanced engineering concepts from first principles, providing members with a solid foundation regardless of their starting point.",
-    },
-    {
-      title: "Senior Guidance on Projects & Publishing",
-      desc: "Direct mentorship on architecting real-world projects, drafting scientific papers, and navigating peer-reviewed publications.",
-    },
-    {
-      title: "Hands-on Sessions & Collaboration",
-      desc: "Regular laboratory prototyping, brainstorming meets, and interdisciplinary teamwork across hardware and software benches.",
-    },
-    {
-      title: "Competitions, Innovations & Publications",
-      desc: "Forming dedicated teams for engineering competitions, deep-tech challenges, and developing novel innovations.",
-    },
-    {
-      title: "Early Portfolio & Real-World Exposure",
-      desc: "Cultivating a verifiable portfolio of working prototypes, published research, and tangible technical problem-solving experience.",
-    },
+  const coreMetrics = [
+    { value: "30+", label: "Undergraduate Fellows", sub: "Active across all 6 research domains" },
+    { value: "06", label: "Disciplines of Study", sub: "Bridging math, physics & hardware" },
+    { value: "14", label: "Open Prototypes", sub: "From SDR radar to edge TinyML" },
+    { value: "100%", label: "First-Principles", sub: "Zero-gatekeeping freshman culture" },
   ];
 
   const handleOpenPhoto = (photo: DrivePhoto) => {
@@ -169,49 +145,97 @@ export default function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28 relative overflow-hidden bg-[#080406]"
+      className="scroll-mt-24 pt-24 sm:pt-32 lg:pt-36 pb-24 sm:pb-32 relative overflow-hidden bg-[#080406]"
     >
       {/* Ambient Radial Illumination */}
       <div
-        className="absolute top-20 left-1/2 -translate-x-1/2 w-[900px] h-[550px] pointer-events-none opacity-25 z-0"
+        className="absolute top-16 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] pointer-events-none opacity-25 z-0"
         style={{
-          background: "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(223, 170, 162, 0.22) 0%, rgba(62, 20, 24, 0.45) 45%, transparent 80%)",
-          filter: "blur(100px)",
+          background: "radial-gradient(ellipse 65% 50% at 50% 35%, rgba(223, 170, 162, 0.24) 0%, rgba(62, 20, 24, 0.45) 50%, transparent 80%)",
+          filter: "blur(110px)",
         }}
       />
       
       <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 relative z-10">
         
         {/* ========================================================= */}
-        {/* 1. DOMINANT MAIN HEADLINE: "About Melerigamy"              */}
+        {/* 1. COMMANDING MAIN HEADLINE & EDITORIAL EXPLAINER SPREAD   */}
         {/* ========================================================= */}
-        <div className="max-w-5xl mb-16 sm:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-20 items-end mb-16 sm:mb-20">
           
-          {/* MASSIVE HEROIC TITLE: "About Melerigamy" */}
-          <motion.h2
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[clamp(2.75rem,7.5vw,7.5rem)] font-normal text-ink leading-[0.98] tracking-[-0.01em] mb-8 select-none"
-          >
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f7eae5] to-[#dfaaa2]">
-              About Melerigamy
-            </span>
-          </motion.h2>
+          {/* Left Column: Massive Title & Lead Narrative (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col">
+            
+            {/* MASSIVE HEROIC TITLE: "About Melerigamy" */}
+            {/* Added overflow-visible, leading-[1.14], and pb-4/pb-6 so 'g' descender is 100% visible */}
+            <motion.h2
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="font-serif text-[clamp(3.1rem,7.8vw,8rem)] font-normal text-ink leading-[1.12] sm:leading-[1.15] tracking-[-0.01em] mb-6 select-none overflow-visible"
+            >
+              <span className="inline-block pt-1 pb-4 sm:pb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f7eae5] to-[#dfaaa2]">
+                About Melerigamy
+              </span>
+            </motion.h2>
 
-          {/* ELEGANT COMPACT EXPLAINER PARAGRAPH */}
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.75, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative pl-6 border-l-2 border-accent/40"
-          >
-            <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed max-w-4xl">
-              An autonomous, student-led technical collective and research guild. Grounded in first-principles inquiry, 30+ undergraduate fellows bridge abstract mathematics, radio frequency electromagnetics, silicon logic, and physical instrumentation—turning curiosity into verifiable hardware and reproducible science.
-            </p>
-          </motion.div>
+            {/* ELEGANT COMPACT EXPLAINER PARAGRAPH */}
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="relative pl-6 border-l-2 border-accent/40"
+            >
+              <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed">
+                An autonomous, student-led technical collective and research guild. Grounded in first-principles inquiry, 30+ undergraduate fellows bridge abstract mathematics, radio frequency electromagnetics, silicon logic, and physical instrumentation—turning curiosity into verifiable hardware and reproducible science.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Grounded Credential & Metrics Panel (5 cols) */}
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.75, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-surface/60 border border-border-subtle rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl shadow-black/60 flex flex-col gap-6"
+            >
+              <div className="flex items-center justify-between border-b border-border-subtle pb-4">
+                <span className="font-mono text-xs uppercase tracking-widest text-accent font-medium">
+                  Atelier Telemetry
+                </span>
+                <span className="font-mono text-[11px] text-muted">
+                  Est. 2024 · Student Collective
+                </span>
+              </div>
+
+              {/* 2x2 Clean Metric Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {coreMetrics.map((m, idx) => (
+                  <div key={idx} className="flex flex-col gap-1 p-3 rounded-xl bg-bg/50 border border-border-subtle/70">
+                    <span className="font-serif text-3xl sm:text-4xl text-accent font-light leading-none">
+                      {m.value}
+                    </span>
+                    <span className="font-serif text-sm text-ink leading-tight mt-1">
+                      {m.label}
+                    </span>
+                    <span className="font-mono text-[10px] text-muted leading-tight">
+                      {m.sub}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-2 text-[11px] text-muted leading-relaxed flex items-center gap-2 font-mono">
+                <span className="text-accent">✦</span>
+                <span>Bridging classroom theory with physical bench testing.</span>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
 
       </div>
@@ -219,7 +243,7 @@ export default function About() {
       {/* ========================================================= */}
       {/* 2. LUXURY KINETIC PHOTO GALLERY (FROM GOOGLE DRIVE)       */}
       {/* ========================================================= */}
-      <div className="w-full my-12 sm:my-16 overflow-hidden relative select-none">
+      <div className="w-full my-8 sm:my-12 py-8 bg-[#0b0608]/70 border-y border-white/[0.06] overflow-hidden relative select-none">
         {/* Gallery Section Label */}
         <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted">
@@ -232,22 +256,22 @@ export default function About() {
         </div>
 
         {/* Soft Architectural Edge Gradient Masks */}
-        <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-32 lg:w-48 bg-gradient-to-r from-[#080406] via-[#080406]/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-32 lg:w-48 bg-gradient-to-l from-[#080406] via-[#080406]/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-20 sm:w-36 lg:w-52 bg-gradient-to-r from-[#080406] via-[#080406]/90 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-36 lg:w-52 bg-gradient-to-l from-[#080406] via-[#080406]/90 to-transparent z-20 pointer-events-none" />
 
         {/* Kinetic Ribbon: Row 1 (Moving Left) */}
-        <div className="flex gap-4 sm:gap-6 w-max animate-marquee mb-4 sm:mb-6 hover:[animation-play-state:paused] py-2">
+        <div className="flex gap-5 sm:gap-7 w-max animate-marquee mb-4 sm:mb-6 hover:[animation-play-state:paused] py-2">
           {[...row1, ...row1, ...row1].map((photo, idx) => (
             <div
               key={`row1-${idx}`}
               onClick={() => handleOpenPhoto(photo)}
-              className="group relative w-[290px] sm:w-[380px] lg:w-[420px] aspect-[16/10] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-accent/50 transition-all duration-500 shadow-xl shadow-black/80 cursor-pointer shrink-0"
+              className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-accent/50 transition-all duration-500 shadow-xl shadow-black/80 cursor-pointer shrink-0"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 768px) 290px, (max-width: 1200px) 380px, 420px"
+                sizes="(max-width: 768px) 300px, (max-width: 1200px) 390px, 430px"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-85 group-hover:opacity-60 transition-opacity" />
@@ -276,18 +300,18 @@ export default function About() {
         </div>
 
         {/* Kinetic Ribbon: Row 2 (Moving Right) */}
-        <div className="flex gap-4 sm:gap-6 w-max animate-marquee-reverse hover:[animation-play-state:paused] py-2">
+        <div className="flex gap-5 sm:gap-7 w-max animate-marquee-reverse hover:[animation-play-state:paused] py-2">
           {[...row2, ...row2, ...row2].map((photo, idx) => (
             <div
               key={`row2-${idx}`}
               onClick={() => handleOpenPhoto(photo)}
-              className="group relative w-[290px] sm:w-[380px] lg:w-[420px] aspect-[16/10] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-accent/50 transition-all duration-500 shadow-xl shadow-black/80 cursor-pointer shrink-0"
+              className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-accent/50 transition-all duration-500 shadow-xl shadow-black/80 cursor-pointer shrink-0"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 768px) 290px, (max-width: 1200px) 380px, 420px"
+                sizes="(max-width: 768px) 300px, (max-width: 1200px) 390px, 430px"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-85 group-hover:opacity-60 transition-opacity" />
@@ -317,81 +341,58 @@ export default function About() {
       </div>
 
       {/* ========================================================= */}
-      {/* 3. SUBSTANCE: DISCIPLINES & FOUNDATIONAL PILLARS           */}
+      {/* 3. SUBSTANCE: OPERATING PILLARS & FOUNDATIONAL ETHOS      */}
       {/* ========================================================= */}
-      <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mt-16 sm:mt-24 relative z-10">
+      <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mt-16 sm:mt-20 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-18 items-start">
-          
-          {/* Left Column: 6 Disciplines Overview (6 cols) */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs uppercase tracking-wider text-accent font-medium">
-                Core Engineering Disciplines
-              </span>
-              <span className="h-[1px] flex-1 bg-border-subtle" />
-              <span className="font-mono text-[10px] text-muted tracking-widest uppercase">
-                6 Frontiers
-              </span>
+        {/* Section Heading */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-4 border-b border-border-subtle">
+          <div>
+            <div className="font-mono text-xs text-accent uppercase tracking-widest mb-1.5">
+              Operating Ethos
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {domains.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{ duration: 0.5, delay: 0.05 * idx, ease: [0.16, 1, 0.3, 1] }}
-                    className="p-4 rounded-xl border border-border-subtle bg-surface/40 hover:bg-surface/80 hover:border-accent/35 transition-all duration-300 flex items-center gap-3.5 group shadow-sm"
-                  >
-                    <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 group-hover:scale-105 transition-transform">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <span className="font-sans text-sm text-ink group-hover:text-accent transition-colors font-medium leading-snug">
-                      {item.title}
-                    </span>
-                  </motion.div>
-                );
-              })}
-            </div>
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink font-normal">
+              Three Core Tenets of the Atelier
+            </h3>
           </div>
+          <Link
+            href="#domains"
+            className="text-xs font-mono text-accent hover:text-ink inline-flex items-center gap-1.5 uppercase tracking-wider group"
+          >
+            <span>Explore The 6 Research Disciplines</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
 
-          {/* Right Column: 5 Foundational Pillars (6 cols) */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs uppercase tracking-wider text-accent font-medium">
-                Our Operating Ethos & Pedagogy
-              </span>
-              <span className="h-[1px] flex-1 bg-border-subtle" />
-            </div>
+        {/* 3 Full-Width High-Status Pillar Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {pillars.map((pillar, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: 0.08 * idx, ease: [0.16, 1, 0.3, 1] }}
+              className="p-7 sm:p-8 rounded-2xl border border-border-subtle bg-surface/40 hover:bg-surface/80 hover:border-accent/35 transition-all duration-300 flex flex-col justify-between gap-6 group shadow-lg shadow-black/40"
+            >
+              <div className="flex flex-col gap-3">
+                <span className="font-mono text-xs text-accent/80 font-medium">
+                  TENET 0{idx + 1}
+                </span>
+                <h4 className="font-serif text-2xl text-ink font-normal group-hover:text-accent transition-colors leading-snug">
+                  {pillar.title}
+                </h4>
+                <p className="font-sans text-sm text-ink-secondary/90 leading-relaxed">
+                  {pillar.desc}
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 gap-3">
-              {pillars.map((pillar, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.5, delay: 0.05 * idx, ease: [0.16, 1, 0.3, 1] }}
-                  className="p-4 rounded-xl border border-border-subtle/80 bg-surface/30 hover:bg-surface/50 transition-colors flex items-start gap-3.5"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                  <div className="flex flex-col gap-0.5">
-                    <h4 className="font-sans text-sm text-ink font-medium leading-snug">
-                      {pillar.title}
-                    </h4>
-                    <p className="font-sans text-xs text-muted leading-relaxed">
-                      {pillar.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
+              <div className="pt-4 border-t border-border-subtle/80 flex items-center justify-between text-xs font-mono text-muted">
+                <span>Verified Bench Standard</span>
+                <span className="text-accent">✦</span>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
