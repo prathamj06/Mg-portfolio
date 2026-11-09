@@ -106,7 +106,7 @@ export const COMMUNITY_DATA: CommunityData = {
       specialization: "Radio Frequency & Scientific Computing",
       bio: "Focuses on software-defined radio architectures, electromagnetic wave propagation, and microwave circuit modeling. Mentors first-year members in RF fundamentals, DSP pipeline implementation, and scientific instrumentation.",
       linkedin: "https://www.linkedin.com/in/ishaan-chaturvedi-972948310/",
-      github: "https://github.com/ishaan-chaturvedi",
+      github: "https://github.com/linkedwithishaan",
       focusAreas: ["Software-Defined Radio", "Antenna Arrays", "Microwave Electronics", "DSP Systems"],
       currentProject: "Helios Passive Radar & RF Spatial Spectrum Scanner"
     },
@@ -117,7 +117,7 @@ export const COMMUNITY_DATA: CommunityData = {
       specialization: "AI/ML Systems & Higher Mathematics",
       bio: "Investigates deep neural architectures, sparse representations, and geometric deep learning. Leads weekly mathematical foundations seminars, introducing members to multilinear algebra, autodiff mechanics, and tinyML deployment.",
       linkedin: "https://www.linkedin.com/in/dhruv-ghosal-841353247/",
-      github: "https://github.com/dhruv-ghoshal",
+      github: "https://github.com/Dhruvhash",
       focusAreas: ["Geometric Deep Learning", "Model Quantization", "Differential Geometry", "Neural Inference"],
       currentProject: "TensorPrune: Sub-Byte Quantized Neural Runtime for Edge MCUs"
     },
@@ -128,7 +128,7 @@ export const COMMUNITY_DATA: CommunityData = {
       specialization: "Hardware Security & Embedded Systems",
       bio: "Explores silicon-level security, hardware fault injection, and low-level firmware engineering. Conducts hands-on hardware teardowns, logic analyzer masterclasses, and post-quantum cryptographic protocol audits.",
       linkedin: "https://www.linkedin.com/in/keshav-gupta-83201431a/",
-      github: "https://github.com/keshav-gupta",
+      github: "https://github.com/Keshav-pro1",
       focusAreas: ["Silicon Fault Injection", "FPGA Microarchitecture", "Firmware Auditing", "Post-Quantum Cryptography"],
       currentProject: "ZeroTrace & Hyperion RV32I Security Accelerator"
     }
