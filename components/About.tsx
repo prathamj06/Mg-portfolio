@@ -175,9 +175,9 @@ export default function About() {
           </span>
         </div>
 
-        {/* Soft Architectural Edge Gradient Masks */}
-        <div className="absolute top-0 bottom-0 left-0 w-20 sm:w-36 lg:w-52 bg-gradient-to-r from-[#080406] via-[#080406]/90 to-transparent z-20 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-36 lg:w-52 bg-gradient-to-l from-[#080406] via-[#080406]/90 to-transparent z-20 pointer-events-none" />
+        {/* Reduced Edge Vignette Masks: Very thin, subtle edge blend */}
+        <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-12 bg-gradient-to-r from-[#080406]/60 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-12 bg-gradient-to-l from-[#080406]/60 to-transparent z-20 pointer-events-none" />
 
         {/* Kinetic Ribbon: Row 1 (Moving Left) */}
         <div className="flex gap-5 sm:gap-7 w-max animate-marquee mb-4 sm:mb-6 hover:[animation-play-state:paused] py-2">
@@ -194,7 +194,7 @@ export default function About() {
                 sizes="(max-width: 768px) 300px, (max-width: 1200px) 390px, 430px"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-85 group-hover:opacity-60 transition-opacity" />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-50 group-hover:opacity-30 transition-opacity" />
 
               {/* Top Tag Pill */}
               <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 font-mono text-[10px] text-accent tracking-wider uppercase">
@@ -234,7 +234,7 @@ export default function About() {
                 sizes="(max-width: 768px) 300px, (max-width: 1200px) 390px, 430px"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-85 group-hover:opacity-60 transition-opacity" />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-50 group-hover:opacity-30 transition-opacity" />
 
               {/* Top Tag Pill */}
               <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 font-mono text-[10px] text-accent tracking-wider uppercase">
