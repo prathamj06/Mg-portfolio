@@ -125,13 +125,6 @@ export default function About() {
     },
   ];
 
-  const coreMetrics = [
-    { value: "30+", label: "Undergraduate Fellows", sub: "Active across all 6 research domains" },
-    { value: "06", label: "Disciplines of Study", sub: "Bridging math, physics & hardware" },
-    { value: "14", label: "Open Prototypes", sub: "From SDR radar to edge TinyML" },
-    { value: "100%", label: "First-Principles", sub: "Zero-gatekeeping freshman culture" },
-  ];
-
   const handleOpenPhoto = (photo: DrivePhoto) => {
     setSelectedImage(photo);
     playHaptic(640, 0.04);
@@ -161,81 +154,34 @@ export default function About() {
         {/* ========================================================= */}
         {/* 1. COMMANDING MAIN HEADLINE & EDITORIAL EXPLAINER SPREAD   */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-20 items-end mb-16 sm:mb-20">
+        <div className="max-w-5xl mb-14 sm:mb-18">
           
-          {/* Left Column: Massive Title & Lead Narrative (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
-            
-            {/* MASSIVE HEROIC TITLE: "About Melerigamy" */}
-            {/* Added overflow-visible, leading-[1.14], and pb-4/pb-6 so 'g' descender is 100% visible */}
-            <motion.h2
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif text-[clamp(3.1rem,7.8vw,8rem)] font-normal text-ink leading-[1.12] sm:leading-[1.15] tracking-[-0.01em] mb-6 select-none overflow-visible"
-            >
-              <span className="inline-block pt-1 pb-4 sm:pb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f7eae5] to-[#dfaaa2]">
-                About Melerigamy
-              </span>
-            </motion.h2>
+          {/* MASSIVE HEROIC TITLE: "About Melerigamy" */}
+          {/* Added overflow-visible, leading-[1.12], and pb-4/pb-6 so 'g' descender is 100% visible */}
+          <motion.h2
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="font-serif text-[clamp(3.1rem,7.8vw,8rem)] font-normal text-ink leading-[1.12] sm:leading-[1.15] tracking-[-0.01em] mb-6 select-none overflow-visible"
+          >
+            <span className="inline-block pt-1 pb-4 sm:pb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f7eae5] to-[#dfaaa2]">
+              About Melerigamy
+            </span>
+          </motion.h2>
 
-            {/* ELEGANT COMPACT EXPLAINER PARAGRAPH */}
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="relative pl-6 border-l-2 border-accent/40"
-            >
-              <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed">
-                An autonomous, student-led technical collective and research guild. Grounded in first-principles inquiry, 30+ undergraduate fellows bridge abstract mathematics, radio frequency electromagnetics, silicon logic, and physical instrumentation—turning curiosity into verifiable hardware and reproducible science.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Right Column: Grounded Credential & Metrics Panel (5 cols) */}
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 26 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.75, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-surface/60 border border-border-subtle rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl shadow-black/60 flex flex-col gap-6"
-            >
-              <div className="flex items-center justify-between border-b border-border-subtle pb-4">
-                <span className="font-mono text-xs uppercase tracking-widest text-accent font-medium">
-                  Atelier Telemetry
-                </span>
-                <span className="font-mono text-[11px] text-muted">
-                  Est. 2024 · Student Collective
-                </span>
-              </div>
-
-              {/* 2x2 Clean Metric Grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {coreMetrics.map((m, idx) => (
-                  <div key={idx} className="flex flex-col gap-1 p-3 rounded-xl bg-bg/50 border border-border-subtle/70">
-                    <span className="font-serif text-3xl sm:text-4xl text-accent font-light leading-none">
-                      {m.value}
-                    </span>
-                    <span className="font-serif text-sm text-ink leading-tight mt-1">
-                      {m.label}
-                    </span>
-                    <span className="font-mono text-[10px] text-muted leading-tight">
-                      {m.sub}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-2 text-[11px] text-muted leading-relaxed flex items-center gap-2 font-mono">
-                <span className="text-accent">✦</span>
-                <span>Bridging classroom theory with physical bench testing.</span>
-              </div>
-            </motion.div>
-          </div>
-
+          {/* ELEGANT COMPACT EXPLAINER PARAGRAPH */}
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="relative pl-6 border-l-2 border-accent/40"
+          >
+            <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed max-w-4xl">
+              An autonomous, student-led technical collective and research guild. Grounded in first-principles inquiry, 30+ undergraduate fellows bridge abstract mathematics, radio frequency electromagnetics, silicon logic, and physical instrumentation—turning curiosity into verifiable hardware and reproducible science.
+            </p>
+          </motion.div>
         </div>
 
       </div>
