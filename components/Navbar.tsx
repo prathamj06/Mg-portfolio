@@ -26,6 +26,7 @@ function MagneticNavLink({
   isHovered,
   onClick,
   onHover,
+  onLeave,
 }: {
   link: NavLinkItem;
   mouseX: MotionValue<number>;
@@ -33,6 +34,7 @@ function MagneticNavLink({
   isHovered: boolean;
   onClick: () => void;
   onHover: () => void;
+  onLeave: () => void;
 }) {
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -44,14 +46,14 @@ function MagneticNavLink({
     return Math.abs(val - (bounds.x + bounds.width / 2));
   });
 
-  // Scale factor: smooth magnetic dock magnification
-  // Direct hover (0px) => 1.14x
-  // Adjacent proximity (60px) => 1.05x
-  // Resting threshold (>= 120px) => exactly 1.0x (clamped)
+  // Scale factor: refined magnetic dock magnification
+  // Direct hover (0px) => 1.08x (subtle luxury lift, prevents highlight collision)
+  // Adjacent proximity (50px) => 1.03x
+  // Resting threshold (>= 100px) => exactly 1.0x (clamped)
   const targetScale = useTransform(
     distance,
-    [0, 60, 120],
-    [1.14, 1.05, 1.0],
+    [0, 50, 100],
+    [1.08, 1.03, 1.0],
     { clamp: true }
   );
 
@@ -68,6 +70,7 @@ function MagneticNavLink({
       style={{ scale }}
       onClick={onClick}
       onMouseEnter={onHover}
+      onMouseLeave={onLeave}
       className={`relative px-4 py-2 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-200 z-10 flex items-center justify-center text-center cursor-pointer select-none origin-center transform-gpu ${
         isActive
           ? "text-accent font-medium"
@@ -86,22 +89,26 @@ function MagneticNavLink({
             damping: 30,
             mass: 0.8,
           }}
-          className="absolute inset-0 rounded-full bg-accent/[0.14] border border-accent/30 shadow-[0_0_14px_rgba(223,170,162,0.15)] -z-10 pointer-events-none"
+          className={`absolute inset-0 rounded-full transition-colors duration-200 -z-10 pointer-events-none ${
+            isHovered
+              ? "bg-accent/[0.20] border border-accent/45 shadow-[0_0_16px_rgba(223,170,162,0.22)]"
+              : "bg-accent/[0.14] border border-accent/30 shadow-[0_0_12px_rgba(223,170,162,0.12)]"
+          }`}
         />
       )}
 
-      {/* Hover Indicator Highlight */}
-      {isHovered && !isActive && (
-        <motion.div
-          layoutId="hoverNavPill"
-          transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 32,
-          }}
-          className="absolute inset-0 rounded-full bg-white/[0.05] border border-white/[0.08] -z-10 pointer-events-none"
-        />
-      )}
+      {/* Hover Indicator Highlight: Clean local fade to prevent sliding over active pills on different pages */}
+      <AnimatePresence>
+        {isHovered && !isActive && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute inset-0 rounded-full bg-white/[0.05] border border-white/[0.08] -z-10 pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
 
       <span className="relative z-10 whitespace-nowrap leading-none">{link.name}</span>
     </motion.button>
@@ -125,8 +132,8 @@ function MagneticMonogram({
 
   const targetScale = useTransform(
     distance,
-    [0, 60, 120],
-    [1.14, 1.05, 1.0],
+    [0, 50, 100],
+    [1.08, 1.03, 1.0],
     { clamp: true }
   );
 
@@ -229,9 +236,9 @@ export default function Navbar() {
         />
 
         {/* Unified Magnetic Row: Monogram + Baseline Divider + Navigation Options */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <MagneticMonogram mouseX={mouseX} onClick={handleHomeClick} />
-          <span className="h-3.5 w-[1px] bg-white/15 mx-1 select-none pointer-events-none self-center" />
+          <span className="h-3.5 w-[1px] bg-white/15 mx-1.5 select-none pointer-events-none self-center" />
 
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -246,6 +253,9 @@ export default function Navbar() {
                 isHovered={isHovered}
                 onClick={() => handleNavClick(link)}
                 onHover={() => setHoveredSection(link.id)}
+                onLeave={() =>
+                  setHoveredSection((prev) => (prev === link.id ? null : prev))
+                }
               />
             );
           })}
