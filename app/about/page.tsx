@@ -289,7 +289,7 @@ export default function AboutUsPage() {
               className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-[#0c0608] border border-white/[0.08] hover:border-accent/50 transition-all duration-700 shadow-xl shadow-black/80 hover:shadow-[0_0_30px_rgba(223,170,162,0.16)] cursor-pointer shrink-0"
             >
               {/* Media Container with Glitch Chroma on Hover */}
-              <div className="relative w-full h-full overflow-hidden glitch-chroma">
+              <div className="relative w-full h-full overflow-hidden">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -303,10 +303,10 @@ export default function AboutUsPage() {
                 <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
 
                 {/* Precision Dot-Matrix Halftone & CRT Scanline Mesh */}
-                <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-15" />
+                <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-0" />
 
                 {/* Subtle CRT Telemetry Laser Scanline */}
-                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scanline" />
+                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-60 group-hover:opacity-0 transition-opacity duration-500 animate-scanline" />
 
                 {/* Subtle Radial Vignette Flare on Hover */}
                 <div
@@ -361,7 +361,7 @@ export default function AboutUsPage() {
               className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-[#0c0608] border border-white/[0.08] hover:border-accent/50 transition-all duration-700 shadow-xl shadow-black/80 hover:shadow-[0_0_30px_rgba(223,170,162,0.16)] cursor-pointer shrink-0"
             >
               {/* Media Container with Glitch Chroma on Hover */}
-              <div className="relative w-full h-full overflow-hidden glitch-chroma">
+              <div className="relative w-full h-full overflow-hidden">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -375,10 +375,10 @@ export default function AboutUsPage() {
                 <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
 
                 {/* Precision Dot-Matrix Halftone & CRT Scanline Mesh */}
-                <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-15" />
+                <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-0" />
 
                 {/* Subtle CRT Telemetry Laser Scanline */}
-                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scanline" />
+                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-60 group-hover:opacity-0 transition-opacity duration-500 animate-scanline" />
 
                 {/* Subtle Radial Vignette Flare on Hover */}
                 <div
