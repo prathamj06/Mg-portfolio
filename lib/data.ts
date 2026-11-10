@@ -103,34 +103,52 @@ export const COMMUNITY_DATA: CommunityData = {
       id: "ishaan-chaturvedi",
       name: "Ishaan Chaturvedi",
       role: "Co-Founder",
-      specialization: "Radio Frequency & Scientific Computing",
-      bio: "Focuses on software-defined radio architectures, electromagnetic wave propagation, and microwave circuit modeling. Mentors first-year members in RF fundamentals, DSP pipeline implementation, and scientific instrumentation.",
+      specialization: "IoT Systems, Core Electronics & AI/ML",
+      bio: "B.Tech IT student at MSIT working at the intersection of IoT, core electronics, and intelligent systems. Author of research presented at ICAIA 2025, NCSC and Ministry of Education (RBVP) selectee, and CSIR-NPL competition winner with research exposure across DRDO labs (LRDE radar systems, DIPR). Architect of AI-driven urban farming automation and sensor-actuator networks, he leads hands-on electronics cohorts and conducts IoT workshops to build systems that sense, think, and evolve.",
       linkedin: "https://www.linkedin.com/in/ishaan-chaturvedi-972948310/",
       github: "https://github.com/linkedwithishaan",
-      focusAreas: ["Software-Defined Radio", "Antenna Arrays", "Microwave Electronics", "DSP Systems"],
-      currentProject: "Helios Passive Radar & RF Spatial Spectrum Scanner"
+      focusAreas: [
+        "IoT & Industrial Automation",
+        "Core Electronics",
+        "AI/ML Environmental Systems",
+        "Sensor-Driven Hardware",
+        "Applied Research & Radar"
+      ],
+      currentProject: "AI-Powered Urban Farming & Autonomous Sensor Control System"
     },
     {
       id: "dhruv-ghoshal",
       name: "Dhruv Ghoshal",
       role: "Co-Founder",
-      specialization: "AI/ML Systems & Higher Mathematics",
-      bio: "Investigates deep neural architectures, sparse representations, and geometric deep learning. Leads weekly mathematical foundations seminars, introducing members to multilinear algebra, autodiff mechanics, and tinyML deployment.",
+      specialization: "Hardware-Software Co-Design & Systems Engineering",
+      bio: "B.Tech Computer Science Engineering student focused on bridging physical hardware with full-stack software development. Specializes in Internet of Things (IoT) architectures, embedded-to-cloud workflows, and scalable software solutions. Combines technical engineering with proven event management and operations leadership, orchestrating collaborative hackathons, technical sessions, and cross-functional teams with strategic problem-solving.",
       linkedin: "https://www.linkedin.com/in/dhruv-ghosal-841353247/",
       github: "https://github.com/Dhruvhash",
-      focusAreas: ["Geometric Deep Learning", "Model Quantization", "Differential Geometry", "Neural Inference"],
-      currentProject: "TensorPrune: Sub-Byte Quantized Neural Runtime for Edge MCUs"
+      focusAreas: [
+        "Hardware-Software Co-Design",
+        "Internet of Things (IoT)",
+        "Full-Stack Development",
+        "Technical Event Operations",
+        "Systems Architecture"
+      ],
+      currentProject: "Integrated IoT Edge-to-Cloud Distributed Gateway"
     },
     {
       id: "keshav-gupta",
       name: "Keshav Gupta",
-      role: "Co-Founder",
-      specialization: "Hardware Security & Embedded Systems",
-      bio: "Explores silicon-level security, hardware fault injection, and low-level firmware engineering. Conducts hands-on hardware teardowns, logic analyzer masterclasses, and post-quantum cryptographic protocol audits.",
+      role: "Co-Founder · Software & Hardware Lead",
+      specialization: "Web3 Protocols, AI Integrations & IoT Engineering",
+      bio: "B.Tech CSE student at MSIT and Software + Hardware Lead at Melerigamy, exploring the frontier where Ethereum, decentralized protocols, and AI converge with physical electronics. Freelance IoT engineer crafting end-to-end connected devices and Web3 smart contract integrations. Instrumental in Melerigamy's core mission, having tutored over 100+ students in hardware, blockchain systems, and emerging technologies with day-one industrial exposure.",
       linkedin: "https://www.linkedin.com/in/keshav-gupta-83201431a/",
       github: "https://github.com/Keshav-pro1",
-      focusAreas: ["Silicon Fault Injection", "FPGA Microarchitecture", "Firmware Auditing", "Post-Quantum Cryptography"],
-      currentProject: "ZeroTrace & Hyperion RV32I Security Accelerator"
+      focusAreas: [
+        "Web3 & Ethereum Protocols",
+        "IoT (Hardware + Software)",
+        "AI-Web3 Integrations",
+        "Freelance IoT Prototyping",
+        "100+ Students Mentored"
+      ],
+      currentProject: "Decentralized Telemetry Bridge & Ethereum IoT Smart Oracles"
     }
   ],
 
