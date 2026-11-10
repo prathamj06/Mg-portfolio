@@ -177,13 +177,6 @@ export default function Founders() {
           />
 
           <div className="max-w-2xl relative z-10 space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full border border-accent/25 bg-accent/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
-                Laboratory Initiation · Open Intake
-              </span>
-            </div>
-
             <h3 className="font-serif text-3xl sm:text-4xl text-ink font-normal leading-tight">
               Explore our active hardware systems or join the collective.
             </h3>
