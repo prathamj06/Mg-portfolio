@@ -34,26 +34,27 @@ export default function Footer() {
               Disciplines
             </h4>
             <ul className="flex flex-col gap-2 text-xs text-muted">
-              <li><Link href="/about" className="hover:text-ink transition-colors">RF & Wireless Systems</Link></li>
-              <li><Link href="/about" className="hover:text-ink transition-colors">Machine Learning & Autodiff</Link></li>
-              <li><Link href="/about" className="hover:text-ink transition-colors">Electronics & FPGA Logic</Link></li>
-              <li><Link href="/about" className="hover:text-ink transition-colors">Higher Mathematics</Link></li>
-              <li><Link href="/about" className="hover:text-ink transition-colors">Cybersecurity & Firmware</Link></li>
-              <li><Link href="/about" className="hover:text-ink transition-colors">Scientific Research</Link></li>
+              <li><Link href="/projects#rf-wireless" className="hover:text-ink transition-colors">Radio Frequency & Wireless</Link></li>
+              <li><Link href="/projects#ai-ml" className="hover:text-ink transition-colors">Artificial Intelligence & ML</Link></li>
+              <li><Link href="/projects#electronics-embedded" className="hover:text-ink transition-colors">Electronics & Embedded Systems</Link></li>
+              <li><Link href="/projects#higher-mathematics" className="hover:text-ink transition-colors">Higher Mathematics & Theory</Link></li>
+              <li><Link href="/projects#cybersecurity-systems" className="hover:text-ink transition-colors">Cybersecurity & Hardware Security</Link></li>
+              <li><Link href="/projects#scientific-research" className="hover:text-ink transition-colors">Scientific Research & Instrumentation</Link></li>
             </ul>
           </div>
 
-          {/* Navigation & Archives */}
+          {/* Navigation */}
           <div className="flex flex-col gap-3">
             <h4 className="font-mono text-xs text-accent uppercase tracking-wider">
               Navigation
             </h4>
             <ul className="flex flex-col gap-2 text-xs text-muted">
-              <li><Link href="/about" className="hover:text-ink transition-colors">About (Full Monograph)</Link></li>
-              <li><Link href="/projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
-              <li><Link href="/sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
-              <li><Link href="/#founders" className="hover:text-ink transition-colors">Founders</Link></li>
+              <li><Link href="/" className="hover:text-ink transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-ink transition-colors">About</Link></li>
+              <li><Link href="/projects" className="hover:text-ink transition-colors">Projects</Link></li>
+              <li><Link href="/sessions" className="hover:text-ink transition-colors">Sessions</Link></li>
               <li><Link href="/achievements" className="hover:text-ink transition-colors">Achievements</Link></li>
+              <li><Link href="/#founders" className="hover:text-ink transition-colors">Founders</Link></li>
             </ul>
           </div>
 

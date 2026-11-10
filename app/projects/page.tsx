@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -36,6 +36,20 @@ export default function ProjectsPage() {
     { label: "Cryptography (2)", id: "cybersecurity-systems" },
     { label: "Instrumentation (2)", id: "scientific-research" },
   ];
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (typeof window !== "undefined" && window.location.hash) {
+        const hash = window.location.hash.replace("#", "");
+        if (filters.some((f) => f.id === hash)) {
+          setActiveFilter(hash);
+        }
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
 
   const q = searchQuery.toLowerCase().trim();
   const filteredProjects = COMMUNITY_DATA.projects.filter((p) => {
