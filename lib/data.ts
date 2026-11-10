@@ -66,6 +66,25 @@ export interface Member {
   bio: string;
 }
 
+export interface Achievement {
+  id: string;
+  title: string;
+  category: "research" | "national" | "hardware" | "mentorship";
+  categoryLabel: string;
+  year: string;
+  issuer: string;
+  badge: string;
+  abstract: string;
+  impact: string;
+  tags: string[];
+  metrics: string;
+  details?: {
+    overview: string;
+    highlights: string[];
+    relevance: string;
+  };
+}
+
 export interface CommunityData {
   meta: {
     name: string;
@@ -83,6 +102,7 @@ export interface CommunityData {
   projects: Project[];
   sessions: Session[];
   members: Member[];
+  achievements: Achievement[];
 }
 
 export const COMMUNITY_DATA: CommunityData = {
@@ -897,6 +917,216 @@ export const COMMUNITY_DATA: CommunityData = {
       github: "https://github.com/ayesha-qureshi-ml",
       linkedin: "https://www.linkedin.com/in/ayesha-qureshi-mg/",
       bio: "Translating electronic schematic netlists into directed graphs to predict parasitic capacitances and high-frequency resonance with GNNs."
+    }
+  ],
+
+  achievements: [
+    {
+      id: "icaia-2025-research",
+      title: "Research Paper Presentation at ICAIA 2025",
+      category: "research",
+      categoryLabel: "Peer-Reviewed Research",
+      year: "2025",
+      issuer: "International Conference on Artificial Intelligence and Applications (MSIT)",
+      badge: "Conference Proceedings",
+      abstract: "Authored and presented peer-reviewed research on applied machine learning and intelligent systems, demonstrating autonomous sensor integration and predictive analytics at MSIT's flagship international symposium.",
+      impact: "Defended before academic faculty, visiting research scientists, and conference delegates.",
+      tags: ["Machine Learning", "Autonomous Systems", "Applied Research", "Conference Proceedings"],
+      metrics: "Oral Research Defense",
+      details: {
+        overview: "The International Conference on Artificial Intelligence and Applications (ICAIA) is MSIT's premier peer-reviewed forum convening machine learning practitioners and researchers. The accepted research focused on closed-loop telemetry, autonomous data acquisition, and real-time inference.",
+        highlights: [
+          "Peer-reviewed paper accepted and published in symposium proceedings",
+          "Presented live research defense at MSIT campus before academic peer committee",
+          "Demonstrated practical sensor fusion and algorithmic inference on physical hardware",
+          "Collaborative dialogue with visiting researchers and industry delegates"
+        ],
+        relevance: "Establishes Melerigamy's commitment to producing publication-grade academic engineering and formal scientific contributions alongside pragmatic hardware builds."
+      }
+    },
+    {
+      id: "ncsc-national-selection",
+      title: "National Children's Science Congress (NCSC) Selection",
+      category: "national",
+      categoryLabel: "National Honor",
+      year: "2024",
+      issuer: "National Council for Science and Technology Communication (NCSTC)",
+      badge: "Apex Science Forum",
+      abstract: "Selected at the prestigious national level for demonstrating first-principles scientific inquiry and technical innovation in solving empirical and environmental engineering challenges.",
+      impact: "National-level selection representing competitive regional cohorts.",
+      tags: ["Scientific Inquiry", "National Platform", "Applied Physics", "Empirical Research"],
+      metrics: "National Selectee",
+      details: {
+        overview: "The National Children's Science Congress (NCSC) is India's flagship scientific platform governed by NCSTC, aimed at identifying young minds pioneering empirical scientific investigations and innovative technical problem-solving.",
+        highlights: [
+          "Rigorous multi-stage qualification from regional to national platform",
+          "Evaluation based on empirical methodology, scientific logging, and innovative system design",
+          "Exhibited working hardware prototype addressing real-world environmental challenges",
+          "Recognition by senior scientists and educational leaders"
+        ],
+        relevance: "Validates the foundational scientific methodology and investigative rigor that underpins all Melerigamy lab projects."
+      }
+    },
+    {
+      id: "rbvp-ministry-education",
+      title: "Rashtriya Bal Vaigyanik Puraskar (RBVP)",
+      category: "national",
+      categoryLabel: "National Honor",
+      year: "2024",
+      issuer: "Ministry of Education & NCERT",
+      badge: "Ministry Initiative",
+      abstract: "Nominated and selected under the Ministry of Education's premier national science initiative celebrating high-impact scientific innovation and multidisciplinary student research.",
+      impact: "Official selection under Ministry of Education national platform.",
+      tags: ["Ministry of Education", "National Recognition", "Scientific Innovation", "Youth Engineering"],
+      metrics: "Ministry Selectee",
+      details: {
+        overview: "Rashtriya Bal Vaigyanik Puraskar (formerly Jawaharlal Nehru National Science Exhibition) is organized by the Ministry of Education and NCERT to showcase premier research exhibits across the country.",
+        highlights: [
+          "Selected under national ministry science forum",
+          "Demonstrated interdisciplinary engineering combining electronics, automation, and applied physics",
+          "Engaged with premier pedagogical mentors and national science evaluators",
+          "Certificate of Excellence awarded for exceptional engineering craft"
+        ],
+        relevance: "Exemplifies our core philosophy: synthesizing hard technical craft with genuine intellectual curiosity to build meaningful systems."
+      }
+    },
+    {
+      id: "drdo-defense-labs",
+      title: "DRDO Advanced Defense Labs Technical Immersion",
+      category: "research",
+      categoryLabel: "Defense & Research",
+      year: "2024 - 2025",
+      issuer: "Defence Research and Development Organisation (DRDO)",
+      badge: "Defense Labs Immersion",
+      abstract: "Technical visits and advanced engineering engagement at DRDO's premier laboratories: LRDE (Electronics and Radar Development Establishment, Bangalore) focusing on phased array radar systems, and DIPR (Delhi) for defense systems research.",
+      impact: "Direct immersion with primary defense hardware architectures and radar telemetry.",
+      tags: ["DRDO LRDE", "Radar Telemetry", "Defense Systems", "Microwave Electronics"],
+      metrics: "LRDE Bangalore & DIPR Delhi",
+      details: {
+        overview: "Engagement with top DRDO facilities provided firsthand technical exposure to national-scale radar systems, signal telemetry, microwave antennas, and mission-critical hardware architectures.",
+        highlights: [
+          "On-site technical immersion at LRDE Bangalore (Electronics and Radar Development Establishment)",
+          "Deep dive into phased array antennas, software-defined receiver architectures, and pulse-Doppler processing",
+          "Technical visit to DIPR Delhi engaging with defense research frameworks",
+          "Applied insights directly informed Melerigamy's RF and embedded telemetry projects"
+        ],
+        relevance: "Bridges student engineering with institutional-grade aerospace and defense electronics standards."
+      }
+    },
+    {
+      id: "csir-npl-competition-winner",
+      title: "CSIR-National Physical Laboratory Competition Laurels",
+      category: "research",
+      categoryLabel: "Scientific Research",
+      year: "2024",
+      issuer: "Council of Scientific and Industrial Research (CSIR-NPL & CSIR-CRRI)",
+      badge: "CSIR Competition Winner",
+      abstract: "Achieved winning honors in national technical competitions hosted by CSIR-NPL, backed by immersion in premier research environments spanning precision metrology and infrastructure systems at CSIR-CRRI.",
+      impact: "Top competition award in national laboratory scientific challenge.",
+      tags: ["CSIR-NPL", "Precision Metrology", "Applied Physics", "CSIR-CRRI"],
+      metrics: "Top Competition Award",
+      details: {
+        overview: "CSIR-NPL is India's National Metrology Institute custodian of measurement standards. Participating in CSIR-NPL competitions demands the highest calibration accuracy, measurement precision, and scientific rigor.",
+        highlights: [
+          "Awarded winning position in competitive technical challenge hosted by CSIR-NPL",
+          "Explored state-of-the-art standards laboratories and primary measurement equipment",
+          "Research exposure across CSIR-CRRI (Central Road Research Institute) engineering labs",
+          "Integrated precision sensor calibration protocols into Melerigamy hardware pipelines"
+        ],
+        relevance: "Instills a culture of measurement accuracy, sensor calibration, and empirical honesty across all lab experiments."
+      }
+    },
+    {
+      id: "melerigamy-100-mentorship",
+      title: "100+ Undergraduates Mentored in Hardware & Web3",
+      category: "mentorship",
+      categoryLabel: "Community & Pedagogy",
+      year: "2024 - 2025",
+      issuer: "Melerigamy Technical Collective",
+      badge: "Pedagogical Milestone",
+      abstract: "Conducted structured hardware masterclasses, logic analyzer tutorials, and blockchain workshops, personally training over 100+ undergraduate engineering students with day-one industrial exposure and zero gatekeeping.",
+      impact: "100+ fellows equipped with hands-on soldering, breadboarding, and smart contract skills.",
+      tags: ["Hands-On Pedagogy", "Hardware Masterclasses", "Web3 Workshops", "Zero Gatekeeping"],
+      metrics: "100+ Students Mentored",
+      details: {
+        overview: "Melerigamy was founded on the conviction that engineering should be hands-on from the first week of university. Through peer intensives, we provide direct physical access to tools, components, and mentorship.",
+        highlights: [
+          "100+ undergraduate students mentored across hardware, microcontrollers, and smart contracts",
+          "Comprehensive workshops on schematic reading, breadboard prototyping, and logic analysis",
+          "Hands-on blockchain seminars covering Ethereum transactions, ERC standards, and smart contracts",
+          "Created an open, peer-driven engineering environment free of academic gatekeeping"
+        ],
+        relevance: "Fulfills our foundational mission: transforming university learners into autonomous systems builders through peer apprenticeship."
+      }
+    },
+    {
+      id: "ai-urban-farming-deployment",
+      title: "AI-Powered Closed-Loop Urban Farming System",
+      category: "hardware",
+      categoryLabel: "Hardware Systems",
+      year: "2024 - 2025",
+      issuer: "Melerigamy Physical Systems Lab",
+      badge: "Autonomous Hardware",
+      abstract: "Designed and deployed an integrated embedded system coupling sensory telemetry (soil moisture, temperature, microclimate) with automated irrigation actuators and on-device intelligent decision models.",
+      impact: "Full physical hardware build with sub-second feedback loops and telemetry logging.",
+      tags: ["Embedded Systems", "Closed-Loop Automation", "Microclimate Telemetry", "Industrial IoT"],
+      metrics: "Live Physical Build",
+      details: {
+        overview: "A flagship multidisciplinary system merging core analog electronics, digital sensor buses (I2C/SPI), microcontrollers, and intelligent inference models to optimize plant yield in constrained urban microclimates.",
+        highlights: [
+          "Custom multi-sensor telemetry harness capturing soil metrics, VPD, ambient light, and humidity",
+          "Automated closed-loop relay actuation for dynamic irrigation and environmental control",
+          "On-device inference pipeline adapting watering schedules to ambient microclimate trends",
+          "Low-power edge architecture with real-time logging and fail-safe hardware overrides"
+        ],
+        relevance: "Demonstrates full-stack engineering proficiency spanning physical actuators, analog sensor front-ends, and intelligent control algorithms."
+      }
+    },
+    {
+      id: "web3-telemetry-bridges",
+      title: "Ethereum Decentralized Telemetry & IoT Oracles",
+      category: "hardware",
+      categoryLabel: "Web3 & IoT",
+      year: "2025",
+      issuer: "Melerigamy Web3 Lab",
+      badge: "On-Chain Infrastructure",
+      abstract: "Engineered cryptographic data pipelines connecting physical microcontroller telemetry to Ethereum smart contracts, enabling tamper-evident state attestation and verifiable hardware logs.",
+      impact: "Bridged physical sensors to decentralized ledgers with gas-optimized encoding.",
+      tags: ["Ethereum", "Smart Contracts", "IoT Oracles", "Decentralized Telemetry"],
+      metrics: "On-Chain Hardware Bridge",
+      details: {
+        overview: "Addresses the oracle problem by securing hardware-level data provenance. Environmental and sensor metrics are cryptographically signed at the microcontroller boundary and relayed to Ethereum smart contracts.",
+        highlights: [
+          "ECDSA cryptographic signature generation on constrained microcontroller cores",
+          "Gas-optimized Solidity smart contract architecture for telemetry receipt verification",
+          "Tamper-evident attestation for sensor-driven physical events",
+          "Exploration of zero-knowledge proofs for private telemetry verification"
+        ],
+        relevance: "Pioneers the convergence of Web3 decentralized protocols and physical computing hardware."
+      }
+    },
+    {
+      id: "technical-event-orchestration",
+      title: "Hackathon Orchestration & Collaborative Tech Sprints",
+      category: "mentorship",
+      categoryLabel: "Operations & Community",
+      year: "2024 - 2025",
+      issuer: "Melerigamy Operations & Community Guild",
+      badge: "Leadership & Scale",
+      abstract: "Organized multi-tier hackathons, hardware sprints, and cross-functional technical seminars that brought together dozens of multidisciplinary teams to build production-grade prototypes under real-world constraints.",
+      impact: "Cross-discipline collaboration fostering hands-on engineering culture.",
+      tags: ["Hackathon Management", "Cross-Functional Teams", "Rapid Prototyping", "Technical Leadership"],
+      metrics: "Multi-Team Sprints",
+      details: {
+        overview: "Building engineering teams requires more than code: it requires operational excellence, high-energy collaboration, and structured problem framing.",
+        highlights: [
+          "Planned and executed technical hackathons and competitive hardware teardowns",
+          "Fostered collaboration across electrical, mechanical, and computer engineering students",
+          "Mentored participants on rapid prototyping, presentation skills, and engineering defense",
+          "Established recurring collaborative sprints that produce working prototypes in 48 hours"
+        ],
+        relevance: "Proves Melerigamy's operational capacity to organize, inspire, and mobilize technical talent at scale."
+      }
     }
   ]
 };

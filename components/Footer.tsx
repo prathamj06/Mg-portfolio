@@ -53,7 +53,7 @@ export default function Footer() {
               <li><Link href="/projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
               <li><Link href="/sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
               <li><Link href="/#founders" className="hover:text-ink transition-colors">Founders</Link></li>
-              <li><Link href="/directory" className="hover:text-ink transition-colors">Members Directory</Link></li>
+              <li><Link href="/achievements" className="hover:text-ink transition-colors">Achievements</Link></li>
             </ul>
           </div>
 

@@ -17,36 +17,36 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
   const searchableItems = [
     { title: "Home: Overview & Introduction", category: "Navigation", target: "#hero" },
-    { title: "About: Origin, Ethos & Mentorship", category: "Navigation", target: "#about" },
-    { title: "Domains: 6 Research Fields", category: "Navigation", target: "#domains" },
-    { title: "Projects: Flagship Technical Works", category: "Navigation", target: "#projects" },
-    { title: "Sessions: Knowledge Workshops & Seminars", category: "Navigation", target: "#sessions" },
-    { title: "Founders: Ishaan, Dhruv & Keshav", category: "Navigation", target: "#founders" },
-    { title: "Directory: 30+ First-Year Members", category: "Navigation", target: "#directory" },
-    { title: "Join: Community Application", category: "Navigation", target: "#join" },
+    { title: "About: Origin, Ethos & Mentorship", category: "Navigation", target: "/about" },
+    { title: "Domains: 6 Research Fields", category: "Navigation", target: "/projects" },
+    { title: "Projects: Flagship Technical Works", category: "Navigation", target: "/projects" },
+    { title: "Sessions: Knowledge Workshops & Seminars", category: "Navigation", target: "/sessions" },
+    { title: "Founders: Ishaan, Dhruv & Keshav", category: "Navigation", target: "/#founders" },
+    { title: "Achievements: Honors & Milestones", category: "Navigation", target: "/achievements" },
+    { title: "Join: Community Application", category: "Navigation", target: "/#initiation" },
 
     ...COMMUNITY_DATA.domains.map((d) => ({
       title: `${d.name} (${d.code})`,
       category: "Domain",
-      target: `#domains`,
+      target: `/projects`,
     })),
 
     ...COMMUNITY_DATA.projects.map((p) => ({
       title: p.title,
       category: "Project",
-      target: `#projects`,
+      target: `/projects`,
     })),
 
     ...COMMUNITY_DATA.founders.map((f) => ({
       title: `${f.name} (${f.specialization})`,
       category: "Founder",
-      target: `#founders`,
+      target: `/#founders`,
     })),
 
-    ...COMMUNITY_DATA.members.map((m) => ({
-      title: `${m.name} — ${m.focus}`,
-      category: "Member",
-      target: `#directory`,
+    ...(COMMUNITY_DATA.achievements || []).map((a) => ({
+      title: `${a.title} (${a.issuer})`,
+      category: "Achievement",
+      target: `/achievements`,
     })),
   ];
 
@@ -97,6 +97,10 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
   const executeItem = (item: typeof searchableItems[0]) => {
     onClose();
     playHaptic(420, 0.03);
+    if (item.target.startsWith("/")) {
+      window.location.href = item.target;
+      return;
+    }
     const el = document.querySelector(item.target);
     if (el) {
       const navH = 68;

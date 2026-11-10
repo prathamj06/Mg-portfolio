@@ -8,6 +8,7 @@ export const NAV_ORDER: Record<string, number> = {
   "/about": 1,
   "/projects": 2,
   "/sessions": 3,
+  "/achievements": 4,
   "/directory": 4,
 };
 

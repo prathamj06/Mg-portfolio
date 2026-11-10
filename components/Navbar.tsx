@@ -170,12 +170,12 @@ export default function Navbar() {
   const mouseX = useMotionValue(Infinity);
 
   // "Founders" is removed from the header as requested.
-  // "About", "Projects", "Sessions", "Directory" are the 4 primary links to separate pages.
+  // "About", "Projects", "Sessions", "Achievements" are the 4 primary links to separate pages.
   const navLinks: NavLinkItem[] = [
     { name: "About", href: "/about", id: "about" },
     { name: "Projects", href: "/projects", id: "projects" },
     { name: "Sessions", href: "/sessions", id: "sessions" },
-    { name: "Directory", href: "/directory", id: "directory" },
+    { name: "Achievements", href: "/achievements", id: "achievements" },
   ];
 
   // Spring-animated dock vessel magnification that scales smoothly in tandem with options
