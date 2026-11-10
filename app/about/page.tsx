@@ -27,51 +27,51 @@ export default function AboutUsPage() {
   const domains = [
     {
       id: "ai-ml",
-      name: "AI & Machine Learning",
+      name: "Artificial Intelligence & Machine Learning (AI–ML)",
       icon: Brain,
-      summary: "Predictive models, neural architectures, computer vision, and edge intelligence running on physical hardware.",
-      tags: ["Deep Learning", "Computer Vision", "TinyML"],
+      summary: "Neural architectures, computer vision, edge AI inference on physical microcontrollers, and intelligent automated decision systems.",
+      tags: ["Deep Learning", "Edge AI / TinyML", "Computer Vision"],
       link: "/projects#ai-ml",
     },
     {
-      id: "robotics",
-      name: "Robotics & Automation",
-      icon: Bot,
-      summary: "Autonomous mechanical systems, kinematic actuation, closed-loop feedback, and intelligent motor controllers.",
-      tags: ["Kinematics", "Autonomous Control", "Sensors & Actuators"],
-      link: "/projects",
+      id: "sustainability",
+      name: "Sustainable and Green Technologies",
+      icon: Leaf,
+      summary: "Closed-loop environmental telemetry, automated urban farming rigs, water quality instrumentation, and clean energy monitoring.",
+      tags: ["Clean Tech", "Environmental IoT", "Closed-Loop Automation"],
+      link: "/projects#scientific-research",
     },
     {
-      id: "drones",
-      name: "Drones & UAV Systems",
-      icon: Compass,
-      summary: "Autonomous flight dynamics, aerial telemetry, custom airframes, and embedded flight stabilization.",
-      tags: ["Flight Dynamics", "UAV Telemetry", "Embedded Avionics"],
-      link: "/projects",
-    },
-    {
-      id: "rf-wireless",
-      name: "RF & Antenna Design",
+      id: "comm-systems",
+      name: "Communication & Signal Processing Systems",
       icon: Radio,
-      summary: "Electromagnetic propagation, antenna design, software-defined radio (SDR), and high-frequency communications.",
-      tags: ["Software-Defined Radio", "Antenna Arrays", "Signal Processing"],
+      summary: "Wireless transceiver architectures, digital signal processing (DSP), modulation schemes, and high-frequency telemetry links.",
+      tags: ["Signal Processing", "Wireless Comms", "Software-Defined Radio"],
       link: "/projects#rf-wireless",
     },
     {
-      id: "electronics-iot",
-      name: "Electronics, IoT & Silicon",
-      icon: Layers,
-      summary: "Circuit schematics, multi-layer PCB layout, microcontroller firmware, and connected sensor telemetry.",
-      tags: ["PCB Layout", "Microcontrollers", "Industrial IoT"],
-      link: "/projects#electronics-embedded",
+      id: "antenna-em",
+      name: "Antenna Design and Electromagnetics",
+      icon: Compass,
+      summary: "Electromagnetic wave propagation, planar microstrip antennas, impedance matching networks, and RF simulation modeling.",
+      tags: ["Electromagnetics", "Antenna Arrays", "RF Modeling"],
+      link: "/projects#rf-wireless",
     },
     {
-      id: "sustainability",
-      name: "Sustainable & Green Tech",
-      icon: Leaf,
-      summary: "Clean energy monitoring, automated environmental rigs, urban farming, and microclimate telemetry.",
-      tags: ["Clean Tech", "Environmental Sensing", "Closed-Loop Automation"],
-      link: "/projects#scientific-research",
+      id: "robotics-automation",
+      name: "Robotics and Intelligent Automation",
+      icon: Bot,
+      summary: "Autonomous mechanical actuation, kinematics, closed-loop sensor-motor feedback, and intelligent industrial automation rigs.",
+      tags: ["Kinematics", "Autonomous Actuation", "Robotic Control"],
+      link: "/projects",
+    },
+    {
+      id: "electronics-iot",
+      name: "Electronics, IoT & Embedded Systems",
+      icon: Layers,
+      summary: "Schematic capture, multi-layer PCB design, low-power microcontroller firmware, and connected industrial IoT sensor mesh.",
+      tags: ["PCB Layout", "Embedded C/C++", "Industrial IoT"],
+      link: "/projects#electronics-embedded",
     },
   ];
 
@@ -107,25 +107,25 @@ export default function AboutUsPage() {
       tag: "COMMUNITY",
       value: "100+",
       label: "Engineers Cultivated",
-      desc: "Undergraduates trained across hands-on electronics, robotics, and edge computing intensives.",
+      desc: "Undergraduates trained across hands-on electronics, robotics, and emerging tech intensives.",
     },
     {
       tag: "SPECTRUM",
       value: "06",
-      label: "Research Horizons",
-      desc: "Specialized ateliers spanning high-frequency RF systems to autonomous neural runtime agents.",
+      label: "Core Domains",
+      desc: "Specialized focus areas spanning AI–ML, RF & antennas, robotics, and green technologies.",
     },
     {
       tag: "APPRENTICESHIP",
-      value: "1 : 1",
+      value: "1:1",
       label: "Senior Stewardship",
-      desc: "Dedicated personal mentorship for conference publications, patent filings, and symposium defense.",
+      desc: "Dedicated personal mentorship for project builds, hackathons, and conference publications.",
     },
     {
       tag: "ACCESS",
       value: "Zero",
       label: "Prerequisites",
-      desc: "Curiosity and discipline precede credentials. Every engineer begins directly at the lab bench.",
+      desc: "Curiosity and discipline precede credentials. Every student starts directly at the lab bench.",
     },
   ];
 
@@ -172,7 +172,7 @@ export default function AboutUsPage() {
             </h1>
 
             <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed max-w-4xl border-l-2 border-accent/40 pl-6 sm:pl-8">
-              A collaborative student research lab at Maharaja Surajmal Institute of Technology. We empower curious first-year engineers to construct physical hardware, publish research, and master cutting-edge technologies from Day 1.
+              An interdisciplinary engineering collective and project incubator at Maharaja Surajmal Institute of Technology. We immerse students in emerging technologies, guiding them step-by-step to build real hardware and software projects, compete in hackathons, and pursue groundbreaking research from Day 1.
             </p>
           </div>
 
@@ -201,7 +201,7 @@ export default function AboutUsPage() {
                         </span>
                       </div>
 
-                      <div className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ink font-light tracking-tight group-hover:text-accent transition-colors">
+                      <div className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ink font-light tracking-tight group-hover:text-accent transition-colors whitespace-nowrap shrink-0">
                         {m.value}
                       </div>
 
@@ -220,7 +220,7 @@ export default function AboutUsPage() {
           </section>
 
           {/* ========================================================= */}
-          {/* 3. DUAL EDITORIAL MANIFESTO: THE WORKSHOP & THE DOCTRINE  */}
+          {/* 3. DUAL EDITORIAL MANIFESTO: THE COLLECTIVE & THE DOCTRINE*/}
           {/* ========================================================= */}
           <section className="mb-24 sm:mb-32">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-border-subtle pb-6">
@@ -229,16 +229,16 @@ export default function AboutUsPage() {
                   Operating Philosophy
                 </span>
                 <h2 className="font-serif text-3xl sm:text-5xl font-normal text-ink leading-tight">
-                  Two Pillars of the Lab
+                  Two Pillars of the Collective
                 </h2>
               </div>
-              <p className="text-muted text-xs sm:text-sm max-w-[45ch] leading-relaxed font-sans">
-                The duality of our culture: relentless private craftsmanship in the workshop, paired with fearless audacity on public stages.
+              <p className="text-muted text-xs sm:text-sm max-w-[48ch] leading-relaxed font-sans">
+                More than an academic cell: an open collective exposing students to emerging technologies and mentoring them through real-world engineering builds.
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Panel I: The Workshop */}
+              {/* Panel I: The Creative Collective */}
               <div className="bg-gradient-to-b from-[#0e070a] to-[#0a0507] border border-white/[0.08] hover:border-accent/30 rounded-2xl p-8 sm:p-11 flex flex-col justify-between shadow-2xl shadow-black/70 transition-all duration-300 relative group overflow-hidden">
                 <div
                   className="absolute top-0 right-0 w-72 h-72 pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity"
@@ -250,17 +250,17 @@ export default function AboutUsPage() {
                 <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[11px] text-accent uppercase tracking-[0.25em] font-medium">
-                      Pillar I · The Workshop
+                      Pillar I · The Creative Collective
                     </span>
                     <Cpu className="w-4 h-4 text-accent/70" />
                   </div>
 
                   <h3 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] text-ink font-normal leading-snug">
-                    Where Software Meets Physical Consequence
+                    Emerging Tech Exposure &amp; Guided Project Builds
                   </h3>
 
                   <p className="font-sans text-sm sm:text-[15px] text-ink-secondary/90 leading-relaxed font-light">
-                    Modern engineering education has largely retreated behind glass screens and abstract simulators. We restore physical tangibility: circuit boards carrying real current, RF waves propagating across open air, and autonomous algorithms bound by microsecond latency. In this lab, theory is only verified when it physically operates.
+                    Melerigamy is not confined to abstract theory or classroom slides. We are an active technical collective founded to immerse undergraduates in emerging technology domains. Through hands-on senior guidance, students learn to design schematics, solder circuit netlists, write firmware, and turn original ideas into functional hardware and software systems.
                   </p>
                 </div>
 
@@ -269,29 +269,29 @@ export default function AboutUsPage() {
                     <div className="flex items-start gap-4">
                       <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">01</span>
                       <div>
-                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Empirical Prototyping</h4>
-                        <p className="font-sans text-xs text-muted font-light mt-0.5">Rapid transition from schematic capture to custom PCB fabrication and live breadboarding.</p>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Guided Hands-On Builds</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Step-by-step senior mentorship through circuit design, multi-layer PCB layout, embedded code, and hardware assembly.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">02</span>
                       <div>
-                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Shared Bench Instrumentation</h4>
-                        <p className="font-sans text-xs text-muted font-light mt-0.5">Direct undergraduate access to oscilloscopes, logic analyzers, and SDR transceivers.</p>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Emerging Technical Spaces</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Demystifying next-gen domains: IoT networks, robotics actuation, software-defined radio, and machine learning models.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">03</span>
                       <div>
-                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Independent Inquiries</h4>
-                        <p className="font-sans text-xs text-muted font-light mt-0.5">Students formulate real research questions rather than following canned laboratory manuals.</p>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Industrial &amp; Practical Exposure</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Real lab benchwork with shared oscilloscopes, development kits, and prototyping rigs connecting students with industry standards.</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Panel II: The Doctrine */}
+              {/* Panel II: The Competitive & Innovation Doctrine */}
               <div className="bg-gradient-to-b from-[#0e070a] to-[#0a0507] border border-white/[0.08] hover:border-accent/30 rounded-2xl p-8 sm:p-11 flex flex-col justify-between shadow-2xl shadow-black/70 transition-all duration-300 relative group overflow-hidden">
                 <div
                   className="absolute top-0 right-0 w-72 h-72 pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity"
@@ -313,7 +313,7 @@ export default function AboutUsPage() {
                   </h3>
 
                   <p className="font-sans text-sm sm:text-[15px] text-ink-secondary/90 leading-relaxed font-light">
-                    During research cycles, we practice unsparing technical discipline—auditing signal traces, reading IEEE transactions, and stress-testing edge failures. Yet when presenting before academic faculties, defense laboratories, or national hackathon juries, our teams execute with calm, uncompromising poise.
+                    In the workshop, we maintain relentless humility and craftsmanship—mastering new frameworks, debugging traces down to the bit, and learning through iterations. But when entering external arenas—national hackathons, technical symposiums, or paper defense panels—our teams execute with calm, uncompromising poise.
                   </p>
                 </div>
 
@@ -322,22 +322,22 @@ export default function AboutUsPage() {
                     <div className="flex items-start gap-4">
                       <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">01</span>
                       <div>
-                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Oral Academic Defense</h4>
-                        <p className="font-sans text-xs text-muted font-light mt-0.5">Training first-year researchers to defend empirical results at conferences such as ICAIA 2025.</p>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Hackathons &amp; Sprints</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">High-intensity team collaboration translating multidisciplinary ideas into working prototypes within competitive 36-hour sprints.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">02</span>
                       <div>
-                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">National Platforms</h4>
-                        <p className="font-sans text-xs text-muted font-light mt-0.5">Representing MSIT across premier competitive circuits including NCSC, RBVP, and CSIR-NPL.</p>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Research &amp; Symposium Defense</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Guiding students to co-author and defend research papers at international IEEE symposiums (ICAIA) and national science platforms (NCSC, RBVP).</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">03</span>
                       <div>
-                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">High-Velocity Sprints</h4>
-                        <p className="font-sans text-xs text-muted font-light mt-0.5">Translating multidisciplinary engineering concepts into functional hardware within 36 hours.</p>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Tangible Portfolio Impact</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Empowering undergraduates to build demonstrable physical and digital systems that stand far above conventional grade metrics.</p>
                       </div>
                     </div>
                   </div>
@@ -415,7 +415,7 @@ export default function AboutUsPage() {
           {/* ========================================================= */}
           {/* 5. WHAT MEMBERS EXPERIENCE (THE APPRENTICESHIP ROADMAP)    */}
           {/* ========================================================= */}
-          <section className="mb-24 sm:mb-32">
+          <section className="mb-12 sm:mb-16">
             <div className="max-w-3xl mb-12">
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-medium block mb-2">
                 Why Join Us
@@ -461,56 +461,6 @@ export default function AboutUsPage() {
                   </div>
                 );
               })}
-            </div>
-          </section>
-
-          {/* ========================================================= */}
-          {/* 6. FRESHERS INVITATION CALLOUT CARD                       */}
-          {/* ========================================================= */}
-          <section className="bg-gradient-to-br from-[#130b0e] via-[#0d070a] to-[#11080c] border border-border-wine/50 rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8 shadow-2xl shadow-black/80 relative overflow-hidden group">
-            <div
-              className="absolute top-0 right-0 w-[450px] h-[450px] pointer-events-none opacity-30 z-0"
-              style={{
-                background:
-                  "radial-gradient(circle at 100% 0%, rgba(223, 170, 162, 0.25) 0%, transparent 70%)",
-              }}
-            />
-
-            <div className="max-w-2xl relative z-10 space-y-3.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-accent/15 border border-accent/40 text-accent font-mono text-xs font-medium">
-                <span>Invitation to Freshers · No Prior Experience Needed</span>
-              </div>
-
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-ink font-normal leading-tight">
-                Your research journey begins here.
-              </h2>
-
-              <p className="font-sans text-sm sm:text-base text-ink-secondary leading-relaxed font-light">
-                All first-year engineering students who are curious and eager to build are welcome. Whether you wish to design antennae, train intelligent agents, or assemble autonomous robots, Melerigamy LAB is built for you.
-              </p>
-
-              <div className="pt-2 text-xs font-mono text-muted space-y-1">
-                <p>Melerigamy LAB · Maharaja Surajmal Institute of Technology (MSIT)</p>
-                <p>Led by Ishaan Chaturvedi & Core Stewards</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-3.5 shrink-0 relative z-10">
-              <Link
-                href="mailto:melerigamy.research@gmail.com"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-accent hover:text-ink px-7 py-4 rounded-full border border-accent/40 bg-accent/[0.12] hover:bg-accent/[0.22] transition-all shadow-lg shadow-black/40"
-              >
-                <span>Connect With Us</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-
-              <Link
-                href="/projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-ink hover:text-accent px-7 py-4 rounded-full border border-white/10 hover:border-white/30 bg-white/[0.04] transition-all"
-              >
-                <span>Explore Works</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
             </div>
           </section>
 

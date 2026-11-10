@@ -206,19 +206,17 @@ export default function Founders() {
               href="mailto:melerigamy.research@gmail.com"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-accent hover:text-ink px-6 py-3.5 rounded-full border border-accent/35 bg-accent/[0.1] hover:bg-accent/[0.2] transition-all shadow-lg shadow-black/40"
             >
-              <span>Initiation Protocol</span>
+              <span>Connect With Us</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            <a
-              href="https://github.com/melerigamy"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/projects"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-ink hover:text-accent px-6 py-3.5 rounded-full border border-white/10 hover:border-white/30 bg-white/[0.04] transition-all"
             >
-              <span>View Open Netlists</span>
+              <span>Explore Works</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
         </motion.section>
 
