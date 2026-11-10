@@ -3,32 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Linkedin, Github, ArrowRight, ArrowUpRight, Radio, Cpu, ShieldCheck } from "lucide-react";
+import { Linkedin, Github, ArrowRight, ArrowUpRight } from "lucide-react";
 import { COMMUNITY_DATA, Founder } from "@/lib/data";
 
 export default function Founders() {
-  const monogramMap: Record<
+  const founderPhotoMap: Record<
     string,
-    { initials: string; icon: typeof Radio; discipline: string; image: string; objectPosition: string }
+    { image: string; objectPosition: string }
   > = {
     "ishaan-chaturvedi": {
-      initials: "IC",
-      icon: Radio,
-      discipline: "01 // RF & DSP",
       image: "/assets/founders/ishaan-chaturvedi.jpg",
       objectPosition: "82% 40%",
     },
     "dhruv-ghoshal": {
-      initials: "DG",
-      icon: Cpu,
-      discipline: "02 // AI & MATH",
       image: "/assets/founders/dhruv-ghoshal.jpg",
       objectPosition: "38% 50%",
     },
     "keshav-gupta": {
-      initials: "KG",
-      icon: ShieldCheck,
-      discipline: "03 // SILICON & SEC",
       image: "/assets/founders/keshav-gupta.jpg",
       objectPosition: "50% 25%",
     },
@@ -68,8 +59,10 @@ export default function Founders() {
         {/* 3 Founders: Redesigned Specimen Cards (GPU-Accelerated Smooth Performance) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {COMMUNITY_DATA.founders.map((f: Founder, idx: number) => {
-            const meta = monogramMap[f.id] || { initials: "MG", icon: Cpu, discipline: `0${idx + 1} // TECH` };
-            const DisciplineIcon = meta.icon;
+            const photo = founderPhotoMap[f.id] || {
+              image: "/assets/founders/ishaan-chaturvedi.jpg",
+              objectPosition: "center",
+            };
 
             return (
               <motion.article
@@ -87,24 +80,15 @@ export default function Founders() {
                   {/* Founder Authentic Photograph Frame */}
                   <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-black/60 border border-white/[0.08] group-hover:border-accent/40 transition-colors shadow-lg">
                     <Image
-                      src={meta.image}
+                      src={photo.image}
                       alt={f.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                      style={{ objectPosition: meta.objectPosition }}
+                      style={{ objectPosition: photo.objectPosition }}
                     />
                     {/* Subtle bottom gradient vignette */}
                     <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0e070a] via-[#0e070a]/40 to-transparent pointer-events-none" />
-
-                    {/* Monogram Seal & Discipline Overlays */}
-                    <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 font-serif text-xs font-semibold text-accent tracking-wider shadow-md">
-                      {meta.initials}
-                    </div>
-                    <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 flex items-center gap-1.5 font-mono text-[10px] text-accent/90 tracking-widest uppercase shadow-md">
-                      <DisciplineIcon className="w-3 h-3 text-accent" />
-                      <span>{meta.discipline}</span>
-                    </div>
                   </div>
 
                   {/* Name, Role & Specialization */}
