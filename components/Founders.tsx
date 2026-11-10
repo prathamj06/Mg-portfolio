@@ -99,17 +99,6 @@ export default function Founders() {
                     {f.bio}
                   </p>
 
-                  {/* Active Hardware / Software Initiative */}
-                  <div className="p-3.5 rounded-xl bg-black/50 border border-white/[0.06] group-hover:border-accent/25 transition-colors space-y-1">
-                    <div className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-muted">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                      <span>Active Build</span>
-                    </div>
-                    <p className="font-mono text-xs text-ink/90 font-medium leading-snug line-clamp-2">
-                      {f.currentProject}
-                    </p>
-                  </div>
-
                   {/* Core Disciplines & Toolchains */}
                   <div className="space-y-2">
                     <span className="font-mono text-[9px] text-muted uppercase tracking-widest block">
