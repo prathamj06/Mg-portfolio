@@ -190,6 +190,7 @@ export default function Navbar() {
     setMobileMenuOpen(false);
 
     if (pathname !== link.href) {
+      window.scrollTo(0, 0);
       const fromIndex = NAV_ORDER[pathname] ?? 0;
       const toIndex = NAV_ORDER[link.href] ?? 0;
       // If navigating to option on right: toIndex > fromIndex => 1 (left to right)
@@ -205,6 +206,7 @@ export default function Navbar() {
     if (pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
+      window.scrollTo(0, 0);
       const fromIndex = NAV_ORDER[pathname] ?? 0;
       const toIndex = 0;
       // Going to Home (MG) at index 0 from any other page is navigating to the left

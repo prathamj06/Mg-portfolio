@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
+import PageTransition from "@/components/PageTransition";
 import { PageTransitionProvider } from "@/context/PageTransitionContext";
 
 const cormorant = Cormorant_Garamond({
@@ -45,7 +46,7 @@ export default function RootLayout({
         <PageTransitionProvider>
           <ScrollProgress />
           <Navbar />
-          {children}
+          <PageTransition>{children}</PageTransition>
         </PageTransitionProvider>
       </body>
     </html>
