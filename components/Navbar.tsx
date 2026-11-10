@@ -161,7 +161,7 @@ function MagneticMonogram({
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { setDirection } = usePageTransition();
+  const { setDirection, triggerTransition } = usePageTransition();
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDockHovered, setIsDockHovered] = useState(false);
@@ -203,10 +203,12 @@ export default function Navbar() {
   const handleHomeClick = () => {
     playHaptic(440, 0.03);
     setMobileMenuOpen(false);
+    window.scrollTo(0, 0);
+
     if (pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Re-trigger the smooth transition when clicking MG while on landing page
+      triggerTransition(1);
     } else {
-      window.scrollTo(0, 0);
       const fromIndex = NAV_ORDER[pathname] ?? 0;
       const toIndex = 0;
       // Going to Home (MG) at index 0 from any other page is navigating to the left
