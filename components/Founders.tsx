@@ -91,15 +91,12 @@ export default function Founders() {
                     <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0e070a] via-[#0e070a]/40 to-transparent pointer-events-none" />
                   </div>
 
-                  {/* Name, Role & Specialization */}
+                  {/* Name & Specialization */}
                   <div>
-                    <span className="font-mono text-xs uppercase tracking-wider text-accent font-medium block">
-                      {f.role}
-                    </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-accent transition-colors leading-tight font-normal mt-1">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-accent transition-colors leading-tight font-normal">
                       {f.name}
                     </h3>
-                    <span className="font-mono text-xs text-ink-secondary/75 block mt-1 tracking-wide">
+                    <span className="font-mono text-xs text-accent/80 block mt-1 tracking-wide">
                       {f.specialization}
                     </span>
                   </div>

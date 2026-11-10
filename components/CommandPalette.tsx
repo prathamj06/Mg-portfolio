@@ -38,7 +38,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
     })),
 
     ...COMMUNITY_DATA.founders.map((f) => ({
-      title: `${f.name} (${f.role} · ${f.specialization})`,
+      title: `${f.name} (${f.specialization})`,
       category: "Founder",
       target: `#founders`,
     })),

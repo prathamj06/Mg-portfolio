@@ -102,9 +102,9 @@ export const COMMUNITY_DATA: CommunityData = {
     {
       id: "ishaan-chaturvedi",
       name: "Ishaan Chaturvedi",
-      role: "Co-Founder",
+      role: "Founder",
       specialization: "IoT Systems, Core Electronics & AI/ML",
-      bio: "B.Tech IT student at MSIT working at the intersection of IoT, core electronics, and intelligent systems. Author of research presented at ICAIA 2025, NCSC and Ministry of Education (RBVP) selectee, and CSIR-NPL competition winner with research exposure across DRDO labs (LRDE radar systems, DIPR). Architect of AI-driven urban farming automation and sensor-actuator networks, he leads hands-on electronics cohorts and conducts IoT workshops to build systems that sense, think, and evolve.",
+      bio: "B.Tech IT at MSIT specializing in IoT, core electronics, and intelligent automation. ICAIA 2025 research author, Ministry of Education (RBVP) selectee, and CSIR-NPL winner with research exposure across DRDO labs (LRDE, DIPR). Leads hands-on electronics cohorts and IoT workshops.",
       linkedin: "https://www.linkedin.com/in/ishaan-chaturvedi-972948310/",
       github: "https://github.com/linkedwithishaan",
       focusAreas: [
@@ -119,9 +119,9 @@ export const COMMUNITY_DATA: CommunityData = {
     {
       id: "dhruv-ghoshal",
       name: "Dhruv Ghoshal",
-      role: "Co-Founder",
+      role: "Founder",
       specialization: "Hardware-Software Co-Design & Systems Engineering",
-      bio: "B.Tech Computer Science Engineering student focused on bridging physical hardware with full-stack software development. Specializes in Internet of Things (IoT) architectures, embedded-to-cloud workflows, and scalable software solutions. Combines technical engineering with proven event management and operations leadership, orchestrating collaborative hackathons, technical sessions, and cross-functional teams with strategic problem-solving.",
+      bio: "B.Tech CSE student specializing in the convergence of IoT hardware and full-stack software development. Blends technical systems engineering with proven operations leadership, organizing high-impact hackathons, engineering intensives, and collaborative technical events.",
       linkedin: "https://www.linkedin.com/in/dhruv-ghosal-841353247/",
       github: "https://github.com/Dhruvhash",
       focusAreas: [
@@ -136,9 +136,9 @@ export const COMMUNITY_DATA: CommunityData = {
     {
       id: "keshav-gupta",
       name: "Keshav Gupta",
-      role: "Co-Founder · Software & Hardware Lead",
+      role: "Software & Hardware Lead",
       specialization: "Web3 Protocols, AI Integrations & IoT Engineering",
-      bio: "B.Tech CSE student at MSIT and Software + Hardware Lead at Melerigamy, exploring the frontier where Ethereum, decentralized protocols, and AI converge with physical electronics. Freelance IoT engineer crafting end-to-end connected devices and Web3 smart contract integrations. Instrumental in Melerigamy's core mission, having tutored over 100+ students in hardware, blockchain systems, and emerging technologies with day-one industrial exposure.",
+      bio: "B.Tech CSE at MSIT and Software & Hardware Lead at Melerigamy, exploring the intersection of Ethereum, Web3 protocols, and IoT. Freelance embedded engineer who has tutored 100+ students in hands-on hardware and blockchain technologies.",
       linkedin: "https://www.linkedin.com/in/keshav-gupta-83201431a/",
       github: "https://github.com/Keshav-pro1",
       focusAreas: [
