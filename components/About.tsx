@@ -22,82 +22,68 @@ interface DrivePhoto {
 export default function About() {
   const [selectedImage, setSelectedImage] = useState<DrivePhoto | null>(null);
 
-  // 10 authentic lab photos downloaded directly from Google Drive
+  // 8 authentic lab photos downloaded directly from Google Drive
   const drivePhotos: DrivePhoto[] = [
-    {
-      src: "/assets/drive/robotics-chassis.jpg",
-      alt: "Autonomous Robotics Rover Chassis & Power Distribution",
-      tag: "Plate 01 · Robotics",
-      title: "Autonomous Rover Chassis & Power Bus",
-      desc: "Custom mechanical rover chassis with dual-actuator suspension, motor drivers, and regulated DC power bus.",
-    },
     {
       src: "/assets/drive/digital-circuit-board.jpg",
       alt: "Digital Electronics Logic Prototyping & Test Bench",
-      tag: "Plate 02 · Silicon & Logic",
+      tag: "Plate 01 · Silicon & Logic",
       title: "Logic Circuit Prototyping & Bench Testing",
       desc: "Breadboard verification of digital logic gates, clock generators, and mixed-signal interface circuits.",
     },
     {
       src: "/assets/drive/comm-system-setup.jpg",
       alt: "Communication Systems & RF Receiver Antenna Setup",
-      tag: "Plate 03 · RF Communications",
+      tag: "Plate 02 · RF Communications",
       title: "RF Receiver Antenna & Demodulation Link",
       desc: "Tuned RF communication apparatus for high-frequency signal capture, telemetry extraction, and spectrum analysis.",
     },
     {
       src: "/assets/drive/esp32-module.jpg",
       alt: "ESP32 Custom Embedded Hardware & Microcontroller Unit",
-      tag: "Plate 04 · Embedded Systems",
+      tag: "Plate 03 · Embedded Systems",
       title: "ESP32 Embedded Firmware & Hardware Platform",
       desc: "Low-power microcontroller unit running custom firmware routines for wireless telemetry and network auditing.",
     },
     {
       src: "/assets/drive/aiot-urban-farm-1.jpg",
       alt: "AIoT Based Urban Hydroponic Farming Rig",
-      tag: "Plate 05 · Environmental IoT",
+      tag: "Plate 04 · Environmental IoT",
       title: "AIoT Urban Farming & Microclimate Array",
       desc: "Closed-loop automated agricultural rig monitoring soil moisture, nutrient dosers, and environmental temperature.",
     },
     {
       src: "/assets/drive/water-filtration-rig.jpg",
       alt: "Multi-Stage Physical Water Filtration & Purification Rig",
-      tag: "Plate 06 · Clean Tech",
+      tag: "Plate 05 · Clean Tech",
       title: "Multi-Stage Water Filtration System",
       desc: "Empirical filtration apparatus evaluating physical sediment filtration, flow rates, and water treatment methods.",
     },
     {
       src: "/assets/drive/water-sensor-kit.jpg",
       alt: "Water Quality Testing Kit & Sensing Instrumentation",
-      tag: "Plate 07 · Instrumentation",
+      tag: "Plate 06 · Instrumentation",
       title: "Field Water Quality Testing & Sensor Kit",
       desc: "Portable sensor kit measuring dissolved solids (TDS), pH balance, and electrical conductivity in aqueous solutions.",
     },
     {
-      src: "/assets/drive/robotics-rover-mech.jpg",
-      alt: "Robotics Rover Wheel Actuator & Drive Mechanism",
-      tag: "Plate 08 · Robotics",
-      title: "Drive Actuator & Gearbox Integration",
-      desc: "Precision mechanical gearing and brushless motor integration for autonomous all-terrain robotics maneuvering.",
-    },
-    {
       src: "/assets/drive/aiot-urban-farm-2.jpg",
       alt: "AIoT Automated Greenhouse Cultivation Bench",
-      tag: "Plate 09 · Automation",
+      tag: "Plate 07 · Automation",
       title: "Automated Greenhouse Telemetry",
       desc: "Sensor deployment for environmental analytics, ambient light logging, and microcontroller closed-loop irrigation.",
     },
     {
       src: "/assets/drive/aqi-dashboard.png",
       alt: "Air Quality Index (AQI) Sensor Telemetry Dashboard",
-      tag: "Plate 10 · Telemetry",
+      tag: "Plate 08 · Telemetry",
       title: "AQI Environmental Telemetry Interface",
       desc: "Real-time air quality index monitoring pipeline logging particulate matter (PM2.5/PM10), VOCs, and atmospheric humidity.",
     },
   ];
 
-  const row1 = drivePhotos.slice(0, 5);
-  const row2 = drivePhotos.slice(5, 10);
+  const row1 = drivePhotos.slice(0, 4);
+  const row2 = drivePhotos.slice(4, 8);
 
   const handleOpenPhoto = (photo: DrivePhoto) => {
     setSelectedImage(photo);
@@ -171,7 +157,7 @@ export default function About() {
             <span>Laboratory Hardware Specimens & Field Artifacts</span>
           </div>
           <span className="font-mono text-[11px] text-accent/70 hidden sm:inline-block">
-            10 Authentic Plates // Hover to Pause
+            8 Authentic Plates // Hover to Pause
           </span>
         </div>
 
