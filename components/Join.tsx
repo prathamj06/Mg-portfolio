@@ -93,7 +93,7 @@ export default function Join() {
                 <span className="text-accent text-3xl">✦</span>
                 <h3 className="font-serif text-2xl text-ink">Inquiry Recorded</h3>
                 <p className="text-muted text-xs max-w-[34ch] leading-relaxed">
-                  Thank you, {formData.name}. Our founding stewards review all submissions personally and will reach out via email.
+                  Thank you, {formData.name}. Our founders review all submissions personally and will reach out via email.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}

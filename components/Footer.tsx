@@ -61,7 +61,7 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-ink transition-colors">About (Full Monograph)</Link></li>
               <li><Link href="/projects" className="hover:text-ink transition-colors">Technical Portfolio</Link></li>
               <li><Link href="/sessions" className="hover:text-ink transition-colors">Sessions Archive</Link></li>
-              <li><Link href="/#founders" className="hover:text-ink transition-colors">Founding Stewards</Link></li>
+              <li><Link href="/#founders" className="hover:text-ink transition-colors">Founders</Link></li>
               <li><Link href="/directory" className="hover:text-ink transition-colors">Members Directory</Link></li>
             </ul>
           </div>
@@ -69,7 +69,7 @@ export default function Footer() {
           {/* Founding Members */}
           <div className="flex flex-col gap-3">
             <h4 className="font-mono text-xs text-accent uppercase tracking-wider">
-              Founding Stewards
+              Founders
             </h4>
             <ul className="flex flex-col gap-2.5 text-xs text-muted">
               <li>

@@ -150,17 +150,6 @@ export default function About() {
       {/* 2. LUXURY KINETIC PHOTO GALLERY (FROM GOOGLE DRIVE)       */}
       {/* ========================================================= */}
       <div className="w-full my-6 sm:my-10 py-8 bg-[#0b0608]/70 border-y border-white/[0.06] overflow-hidden relative select-none">
-        {/* Gallery Section Label */}
-        <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted">
-            <span className="text-accent">✦</span>
-            <span>Laboratory Hardware Specimens & Field Artifacts</span>
-          </div>
-          <span className="font-mono text-[11px] text-accent/70 hidden sm:inline-block">
-            8 Laboratory Archives // Hover to Pause
-          </span>
-        </div>
-
         {/* Reduced Edge Vignette Masks: Very thin, subtle edge blend */}
         <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-12 bg-gradient-to-r from-[#080406]/60 to-transparent z-20 pointer-events-none" />
         <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-12 bg-gradient-to-l from-[#080406]/60 to-transparent z-20 pointer-events-none" />

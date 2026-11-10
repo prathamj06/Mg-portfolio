@@ -26,31 +26,24 @@ export default function Founders() {
 
       <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 relative z-10">
         
-        {/* Section Header: Luxury Masked Reveal */}
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mb-14 sm:mb-20"
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-4xl mb-14 sm:mb-18"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/25 bg-accent/5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-              Founding Stewards
-            </span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-ink mb-4 leading-[1.12] tracking-tight">
-            The stewards guiding Melerigamy&apos;s research.
+            The minds shaping Melerigamy&apos;s engineering and technical craft.
           </h2>
 
           <p className="font-sans text-base sm:text-lg text-ink-secondary leading-relaxed max-w-3xl">
-            The founders conduct technical sessions, direct hardware benchwork, and mentor first-year members through their independent prototypes and research papers.
+            The founders lead hands-on hardware builds, run deep engineering intensives, and mentor undergraduate fellows from first-principles inquiry to production-grade physical systems.
           </p>
         </motion.div>
 
-        {/* 3 Founders: Editorial Luxury Specimen Cards */}
+        {/* 3 Founders: Redesigned Specimen Cards (GPU-Accelerated Smooth Performance) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {COMMUNITY_DATA.founders.map((f: Founder, idx: number) => {
             const meta = monogramMap[f.id] || { initials: "MG", icon: Cpu, discipline: `0${idx + 1} // TECH` };
@@ -59,35 +52,34 @@ export default function Founders() {
             return (
               <motion.article
                 key={f.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#0e070a]/70 hover:bg-[#130b0e]/90 border border-white/[0.08] hover:border-accent/35 rounded-2xl p-7 sm:p-8 xl:p-9 flex flex-col justify-between gap-8 transition-all duration-500 group shadow-2xl shadow-black/70 backdrop-blur-md relative overflow-hidden"
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-[#0e070a] hover:bg-[#12080d] border border-white/[0.08] hover:border-accent/40 rounded-2xl p-7 sm:p-8 xl:p-9 flex flex-col justify-between gap-7 shadow-xl shadow-black/80 hover:shadow-[0_16px_40px_rgba(0,0,0,0.85),0_0_24px_rgba(223,170,162,0.12)] transition-[border-color,background-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1.5 group relative overflow-hidden transform-gpu"
               >
                 {/* Subtle Card Header Rim Light */}
-                <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="flex flex-col gap-6">
-                  
+                <div className="flex flex-col gap-5">
                   {/* Top Seal & Discipline Marker */}
                   <div className="flex items-center justify-between pb-4 border-b border-border-subtle/80">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full border border-accent/25 bg-accent/5 flex items-center justify-center font-serif text-sm font-semibold text-accent shadow-[0_0_10px_rgba(223,170,162,0.15)] group-hover:scale-105 transition-transform">
+                      <div className="w-11 h-11 rounded-xl border border-accent/25 bg-accent/[0.08] flex items-center justify-center font-serif text-base font-semibold text-accent shadow-[0_0_12px_rgba(223,170,162,0.12)] group-hover:border-accent/50 transition-colors">
                         {meta.initials}
                       </div>
                       <div>
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-accent block">
+                        <span className="font-mono text-xs uppercase tracking-wider text-accent font-medium block">
                           {f.role}
                         </span>
-                        <span className="font-mono text-[9px] text-muted tracking-wider uppercase">
-                          Steward
+                        <span className="font-mono text-[10px] text-muted tracking-wide">
+                          Melerigamy Guild
                         </span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-1.5 font-mono text-[10px] text-muted tracking-widest uppercase">
-                      <DisciplineIcon className="w-3.5 h-3.5 text-accent/70" />
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.07] font-mono text-[10px] text-accent/80 tracking-widest uppercase">
+                      <DisciplineIcon className="w-3 h-3 text-accent" />
                       <span>{meta.discipline}</span>
                     </div>
                   </div>
@@ -97,26 +89,37 @@ export default function Founders() {
                     <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-accent transition-colors leading-tight font-normal">
                       {f.name}
                     </h3>
-                    <span className="font-mono text-xs text-ink-secondary/80 block mt-1">
+                    <span className="font-mono text-xs text-ink-secondary/75 block mt-1 tracking-wide">
                       {f.specialization}
                     </span>
                   </div>
 
                   {/* Bio Narrative */}
-                  <p className="font-sans text-xs sm:text-sm text-ink-secondary/90 leading-relaxed">
+                  <p className="font-sans text-xs sm:text-sm text-ink-secondary/90 leading-relaxed font-light">
                     {f.bio}
                   </p>
 
-                  {/* Research Focus Chips */}
+                  {/* Active Hardware / Software Initiative */}
+                  <div className="p-3.5 rounded-xl bg-black/50 border border-white/[0.06] group-hover:border-accent/25 transition-colors space-y-1">
+                    <div className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-muted">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      <span>Active Build</span>
+                    </div>
+                    <p className="font-mono text-xs text-ink/90 font-medium leading-snug line-clamp-2">
+                      {f.currentProject}
+                    </p>
+                  </div>
+
+                  {/* Core Disciplines & Toolchains */}
                   <div className="space-y-2">
-                    <span className="font-mono text-[10px] text-muted uppercase tracking-widest block">
-                      Core Investigations
+                    <span className="font-mono text-[9px] text-muted uppercase tracking-widest block">
+                      Core Disciplines & Toolchains
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {f.focusAreas.map((area, aIdx) => (
                         <span
                           key={aIdx}
-                          className="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-ink/80 font-mono text-[10px] tracking-wide group-hover:border-white/10 transition-colors"
+                          className="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-ink/80 font-mono text-[10px] tracking-wide group-hover:border-accent/20 transition-colors"
                         >
                           {area}
                         </span>
@@ -131,7 +134,7 @@ export default function Founders() {
                     href={f.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono text-ink-secondary hover:text-accent bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-accent/30 px-3.5 py-2 rounded-lg transition-all"
+                    className="inline-flex items-center gap-2 text-xs font-mono text-ink-secondary hover:text-accent bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-accent/35 px-4 py-2 rounded-lg transition-all"
                   >
                     <Linkedin className="w-3.5 h-3.5 text-accent" />
                     <span>LinkedIn</span>
@@ -143,7 +146,7 @@ export default function Founders() {
                       href={f.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono text-ink-secondary hover:text-ink bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] px-3.5 py-2 rounded-lg transition-all"
+                      className="inline-flex items-center gap-2 text-xs font-mono text-ink-secondary hover:text-ink bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/20 px-4 py-2 rounded-lg transition-all"
                       aria-label={`${f.name} GitHub`}
                     >
                       <Github className="w-3.5 h-3.5" />
