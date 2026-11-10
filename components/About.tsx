@@ -187,11 +187,8 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#160608]/90 via-[#320f15]/50 to-[#dfaaa2]/20 mix-blend-color transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
                 <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
 
-                {/* Precision Dot-Matrix Halftone & CRT Scanline Mesh */}
+                {/* Precision Dot-Matrix Halftone */}
                 <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-0" />
-
-                {/* Subtle CRT Telemetry Laser Scanline */}
-                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-60 group-hover:opacity-0 transition-opacity duration-500 animate-scanline" />
 
                 {/* Subtle Radial Vignette Flare on Hover */}
                 <div
@@ -256,11 +253,8 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#160608]/90 via-[#320f15]/50 to-[#dfaaa2]/20 mix-blend-color transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
                 <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
 
-                {/* Precision Dot-Matrix Halftone & CRT Scanline Mesh */}
+                {/* Precision Dot-Matrix Halftone */}
                 <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-0" />
-
-                {/* Subtle CRT Telemetry Laser Scanline */}
-                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-60 group-hover:opacity-0 transition-opacity duration-500 animate-scanline" />
 
                 {/* Subtle Radial Vignette Flare on Hover */}
                 <div
