@@ -1,15 +1,37 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Linkedin, Github, ArrowRight, ArrowUpRight, Radio, Cpu, ShieldCheck } from "lucide-react";
 import { COMMUNITY_DATA, Founder } from "@/lib/data";
 
 export default function Founders() {
-  const monogramMap: Record<string, { initials: string; icon: typeof Radio; discipline: string }> = {
-    "ishaan-chaturvedi": { initials: "IC", icon: Radio, discipline: "01 // RF & DSP" },
-    "dhruv-ghoshal": { initials: "DG", icon: Cpu, discipline: "02 // AI & MATH" },
-    "keshav-gupta": { initials: "KG", icon: ShieldCheck, discipline: "03 // SILICON & SEC" },
+  const monogramMap: Record<
+    string,
+    { initials: string; icon: typeof Radio; discipline: string; image: string; objectPosition: string }
+  > = {
+    "ishaan-chaturvedi": {
+      initials: "IC",
+      icon: Radio,
+      discipline: "01 // RF & DSP",
+      image: "/assets/founders/ishaan-chaturvedi.jpg",
+      objectPosition: "82% 40%",
+    },
+    "dhruv-ghoshal": {
+      initials: "DG",
+      icon: Cpu,
+      discipline: "02 // AI & MATH",
+      image: "/assets/founders/dhruv-ghoshal.png",
+      objectPosition: "38% 50%",
+    },
+    "keshav-gupta": {
+      initials: "KG",
+      icon: ShieldCheck,
+      discipline: "03 // SILICON & SEC",
+      image: "/assets/founders/keshav-gupta.png",
+      objectPosition: "50% 25%",
+    },
   };
 
   return (
@@ -62,31 +84,35 @@ export default function Founders() {
                 <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="flex flex-col gap-5">
-                  {/* Top Seal & Discipline Marker */}
-                  <div className="flex items-center justify-between pb-4 border-b border-border-subtle/80">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl border border-accent/25 bg-accent/[0.08] flex items-center justify-center font-serif text-base font-semibold text-accent shadow-[0_0_12px_rgba(223,170,162,0.12)] group-hover:border-accent/50 transition-colors">
-                        {meta.initials}
-                      </div>
-                      <div>
-                        <span className="font-mono text-xs uppercase tracking-wider text-accent font-medium block">
-                          {f.role}
-                        </span>
-                        <span className="font-mono text-[10px] text-muted tracking-wide">
-                          Melerigamy Guild
-                        </span>
-                      </div>
-                    </div>
+                  {/* Founder Authentic Photograph Frame */}
+                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-black/60 border border-white/[0.08] group-hover:border-accent/40 transition-colors shadow-lg">
+                    <Image
+                      src={meta.image}
+                      alt={f.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                      style={{ objectPosition: meta.objectPosition }}
+                    />
+                    {/* Subtle bottom gradient vignette */}
+                    <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0e070a] via-[#0e070a]/40 to-transparent pointer-events-none" />
 
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.07] font-mono text-[10px] text-accent/80 tracking-widest uppercase">
+                    {/* Monogram Seal & Discipline Overlays */}
+                    <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 font-serif text-xs font-semibold text-accent tracking-wider shadow-md">
+                      {meta.initials}
+                    </div>
+                    <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 flex items-center gap-1.5 font-mono text-[10px] text-accent/90 tracking-widest uppercase shadow-md">
                       <DisciplineIcon className="w-3 h-3 text-accent" />
                       <span>{meta.discipline}</span>
                     </div>
                   </div>
 
-                  {/* Name & Specialization */}
+                  {/* Name, Role & Specialization */}
                   <div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-accent transition-colors leading-tight font-normal">
+                    <span className="font-mono text-xs uppercase tracking-wider text-accent font-medium block">
+                      {f.role}
+                    </span>
+                    <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-accent transition-colors leading-tight font-normal mt-1">
                       {f.name}
                     </h3>
                     <span className="font-mono text-xs text-ink-secondary/75 block mt-1 tracking-wide">
