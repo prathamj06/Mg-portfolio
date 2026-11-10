@@ -22,14 +22,14 @@ export default function Founders() {
       initials: "DG",
       icon: Cpu,
       discipline: "02 // AI & MATH",
-      image: "/assets/founders/dhruv-ghoshal.png",
+      image: "/assets/founders/dhruv-ghoshal.jpg",
       objectPosition: "38% 50%",
     },
     "keshav-gupta": {
       initials: "KG",
       icon: ShieldCheck,
       discipline: "03 // SILICON & SEC",
-      image: "/assets/founders/keshav-gupta.png",
+      image: "/assets/founders/keshav-gupta.jpg",
       objectPosition: "50% 25%",
     },
   };
