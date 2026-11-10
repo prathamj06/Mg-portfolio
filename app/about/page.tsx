@@ -103,10 +103,30 @@ export default function AboutUsPage() {
   ];
 
   const metrics = [
-    { value: "Day 1", label: "Hardware Access", desc: "Immediate benchwork" },
-    { value: "06", label: "Core Domains", desc: "AI, Robotics, Drones, RF, IoT & Green Tech" },
-    { value: "100+", label: "Students Mentored", desc: "Hands-on engineering intensives" },
-    { value: "0%", label: "Gatekeeping", desc: "No prior experience required" },
+    {
+      tag: "COMMUNITY",
+      value: "100+",
+      label: "Engineers Cultivated",
+      desc: "Undergraduates trained across hands-on electronics, robotics, and edge computing intensives.",
+    },
+    {
+      tag: "SPECTRUM",
+      value: "06",
+      label: "Research Horizons",
+      desc: "Specialized ateliers spanning high-frequency RF systems to autonomous neural runtime agents.",
+    },
+    {
+      tag: "APPRENTICESHIP",
+      value: "1 : 1",
+      label: "Senior Stewardship",
+      desc: "Dedicated personal mentorship for conference publications, patent filings, and symposium defense.",
+    },
+    {
+      tag: "ACCESS",
+      value: "Zero",
+      label: "Prerequisites",
+      desc: "Curiosity and discipline precede credentials. Every engineer begins directly at the lab bench.",
+    },
   ];
 
   return (
@@ -147,129 +167,181 @@ export default function AboutUsPage() {
           {/* 1. HERO SPREAD: STATEMENT OF IDENTITY & ETHOS             */}
           {/* ========================================================= */}
           <div className="max-w-5xl mb-20 sm:mb-24">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent font-mono text-xs tracking-widest uppercase mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span>Melerigamy LAB · MSIT New Delhi</span>
-            </div>
-
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-normal text-ink mb-6 leading-[1.08] tracking-tight">
               Build more than just your CGPA.
             </h1>
 
-            <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed max-w-4xl border-l-2 border-accent/40 pl-6 sm:pl-8 mb-8">
+            <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed max-w-4xl border-l-2 border-accent/40 pl-6 sm:pl-8">
               A collaborative student research lab at Maharaja Surajmal Institute of Technology. We empower curious first-year engineers to construct physical hardware, publish research, and master cutting-edge technologies from Day 1.
             </p>
-
-            <div className="flex flex-wrap gap-2.5 pt-2">
-              <span className="px-3.5 py-1.5 rounded-lg bg-surface/70 border border-white/[0.08] text-xs font-mono text-ink-secondary">
-                ✦ Zero Prior Experience Required
-              </span>
-              <span className="px-3.5 py-1.5 rounded-lg bg-surface/70 border border-white/[0.08] text-xs font-mono text-ink-secondary">
-                ✦ First-Principles Mentorship
-              </span>
-              <span className="px-3.5 py-1.5 rounded-lg bg-surface/70 border border-white/[0.08] text-xs font-mono text-ink-secondary">
-                ✦ Real Lab Benchwork
-              </span>
-            </div>
           </div>
 
           {/* ========================================================= */}
-          {/* 2. MINIMALIST METRICS MATRIX                              */}
+          {/* 2. ARCHIVAL METRICS LEDGER                                */}
           {/* ========================================================= */}
-          <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-24 sm:mb-32">
-            {metrics.map((m, idx) => (
-              <motion.div
-                key={m.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="p-6 sm:p-7 rounded-2xl bg-[#0e070a] border border-white/[0.08] hover:border-accent/35 transition-colors flex flex-col justify-between shadow-xl shadow-black/60"
-              >
-                <div>
-                  <span className="font-serif text-3xl sm:text-5xl text-accent font-light leading-none block mb-3">
-                    {m.value}
-                  </span>
-                  <span className="font-mono text-xs text-ink uppercase tracking-wider block font-medium">
-                    {m.label}
-                  </span>
-                </div>
-                <span className="text-[11px] sm:text-xs text-muted font-sans font-light mt-4 block border-t border-border-subtle pt-3">
-                  {m.desc}
-                </span>
-              </motion.div>
-            ))}
+          <section className="mb-24 sm:mb-32">
+            <div className="rounded-2xl bg-[#0c0608]/90 border border-white/[0.08] backdrop-blur-md overflow-hidden shadow-2xl shadow-black/80">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
+                {metrics.map((m, idx) => (
+                  <motion.div
+                    key={m.label}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    className="p-8 sm:p-9 flex flex-col justify-between group hover:bg-white/[0.02] transition-colors relative"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[10px] tracking-[0.25em] text-accent/80 uppercase font-medium">
+                          {m.tag}
+                        </span>
+                        <span className="font-mono text-[10px] text-muted/60">
+                          0{idx + 1}
+                        </span>
+                      </div>
+
+                      <div className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ink font-light tracking-tight group-hover:text-accent transition-colors">
+                        {m.value}
+                      </div>
+
+                      <div className="font-mono text-xs uppercase tracking-wider text-ink/90 font-medium">
+                        {m.label}
+                      </div>
+                    </div>
+
+                    <p className="font-sans text-xs text-muted leading-relaxed font-light mt-6 pt-5 border-t border-white/[0.06]">
+                      {m.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </section>
 
           {/* ========================================================= */}
-          {/* 3. DUAL ETHOS CARDS: THE METHOD & THE MINDSET             */}
+          {/* 3. DUAL EDITORIAL MANIFESTO: THE WORKSHOP & THE DOCTRINE  */}
           {/* ========================================================= */}
           <section className="mb-24 sm:mb-32">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              {/* Card 1: The Method */}
-              <div className="bg-[#0e070a] border border-white/[0.08] hover:border-accent/35 rounded-2xl p-8 sm:p-10 flex flex-col justify-between gap-6 shadow-xl shadow-black/60 transition-colors">
-                <div className="space-y-4">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-border-subtle pb-6">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent font-medium block mb-2">
+                  Operating Philosophy
+                </span>
+                <h2 className="font-serif text-3xl sm:text-5xl font-normal text-ink leading-tight">
+                  Two Pillars of the Lab
+                </h2>
+              </div>
+              <p className="text-muted text-xs sm:text-sm max-w-[45ch] leading-relaxed font-sans">
+                The duality of our culture: relentless private craftsmanship in the workshop, paired with fearless audacity on public stages.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Panel I: The Workshop */}
+              <div className="bg-gradient-to-b from-[#0e070a] to-[#0a0507] border border-white/[0.08] hover:border-accent/30 rounded-2xl p-8 sm:p-11 flex flex-col justify-between shadow-2xl shadow-black/70 transition-all duration-300 relative group overflow-hidden">
+                <div
+                  className="absolute top-0 right-0 w-72 h-72 pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity"
+                  style={{
+                    background: "radial-gradient(circle at 100% 0%, rgba(223, 170, 162, 0.4) 0%, transparent 70%)",
+                  }}
+                />
+
+                <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-accent uppercase tracking-widest font-medium">
-                      01 // The Method
+                    <span className="font-mono text-[11px] text-accent uppercase tracking-[0.25em] font-medium">
+                      Pillar I · The Workshop
                     </span>
-                    <Cpu className="w-5 h-5 text-accent/80" />
+                    <Cpu className="w-4 h-4 text-accent/70" />
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-ink font-normal leading-tight">
-                    Hands-On Engineering, Zero Rote Abstraction
+
+                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] text-ink font-normal leading-snug">
+                    Where Software Meets Physical Consequence
                   </h3>
-                  <p className="font-sans text-sm text-ink-secondary/90 leading-relaxed font-light">
-                    Engineering cannot be learned from slide decks alone. We reject the waiting game: first-year students work directly with microcontrollers, circuit netlists, radio transceivers, and intelligent neural runtimes from their very first semester.
+
+                  <p className="font-sans text-sm sm:text-[15px] text-ink-secondary/90 leading-relaxed font-light">
+                    Modern engineering education has largely retreated behind glass screens and abstract simulators. We restore physical tangibility: circuit boards carrying real current, RF waves propagating across open air, and autonomous algorithms bound by microsecond latency. In this lab, theory is only verified when it physically operates.
                   </p>
                 </div>
 
-                <ul className="space-y-2.5 pt-4 border-t border-border-subtle text-xs font-mono text-muted">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
-                    <span>Real hardware prototyping from Day 1</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
-                    <span>Open lab culture with shared components and benches</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
-                    <span>Focus on practical deployment over textbook memorization</span>
-                  </li>
-                </ul>
+                <div className="space-y-4 pt-8 mt-8 border-t border-white/[0.06] relative z-10">
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="flex items-start gap-4">
+                      <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">01</span>
+                      <div>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Empirical Prototyping</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Rapid transition from schematic capture to custom PCB fabrication and live breadboarding.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">02</span>
+                      <div>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Shared Bench Instrumentation</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Direct undergraduate access to oscilloscopes, logic analyzers, and SDR transceivers.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">03</span>
+                      <div>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Independent Inquiries</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Students formulate real research questions rather than following canned laboratory manuals.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Card 2: The Mindset */}
-              <div className="bg-[#0e070a] border border-white/[0.08] hover:border-accent/35 rounded-2xl p-8 sm:p-10 flex flex-col justify-between gap-6 shadow-xl shadow-black/60 transition-colors">
-                <div className="space-y-4">
+              {/* Panel II: The Doctrine */}
+              <div className="bg-gradient-to-b from-[#0e070a] to-[#0a0507] border border-white/[0.08] hover:border-accent/30 rounded-2xl p-8 sm:p-11 flex flex-col justify-between shadow-2xl shadow-black/70 transition-all duration-300 relative group overflow-hidden">
+                <div
+                  className="absolute top-0 right-0 w-72 h-72 pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity"
+                  style={{
+                    background: "radial-gradient(circle at 100% 0%, rgba(223, 170, 162, 0.4) 0%, transparent 70%)",
+                  }}
+                />
+
+                <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-accent uppercase tracking-widest font-medium">
-                      02 // The Mindset
+                    <span className="font-mono text-[11px] text-accent uppercase tracking-[0.25em] font-medium">
+                      Pillar II · The Doctrine
                     </span>
-                    <Flame className="w-5 h-5 text-accent/80" />
+                    <Flame className="w-4 h-4 text-accent/70" />
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-ink font-normal leading-tight">
-                    Train Like You Never Win. Play Like You Never Lost.
+
+                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] text-ink font-normal leading-snug italic">
+                    &ldquo;Train Like You Never Win. Play Like You Never Lost.&rdquo;
                   </h3>
-                  <p className="font-sans text-sm text-ink-secondary/90 leading-relaxed font-light">
-                    In the lab, we train with relentless rigor—auditing circuits, reading research papers, and debugging down to the bit. When competing or defending papers on national stages, we execute with fearless confidence.
+
+                  <p className="font-sans text-sm sm:text-[15px] text-ink-secondary/90 leading-relaxed font-light">
+                    During research cycles, we practice unsparing technical discipline—auditing signal traces, reading IEEE transactions, and stress-testing edge failures. Yet when presenting before academic faculties, defense laboratories, or national hackathon juries, our teams execute with calm, uncompromising poise.
                   </p>
                 </div>
 
-                <ul className="space-y-2.5 pt-4 border-t border-border-subtle text-xs font-mono text-muted">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
-                    <span>Oral defense at symposiums (ICAIA 2025)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
-                    <span>National platforms: NCSC, RBVP & CSIR-NPL</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
-                    <span>High-velocity hackathon collaboration sprints</span>
-                  </li>
-                </ul>
+                <div className="space-y-4 pt-8 mt-8 border-t border-white/[0.06] relative z-10">
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="flex items-start gap-4">
+                      <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">01</span>
+                      <div>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">Oral Academic Defense</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Training first-year researchers to defend empirical results at conferences such as ICAIA 2025.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">02</span>
+                      <div>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">National Platforms</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Representing MSIT across premier competitive circuits including NCSC, RBVP, and CSIR-NPL.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <span className="font-serif text-lg text-accent/80 font-light italic shrink-0">03</span>
+                      <div>
+                        <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-medium">High-Velocity Sprints</h4>
+                        <p className="font-sans text-xs text-muted font-light mt-0.5">Translating multidisciplinary engineering concepts into functional hardware within 36 hours.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
