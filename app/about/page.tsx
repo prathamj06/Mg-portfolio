@@ -39,56 +39,56 @@ export default function AboutUsPage() {
     {
       src: "/assets/drive/digital-circuit-board.jpg",
       alt: "Digital Electronics Logic Prototyping & Test Bench",
-      tag: "Plate 01 · Silicon & Logic",
+      tag: "Silicon & Logic",
       title: "Logic Circuit Prototyping & Bench Testing",
       desc: "Breadboard verification of digital logic gates, clock generators, and mixed-signal interface circuits.",
     },
     {
       src: "/assets/drive/comm-system-setup.jpg",
       alt: "Communication Systems & RF Receiver Antenna Setup",
-      tag: "Plate 02 · RF Communications",
+      tag: "RF Communications",
       title: "RF Receiver Antenna & Demodulation Link",
       desc: "Tuned RF communication apparatus for high-frequency signal capture, telemetry extraction, and spectrum analysis.",
     },
     {
       src: "/assets/drive/esp32-module.jpg",
       alt: "ESP32 Custom Embedded Hardware & Microcontroller Unit",
-      tag: "Plate 03 · Embedded Systems",
+      tag: "Embedded Systems",
       title: "ESP32 Embedded Firmware & Hardware Platform",
       desc: "Low-power microcontroller unit running custom firmware routines for wireless telemetry and network auditing.",
     },
     {
       src: "/assets/drive/aiot-urban-farm-1.jpg",
       alt: "AIoT Based Urban Hydroponic Farming Rig",
-      tag: "Plate 04 · Environmental IoT",
+      tag: "Environmental IoT",
       title: "AIoT Urban Farming & Microclimate Array",
       desc: "Closed-loop automated agricultural rig monitoring soil moisture, nutrient dosers, and environmental temperature.",
     },
     {
       src: "/assets/drive/water-filtration-rig.jpg",
       alt: "Multi-Stage Physical Water Filtration & Purification Rig",
-      tag: "Plate 05 · Clean Tech",
+      tag: "Clean Tech",
       title: "Multi-Stage Water Filtration System",
       desc: "Empirical filtration apparatus evaluating physical sediment filtration, flow rates, and water treatment methods.",
     },
     {
       src: "/assets/drive/water-sensor-kit.jpg",
       alt: "Water Quality Testing Kit & Sensing Instrumentation",
-      tag: "Plate 06 · Instrumentation",
+      tag: "Instrumentation",
       title: "Field Water Quality Testing & Sensor Kit",
       desc: "Portable sensor kit measuring dissolved solids (TDS), pH balance, and electrical conductivity in aqueous solutions.",
     },
     {
       src: "/assets/drive/aiot-urban-farm-2.jpg",
       alt: "AIoT Automated Greenhouse Cultivation Bench",
-      tag: "Plate 07 · Automation",
+      tag: "Automation",
       title: "Automated Greenhouse Telemetry",
       desc: "Sensor deployment for environmental analytics, ambient light logging, and microcontroller closed-loop irrigation.",
     },
     {
       src: "/assets/drive/aqi-dashboard.png",
       alt: "Air Quality Index (AQI) Sensor Telemetry Dashboard",
-      tag: "Plate 08 · Telemetry",
+      tag: "Telemetry",
       title: "AQI Environmental Telemetry Interface",
       desc: "Real-time air quality index monitoring pipeline logging particulate matter (PM2.5/PM10), VOCs, and atmospheric humidity.",
     },
@@ -266,7 +266,7 @@ export default function AboutUsPage() {
           <div className="w-full max-w-[1720px] 2xl:max-w-[1880px] mx-auto px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 mb-6 flex items-center justify-between">
             <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted">
               <span className="text-accent">✦</span>
-              <span>Photographic Plates · Real Benchwork & Apparatus</span>
+              <span>Photographic Archives · Real Benchwork & Apparatus</span>
             </div>
             <span className="font-mono text-[11px] text-accent/70 hidden sm:inline-block">
               Click Any Specimen to Inspect High-Res
@@ -327,14 +327,8 @@ export default function AboutUsPage() {
                 <Maximize2 className="w-3.5 h-3.5 text-accent" />
               </div>
 
-              {/* Bottom Details with Status Beacon */}
+              {/* Bottom Details */}
               <div className="absolute bottom-3.5 left-4 right-4 z-20">
-                <div className="flex items-center gap-1.5 mb-1 opacity-70 group-hover:opacity-100 transition-opacity">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-muted group-hover:text-accent transition-colors">
-                    Authentic Hardware Plate
-                  </span>
-                </div>
                 <h4 className="font-serif text-sm sm:text-base text-ink font-normal leading-tight group-hover:text-accent transition-colors">
                   {photo.title}
                 </h4>
@@ -396,14 +390,8 @@ export default function AboutUsPage() {
                 <Maximize2 className="w-3.5 h-3.5 text-accent" />
               </div>
 
-              {/* Bottom Details with Status Beacon */}
+              {/* Bottom Details */}
               <div className="absolute bottom-3.5 left-4 right-4 z-20">
-                <div className="flex items-center gap-1.5 mb-1 opacity-70 group-hover:opacity-100 transition-opacity">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-muted group-hover:text-accent transition-colors">
-                    Authentic Hardware Plate
-                  </span>
-                </div>
                 <h4 className="font-serif text-sm sm:text-base text-ink font-normal leading-tight group-hover:text-accent transition-colors">
                   {photo.title}
                 </h4>
