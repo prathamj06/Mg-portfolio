@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { playHaptic } from "@/lib/audio";
+import { usePageTransition, NAV_ORDER } from "@/context/PageTransitionContext";
 
 interface NavLinkItem {
   name: string;
@@ -160,6 +161,7 @@ function MagneticMonogram({
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { setDirection } = usePageTransition();
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDockHovered, setIsDockHovered] = useState(false);
@@ -188,6 +190,11 @@ export default function Navbar() {
     setMobileMenuOpen(false);
 
     if (pathname !== link.href) {
+      const fromIndex = NAV_ORDER[pathname] ?? 0;
+      const toIndex = NAV_ORDER[link.href] ?? 0;
+      // If navigating to option on right: toIndex > fromIndex => 1 (left to right)
+      // If navigating to option on left: toIndex < fromIndex => -1 (right to left)
+      setDirection(toIndex >= fromIndex ? 1 : -1);
       router.push(link.href);
     }
   };
@@ -198,6 +205,10 @@ export default function Navbar() {
     if (pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
+      const fromIndex = NAV_ORDER[pathname] ?? 0;
+      const toIndex = 0;
+      // Going to Home (MG) at index 0 from any other page is navigating to the left
+      setDirection(toIndex >= fromIndex ? 1 : -1);
       router.push("/");
     }
   };

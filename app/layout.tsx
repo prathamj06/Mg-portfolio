@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
+import { PageTransitionProvider } from "@/context/PageTransitionContext";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -41,9 +42,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${jakarta.variable} ${jetbrainsMono.variable} dark`}>
       <body className="font-sans text-ink bg-bg antialiased selection:bg-accent selection:text-bg">
-        <ScrollProgress />
-        <Navbar />
-        {children}
+        <PageTransitionProvider>
+          <ScrollProgress />
+          <Navbar />
+          {children}
+        </PageTransitionProvider>
       </body>
     </html>
   );
