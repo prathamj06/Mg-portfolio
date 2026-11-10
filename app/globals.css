@@ -103,3 +103,58 @@ body::before {
   }
 }
 
+/* ========================================================= */
+/* LABORATORY TELEMETRY: DOT-MATRIX & GLITCH EFFECT         */
+/* ========================================================= */
+
+.photo-dot-grid {
+  background-image: 
+    radial-gradient(rgba(223, 170, 162, 0.32) 0.85px, transparent 0.85px),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.35) 1px, transparent 1px, transparent 2.5px);
+  background-size: 3.5px 3.5px, 100% 2.5px;
+}
+
+@keyframes glitch-scanline {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.animate-scanline {
+  animation: glitch-scanline 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes glitch-hover-flicker {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+  }
+  20% {
+    filter: drop-shadow(-1.5px 0 0 rgba(223, 170, 162, 0.5)) drop-shadow(1.5px 0 0 rgba(139, 46, 58, 0.6));
+  }
+  40% {
+    filter: drop-shadow(1px -0.5px 0 rgba(223, 170, 162, 0.4)) drop-shadow(-1px 0.5px 0 rgba(62, 20, 24, 0.5));
+  }
+  60% {
+    filter: drop-shadow(-0.5px 0 0 rgba(223, 170, 162, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+  }
+}
+
+.group:hover .glitch-chroma {
+  animation: glitch-hover-flicker 0.45s ease-out;
+}
+
+

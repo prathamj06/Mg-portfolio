@@ -280,81 +280,145 @@ export default function AboutUsPage() {
           {/* Row 1: Smooth Infinite Glide */}
           <div className="flex gap-5 sm:gap-7 w-max animate-marquee mb-4 sm:mb-6 hover:[animation-play-state:paused] py-2">
             {[...row1, ...row1, ...row1].map((photo, idx) => (
-              <div
-                key={`about-row1-${idx}`}
-                onClick={() => {
-                  setSelectedImage(photo);
-                  playHaptic(640, 0.04);
-                }}
-                className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-accent/50 transition-all duration-500 shadow-xl shadow-black/80 cursor-pointer shrink-0"
-              >
+                          <div
+              key={`about-row1-${idx}`}
+              onClick={() => {
+                setSelectedImage(photo);
+                playHaptic(640, 0.04);
+              }}
+              className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-[#0c0608] border border-white/[0.08] hover:border-accent/50 transition-all duration-700 shadow-xl shadow-black/80 hover:shadow-[0_0_30px_rgba(223,170,162,0.16)] cursor-pointer shrink-0"
+            >
+              {/* Media Container with Glitch Chroma on Hover */}
+              <div className="relative w-full h-full overflow-hidden glitch-chroma">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 768px) 300px, (max-width: 1200px) 390px, 430px"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  className="object-cover transition-all duration-700 ease-out filter grayscale-[80%] sepia-[22%] contrast-[112%] brightness-[84%] group-hover:filter-none group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-50 group-hover:opacity-30 transition-opacity" />
 
-                <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 font-mono text-[10px] text-accent tracking-wider uppercase">
-                  {photo.tag}
-                </div>
+                {/* Theme-Matching Wine / Oxblood Color Tint Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#160608]/90 via-[#320f15]/50 to-[#dfaaa2]/20 mix-blend-color transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
+                <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
 
-                <div className="absolute top-3 right-3 w-7 h-7 rounded-md bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-ink/70 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 className="w-3.5 h-3.5 text-accent" />
-                </div>
+                {/* Precision Dot-Matrix Halftone & CRT Scanline Mesh */}
+                <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-15" />
 
-                <div className="absolute bottom-3.5 left-4 right-4">
-                  <h4 className="font-serif text-sm sm:text-base text-ink font-normal leading-tight group-hover:text-accent transition-colors">
-                    {photo.title}
-                  </h4>
-                  <p className="font-sans text-[11px] text-ink-secondary/75 line-clamp-1 mt-0.5">
-                    {photo.desc}
-                  </p>
-                </div>
+                {/* Subtle CRT Telemetry Laser Scanline */}
+                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scanline" />
+
+                {/* Subtle Radial Vignette Flare on Hover */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
+                  style={{
+                    boxShadow: "inset 0 0 24px rgba(223, 170, 162, 0.14)",
+                  }}
+                />
               </div>
-            ))}
+
+              {/* Bottom Gradient for Text Legibility */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-75 group-hover:opacity-45 transition-opacity duration-700 pointer-events-none z-10" />
+
+              {/* Top Tag Pill */}
+              <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 group-hover:border-accent/40 font-mono text-[10px] text-accent tracking-wider uppercase transition-colors z-20">
+                {photo.tag}
+              </div>
+
+              {/* Expand Hint Icon */}
+              <div className="absolute top-3 right-3 w-7 h-7 rounded-md bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-ink/70 opacity-0 group-hover:opacity-100 group-hover:border-accent/40 transition-all duration-300 z-20 group-hover:scale-105">
+                <Maximize2 className="w-3.5 h-3.5 text-accent" />
+              </div>
+
+              {/* Bottom Details with Status Beacon */}
+              <div className="absolute bottom-3.5 left-4 right-4 z-20">
+                <div className="flex items-center gap-1.5 mb-1 opacity-70 group-hover:opacity-100 transition-opacity">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-muted group-hover:text-accent transition-colors">
+                    Authentic Hardware Plate
+                  </span>
+                </div>
+                <h4 className="font-serif text-sm sm:text-base text-ink font-normal leading-tight group-hover:text-accent transition-colors">
+                  {photo.title}
+                </h4>
+                <p className="font-sans text-[11px] text-ink-secondary/75 line-clamp-1 mt-0.5">
+                  {photo.desc}
+                </p>
+              </div>
+            </div>
+          ))}
           </div>
 
           {/* Row 2: Reverse Direction Glide */}
           <div className="flex gap-5 sm:gap-7 w-max animate-marquee-reverse hover:[animation-play-state:paused] py-2">
             {[...row2, ...row2, ...row2].map((photo, idx) => (
-              <div
-                key={`about-row2-${idx}`}
-                onClick={() => {
-                  setSelectedImage(photo);
-                  playHaptic(640, 0.04);
-                }}
-                className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-accent/50 transition-all duration-500 shadow-xl shadow-black/80 cursor-pointer shrink-0"
-              >
+                          <div
+              key={`about-row2-${idx}`}
+              onClick={() => {
+                setSelectedImage(photo);
+                playHaptic(640, 0.04);
+              }}
+              className="group relative w-[300px] sm:w-[390px] lg:w-[430px] aspect-[16/10] rounded-2xl overflow-hidden bg-[#0c0608] border border-white/[0.08] hover:border-accent/50 transition-all duration-700 shadow-xl shadow-black/80 hover:shadow-[0_0_30px_rgba(223,170,162,0.16)] cursor-pointer shrink-0"
+            >
+              {/* Media Container with Glitch Chroma on Hover */}
+              <div className="relative w-full h-full overflow-hidden glitch-chroma">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 768px) 300px, (max-width: 1200px) 390px, 430px"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  className="object-cover transition-all duration-700 ease-out filter grayscale-[80%] sepia-[22%] contrast-[112%] brightness-[84%] group-hover:filter-none group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-50 group-hover:opacity-30 transition-opacity" />
 
-                <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 font-mono text-[10px] text-accent tracking-wider uppercase">
-                  {photo.tag}
-                </div>
+                {/* Theme-Matching Wine / Oxblood Color Tint Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#160608]/90 via-[#320f15]/50 to-[#dfaaa2]/20 mix-blend-color transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
+                <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
 
-                <div className="absolute top-3 right-3 w-7 h-7 rounded-md bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-ink/70 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 className="w-3.5 h-3.5 text-accent" />
-                </div>
+                {/* Precision Dot-Matrix Halftone & CRT Scanline Mesh */}
+                <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-15" />
 
-                <div className="absolute bottom-3.5 left-4 right-4">
-                  <h4 className="font-serif text-sm sm:text-base text-ink font-normal leading-tight group-hover:text-accent transition-colors">
-                    {photo.title}
-                  </h4>
-                  <p className="font-sans text-[11px] text-ink-secondary/75 line-clamp-1 mt-0.5">
-                    {photo.desc}
-                  </p>
-                </div>
+                {/* Subtle CRT Telemetry Laser Scanline */}
+                <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scanline" />
+
+                {/* Subtle Radial Vignette Flare on Hover */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
+                  style={{
+                    boxShadow: "inset 0 0 24px rgba(223, 170, 162, 0.14)",
+                  }}
+                />
               </div>
-            ))}
+
+              {/* Bottom Gradient for Text Legibility */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-75 group-hover:opacity-45 transition-opacity duration-700 pointer-events-none z-10" />
+
+              {/* Top Tag Pill */}
+              <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 group-hover:border-accent/40 font-mono text-[10px] text-accent tracking-wider uppercase transition-colors z-20">
+                {photo.tag}
+              </div>
+
+              {/* Expand Hint Icon */}
+              <div className="absolute top-3 right-3 w-7 h-7 rounded-md bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-ink/70 opacity-0 group-hover:opacity-100 group-hover:border-accent/40 transition-all duration-300 z-20 group-hover:scale-105">
+                <Maximize2 className="w-3.5 h-3.5 text-accent" />
+              </div>
+
+              {/* Bottom Details with Status Beacon */}
+              <div className="absolute bottom-3.5 left-4 right-4 z-20">
+                <div className="flex items-center gap-1.5 mb-1 opacity-70 group-hover:opacity-100 transition-opacity">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-muted group-hover:text-accent transition-colors">
+                    Authentic Hardware Plate
+                  </span>
+                </div>
+                <h4 className="font-serif text-sm sm:text-base text-ink font-normal leading-tight group-hover:text-accent transition-colors">
+                  {photo.title}
+                </h4>
+                <p className="font-sans text-[11px] text-ink-secondary/75 line-clamp-1 mt-0.5">
+                  {photo.desc}
+                </p>
+              </div>
+            </div>
+          ))}
           </div>
         </section>
 
