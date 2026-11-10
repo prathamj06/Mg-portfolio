@@ -77,18 +77,34 @@ export default function Founders() {
                 <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="flex flex-col gap-5">
-                  {/* Founder Authentic Photograph Frame */}
+                  {/* Founder Authentic Photograph Frame with Archival Photo Effect */}
                   <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-black/60 border border-white/[0.08] group-hover:border-accent/40 transition-colors shadow-lg">
                     <Image
                       src={photo.image}
                       alt={f.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                      className="object-cover transition-all duration-700 ease-out filter grayscale-[80%] sepia-[22%] contrast-[112%] brightness-[84%] group-hover:filter-none group-hover:scale-[1.04]"
                       style={{ objectPosition: photo.objectPosition }}
                     />
+
+                    {/* Theme-Matching Wine / Oxblood Color Tint Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#160608]/90 via-[#320f15]/50 to-[#dfaaa2]/20 mix-blend-color transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
+                    <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
+
+                    {/* Precision Dot-Matrix Halftone */}
+                    <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-0" />
+
+                    {/* Subtle Radial Vignette Flare on Hover */}
+                    <div
+                      className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
+                      style={{
+                        boxShadow: "inset 0 0 24px rgba(223, 170, 162, 0.14)",
+                      }}
+                    />
+
                     {/* Subtle bottom gradient vignette */}
-                    <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0e070a] via-[#0e070a]/40 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0e070a] via-[#0e070a]/40 to-transparent pointer-events-none z-10" />
                   </div>
 
                   {/* Name & Specialization */}

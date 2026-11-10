@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   motion,
@@ -68,6 +68,8 @@ function MagneticNavLink({
     <motion.button
       ref={ref}
       type="button"
+      data-nav-id={link.id}
+      data-nav-active={isActive ? "true" : "false"}
       style={{ scale }}
       onClick={onClick}
       onMouseEnter={onHover}
@@ -80,24 +82,6 @@ function MagneticNavLink({
           : "text-ink-secondary/75 hover:text-ink"
       }`}
     >
-      {/* Active Indicator Glow */}
-      {isActive && (
-        <motion.div
-          layoutId="activeNavPill"
-          transition={{
-            type: "spring",
-            stiffness: 240,
-            damping: 30,
-            mass: 1.1,
-          }}
-          className={`absolute inset-0 rounded-full transition-colors duration-200 -z-10 pointer-events-none ${
-            isHovered
-              ? "bg-accent/[0.20] border border-accent/45 shadow-[0_0_16px_rgba(223,170,162,0.22)]"
-              : "bg-accent/[0.14] border border-accent/30 shadow-[0_0_12px_rgba(223,170,162,0.12)]"
-          }`}
-        />
-      )}
-
       {/* Hover Indicator Highlight: Clean local fade to prevent sliding over active pills on different pages */}
       <AnimatePresence>
         {isHovered && !isActive && (
@@ -165,6 +149,8 @@ export default function Navbar() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDockHovered, setIsDockHovered] = useState(false);
+  const navLinksRef = useRef<HTMLDivElement>(null);
+  const [activeRect, setActiveRect] = useState<{ left: number; width: number } | null>(null);
 
   // Mouse coordinate for magnetic dock magnification physics
   const mouseX = useMotionValue(Infinity);
@@ -177,6 +163,35 @@ export default function Navbar() {
     { name: "Sessions", href: "/sessions", id: "sessions" },
     { name: "Achievements", href: "/achievements", id: "achievements" },
   ];
+
+  const isHoveredOverActive = navLinks.find((l) => l.href === pathname)?.id === hoveredSection;
+
+  // Recalculate horizontal position of the active pill strictly along the X-axis
+  useEffect(() => {
+    const updateActiveRect = () => {
+      if (!navLinksRef.current) return;
+      const activeEl = navLinksRef.current.querySelector(
+        '[data-nav-active="true"]'
+      ) as HTMLElement | null;
+
+      if (activeEl) {
+        setActiveRect({
+          left: activeEl.offsetLeft,
+          width: activeEl.offsetWidth,
+        });
+      } else {
+        setActiveRect(null);
+      }
+    };
+
+    updateActiveRect();
+    const timer = setTimeout(updateActiveRect, 40);
+    window.addEventListener("resize", updateActiveRect);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateActiveRect);
+    };
+  }, [pathname]);
 
   // Spring-animated dock vessel magnification that scales smoothly in tandem with options
   const dockScale = useSpring(isDockHovered ? 1.018 : 1.0, {
@@ -196,6 +211,20 @@ export default function Navbar() {
       // If navigating to option on right: toIndex > fromIndex => 1 (left to right)
       // If navigating to option on left: toIndex < fromIndex => -1 (right to left)
       setDirection(toIndex >= fromIndex ? 1 : -1);
+
+      // Pre-slide the pill immediately horizontally for instant zero-latency feedback
+      if (navLinksRef.current) {
+        const targetEl = navLinksRef.current.querySelector(
+          `[data-nav-id="${link.id}"]`
+        ) as HTMLElement | null;
+        if (targetEl) {
+          setActiveRect({
+            left: targetEl.offsetLeft,
+            width: targetEl.offsetWidth,
+          });
+        }
+      }
+
       router.push(link.href);
     }
   };
@@ -209,6 +238,7 @@ export default function Navbar() {
       // Re-trigger the smooth transition when clicking MG while on landing page
       triggerTransition(1);
     } else {
+      setActiveRect(null);
       const fromIndex = NAV_ORDER[pathname] ?? 0;
       const toIndex = 0;
       // Going to Home (MG) at index 0 from any other page is navigating to the left
@@ -255,25 +285,50 @@ export default function Navbar() {
           <MagneticMonogram mouseX={mouseX} onClick={handleHomeClick} />
           <span className="h-3.5 w-[1px] bg-white/15 mx-1.5 select-none pointer-events-none self-center" />
 
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            const isHovered = hoveredSection === link.id;
-
-            return (
-              <MagneticNavLink
-                key={link.name}
-                link={link}
-                mouseX={mouseX}
-                isActive={isActive}
-                isHovered={isHovered}
-                onClick={() => handleNavClick(link)}
-                onHover={() => setHoveredSection(link.id)}
-                onLeave={() =>
-                  setHoveredSection((prev) => (prev === link.id ? null : prev))
-                }
+          {/* Nav Links Container with Absolute Horizontal Sliding Active Pill (Strictly Coplanar X-Axis Only) */}
+          <div ref={navLinksRef} className="relative flex items-center gap-2">
+            {activeRect && (
+              <motion.div
+                initial={false}
+                animate={{
+                  x: activeRect.left,
+                  width: activeRect.width,
+                  opacity: 1,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                  mass: 0.8,
+                }}
+                className={`absolute inset-y-0 rounded-full transition-colors duration-200 pointer-events-none -z-10 ${
+                  isHoveredOverActive
+                    ? "bg-accent/[0.20] border border-accent/45 shadow-[0_0_16px_rgba(223,170,162,0.22)]"
+                    : "bg-accent/[0.14] border border-accent/30 shadow-[0_0_12px_rgba(223,170,162,0.12)]"
+                }`}
               />
-            );
-          })}
+            )}
+
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              const isHovered = hoveredSection === link.id;
+
+              return (
+                <MagneticNavLink
+                  key={link.name}
+                  link={link}
+                  mouseX={mouseX}
+                  isActive={isActive}
+                  isHovered={isHovered}
+                  onClick={() => handleNavClick(link)}
+                  onHover={() => setHoveredSection(link.id)}
+                  onLeave={() =>
+                    setHoveredSection((prev) => (prev === link.id ? null : prev))
+                  }
+                />
+              );
+            })}
+          </div>
         </div>
       </motion.nav>
 
