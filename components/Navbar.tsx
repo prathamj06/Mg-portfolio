@@ -86,9 +86,9 @@ function MagneticNavLink({
           layoutId="activeNavPill"
           transition={{
             type: "spring",
-            stiffness: 380,
+            stiffness: 240,
             damping: 30,
-            mass: 0.8,
+            mass: 1.1,
           }}
           className={`absolute inset-0 rounded-full transition-colors duration-200 -z-10 pointer-events-none ${
             isHovered
