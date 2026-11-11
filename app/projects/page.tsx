@@ -3,9 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
-  X, 
   ExternalLink, 
   Search, 
   Cpu, 
@@ -15,21 +14,17 @@ import {
   Layers, 
   Compass, 
   Brain, 
-  Sparkles,
   GitBranch,
-  ArrowRight,
   ArrowUpRight,
-  SlidersHorizontal,
-  CheckCircle2
+  SlidersHorizontal
 } from "lucide-react";
-import { COMMUNITY_DATA, Project } from "@/lib/data";
+import { COMMUNITY_DATA } from "@/lib/data";
 import { playHaptic } from "@/lib/audio";
 import Footer from "@/components/Footer";
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filters = [
     { label: `All Systems (${COMMUNITY_DATA.projects.length})`, id: "all" },
@@ -77,16 +72,6 @@ export default function ProjectsPage() {
 
     return matchesFilter && matchesQuery;
   });
-
-  const handleOpenModal = (p: Project) => {
-    setSelectedProject(p);
-    playHaptic(640, 0.04);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedProject(null);
-    playHaptic(380, 0.03);
-  };
 
   const stats = [
     { tag: "INVENTORY", value: `${COMMUNITY_DATA.projects.length}`, label: "Engineered Systems", desc: "Physical laboratory builds & deployable firmware" },
@@ -239,18 +224,36 @@ export default function ProjectsPage() {
                 className="group relative bg-[#0e070a] hover:bg-[#12080d] border border-white/[0.08] hover:border-accent/40 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-xl shadow-black/70 hover:shadow-[0_16px_40px_rgba(0,0,0,0.85),0_0_24px_rgba(223,170,162,0.12)]"
               >
                 <div>
-                  {/* Photo Frame (if available) */}
+                  {/* Photo Frame (if available) with Landing Page Wine / Oxblood Color Tint */}
                   {p.image && (
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-black/60 border border-white/[0.06] mb-5">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0c0608] border border-white/[0.08] mb-5 shadow-lg shadow-black/80">
                       <Image
                         src={p.image}
                         alt={p.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover grayscale contrast-110 opacity-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                        className="object-cover transition-all duration-700 ease-out filter grayscale-[80%] sepia-[22%] contrast-[112%] brightness-[84%] group-hover:filter-none group-hover:scale-[1.04]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0e070a] via-transparent to-transparent opacity-90" />
-                      <div className="absolute top-3 right-3 font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded bg-black/70 border border-white/10 text-accent backdrop-blur-sm">
+
+                      {/* Theme-Matching Wine / Oxblood Color Tint Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-[#160608]/90 via-[#320f15]/50 to-[#dfaaa2]/20 mix-blend-color transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
+                      <div className="absolute inset-0 bg-[#3e1418]/30 mix-blend-multiply transition-opacity duration-700 ease-out group-hover:opacity-0 pointer-events-none" />
+
+                      {/* Precision Dot-Matrix Halftone */}
+                      <div className="photo-dot-grid absolute inset-0 pointer-events-none transition-opacity duration-700 ease-out opacity-85 group-hover:opacity-0" />
+
+                      {/* Subtle Radial Vignette Flare on Hover */}
+                      <div
+                        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
+                        style={{
+                          boxShadow: "inset 0 0 24px rgba(223, 170, 162, 0.14)",
+                        }}
+                      />
+
+                      {/* Bottom Gradient for Text Legibility / Depth */}
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0e070a] via-[#0e070a]/40 to-transparent opacity-85 pointer-events-none" />
+
+                      <div className="absolute top-3 right-3 font-mono text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-black/75 border border-white/10 text-accent backdrop-blur-sm z-10">
                         Lab Artifact
                       </div>
                     </div>
@@ -305,14 +308,10 @@ export default function ProjectsPage() {
 
                 {/* Card Action Footer */}
                 <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                  <button
-                    type="button"
-                    onClick={() => handleOpenModal(p)}
-                    className="font-mono text-xs uppercase tracking-wider text-accent hover:text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
-                  >
-                    <span>Inspect Specs</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  <span className="font-mono text-[11px] text-muted flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent/70" />
+                    <span>Lead: {p.lead}</span>
+                  </span>
 
                   <a
                     href={p.github}
@@ -322,11 +321,11 @@ export default function ProjectsPage() {
                       e.stopPropagation();
                       playHaptic(520, 0.02);
                     }}
-                    className="text-muted hover:text-ink transition-colors flex items-center gap-1.5 text-xs font-mono"
+                    className="font-mono text-xs uppercase tracking-wider text-accent hover:text-ink flex items-center gap-1.5 transition-colors group/link"
                     title="Open GitHub Repository"
                   >
                     <span>Repository</span>
-                    <ExternalLink className="w-3 h-3 text-accent/80" />
+                    <ExternalLink className="w-3.5 h-3.5 text-accent group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>
               </motion.article>
@@ -351,127 +350,6 @@ export default function ProjectsPage() {
           )}
         </div>
       </main>
-
-      {/* Deep-Dive Technical Spec Dossier Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleCloseModal}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-xl cursor-zoom-out"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 16 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 16 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full bg-[#110a0d] border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8 cursor-default max-h-[90vh] overflow-y-auto"
-            >
-              <button
-                onClick={handleCloseModal}
-                className="absolute top-6 right-6 w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-ink hover:text-accent transition-colors cursor-pointer"
-                aria-label="Close dialog"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {/* Modal Image Header (if exists) */}
-              {selectedProject.image && (
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-black border border-white/10 mb-6">
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#110a0d] via-transparent to-transparent" />
-                </div>
-              )}
-
-              <div className="flex items-center gap-2 font-mono text-xs text-accent uppercase tracking-wider mb-2">
-                <span>✦</span>
-                <span>{selectedProject.domain}</span>
-                <span className="text-muted/60">·</span>
-                <span className="text-muted">{selectedProject.status}</span>
-              </div>
-
-              <h3 className="font-serif text-2xl sm:text-3xl text-ink font-normal mb-4">
-                {selectedProject.title}
-              </h3>
-
-              <p className="text-ink-secondary text-sm sm:text-base leading-relaxed mb-6 font-light">
-                {selectedProject.abstract}
-              </p>
-
-              {/* Full Specs Table */}
-              <div className="mb-6">
-                <h4 className="font-mono text-xs text-accent uppercase tracking-wider mb-3">
-                  System Specifications &amp; Parameters
-                </h4>
-                <div className="rounded-xl bg-black/60 border border-white/10 p-4 space-y-2.5 font-mono text-xs">
-                  {Object.entries(selectedProject.technicalSpecs).map(([key, val]) => (
-                    <div key={key} className="flex items-center justify-between border-b border-white/[0.04] pb-2 last:border-0 last:pb-0">
-                      <span className="text-muted capitalize">
-                        {key.replace(/([A-Z])/g, " $1")}
-                      </span>
-                      <span className="text-ink font-medium text-right">{val}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Performance Metric Callout */}
-              <div className="mb-6 p-4 rounded-xl bg-accent/[0.08] border border-accent/20 flex items-center gap-3">
-                <Sparkles className="w-4 h-4 text-accent shrink-0" />
-                <span className="font-sans text-xs text-ink-secondary">
-                  <strong className="text-accent font-mono uppercase tracking-wider mr-1.5">Bench Performance:</strong>
-                  {selectedProject.metrics}
-                </span>
-              </div>
-
-              {/* Collaborators & Meta */}
-              <div className="mb-6 space-y-2 text-xs font-mono">
-                <div>
-                  <span className="text-muted">Lead Steward: </span>
-                  <span className="text-accent">{selectedProject.lead}</span>
-                </div>
-                {selectedProject.collaborators.length > 0 && (
-                  <div>
-                    <span className="text-muted">Collaborators: </span>
-                    <span className="text-ink-secondary">
-                      {selectedProject.collaborators.join(", ")}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* External Source Link */}
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                <button
-                  type="button"
-                  onClick={handleCloseModal}
-                  className="font-mono text-xs text-muted hover:text-ink transition-colors"
-                >
-                  Close Dossier
-                </button>
-
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-bg font-mono text-xs uppercase tracking-wider font-semibold hover:bg-white transition-colors"
-                >
-                  <span>Open GitHub Repository</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <Footer />
     </>
