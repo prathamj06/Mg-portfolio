@@ -36,6 +36,7 @@ export interface Project {
   tags: string[];
   github: string;
   metrics: string;
+  image?: string;
 }
 
 export interface Session {
@@ -111,7 +112,7 @@ export const COMMUNITY_DATA: CommunityData = {
     tagline: "An unofficial technical collective exploring RF, AI/ML, electronics, mathematics, and scientific research.",
     cohortSize: "30+ First-Year Members",
     domainsCount: 6,
-    activeProjectsCount: 14,
+    activeProjectsCount: 20,
     sessionsConducted: 8,
     contactEmail: "melerigamy.research@gmail.com",
     githubOrg: "https://github.com/melerigamy",
@@ -174,223 +175,534 @@ export const COMMUNITY_DATA: CommunityData = {
 
   domains: [
     {
-      id: "rf-wireless",
-      code: "RF-01",
-      name: "Radio Frequency & Wireless",
-      summary: "Electromagnetic propagation, software-defined radio, microwave resonators, and passive spectrum mapping.",
-      lead: "Ishaan Chaturvedi",
-      description: "From Maxwell's field equations to real-time quadrature demodulation, we bridge theoretical electromagnetics with pragmatic RF hardware. Members work on custom helical antennas, SDR signal pipelines, and spatial radar sensing.",
+      id: "ai-ml",
+      code: "AI-01",
+      name: "Artificial Intelligence & Machine Learning (AI–ML)",
+      summary: "Neural architectures, computer vision, edge AI inference on microcontrollers, and intelligent automated decision systems.",
+      lead: "Ishan Chaturvedi & ML Cohort",
+      description: "From deep learning phenotyping to real-time embedded neural models, we deploy intelligent machine learning systems directly on edge silicon, microcontrollers, and robotic platforms.",
       keyTopics: [
-        "Software-Defined Radio (SDR / USRP)",
-        "Impedance Matching & Smith Chart Synthesis",
-        "Passive Bistatic Radar Sensing",
-        "Planar Microstrip & Phased Arrays"
+        "Edge AI & TinyML Inference",
+        "Computer Vision & Phenotyping",
+        "Genetic Algorithms & Predictive Control",
+        "Sensor Fusion & Decision Networks"
       ],
-      equation: "s(t) = I(t)\\cos(2\\pi f_c t) - Q(t)\\sin(2\\pi f_c t)",
-      equationLabel: "Quadrature Modulation"
+      equation: "\\min_{\\theta} \\frac{1}{N} \\sum_{i=1}^N \\mathcal{L}(f(x_i; \\theta), y_i) + \\lambda \\Omega(\\theta)",
+      equationLabel: "Empirical Risk Minimization"
     },
     {
-      id: "ai-ml",
-      code: "ML-02",
-      name: "Artificial Intelligence & ML",
-      summary: "Foundational neural architectures, tinyML edge deployment, geometric representations, and mechanistic interpretability.",
-      lead: "Dhruv Ghoshal",
-      description: "Rejecting black-box tooling, we reconstruct modern deep learning from first principles: custom automatic differentiation engines in C, weight pruning kernels, and Kolmogorov-Arnold Networks running on embedded silicon.",
+      id: "sustainable-tech",
+      code: "ST-02",
+      name: "Sustainable and Green Technologies",
+      summary: "Closed-loop environmental telemetry, automated urban farming rigs, water quality instrumentation, and clean energy monitoring.",
+      lead: "Ishan Chaturvedi",
+      description: "Engineering practical ecological solutions: high-pressure aeroponic cultivation, cloud-connected soil irrigation nodes, and multi-stage water filtration systems evaluated under empirical constraints.",
       keyTopics: [
-        "First-Principles Autodiff Engines in C",
-        "Edge Post-Training Quantization (INT4)",
-        "Mechanistic Interpretability & Circuit Probing",
-        "State Space Models (SSMs) & Linear Attention"
+        "Controlled Environment Agriculture (AIoT)",
+        "Automated Nutrient Dosing with PID & Fuzzy Logic",
+        "Water Quality Telemetry (pH, Turbidity, TDS)",
+        "Renewable Micro-Grids & Battery Storage"
       ],
-      equation: "\\mathcal{L}_{prune}(\\theta) = \\mathbb{E}[\\ell(f(x; \\theta), y)] + \\lambda \\|\\mathbf{W} \\odot \\mathbf{M}\\|_0",
-      equationLabel: "Structured Sparsity Objective"
+      equation: "I_L = \\frac{P}{V \\cdot \\eta \\cdot \\cos\\phi}",
+      equationLabel: "Inductive Load Power Sizing"
+    },
+    {
+      id: "communication-dsp",
+      code: "CS-03",
+      name: "Communication & Signal Processing Systems",
+      summary: "Wireless transceiver architectures, digital signal processing (DSP), modulation schemes, and high-frequency telemetry links.",
+      lead: "Ishan Chaturvedi",
+      description: "Demystifying the electromagnetic spectrum: from 10.5 GHz phased array pulse compression to VHF aviation voice demodulation and wideband SDR spectrum surveillance with GNU Radio.",
+      keyTopics: [
+        "Pulse Linear Frequency Modulation (PLFM)",
+        "Software-Defined Radio (SDR / RTL2832U)",
+        "Quadrature Demodulation & Digital Filtering",
+        "Aviation Band VHF AM Intercept"
+      ],
+      equation: "s(t) = \\text{rect}\\left(\\frac{t}{T}\\right) \\exp\\left(j 2\\pi \\left(f_0 t + \\frac{K}{2} t^2\\right)\\right)",
+      equationLabel: "Linear Frequency Modulated Chirp"
+    },
+    {
+      id: "antenna-electromagnetics",
+      code: "AE-04",
+      name: "Antenna Design and Electromagnetics",
+      summary: "Electromagnetic wave propagation, planar microstrip antennas, impedance matching networks, and RF simulation modeling.",
+      lead: "Ishan Chaturvedi",
+      description: "Designing, simulating, and validating microwave antenna structures: patch arrays, slotted dielectric waveguides, and resonant LC filter front-ends with sub-millimeter precision.",
+      keyTopics: [
+        "Planar Microstrip Patch Arrays",
+        "Slotted Waveguide Antenna Design",
+        "Impedance Matching & Smith Chart Synthesis",
+        "Microwave S-Parameter Characterization"
+      ],
+      equation: "L = \\frac{c}{2 f_0 \\sqrt{\\epsilon_{\\text{eff}}}} - 2\\Delta L",
+      equationLabel: "Microstrip Patch Resonant Length"
+    },
+    {
+      id: "robotics-automation",
+      code: "RA-05",
+      name: "Robotics and Intelligent Automation",
+      summary: "Autonomous mechanical actuation, kinematics, closed-loop sensor-motor feedback, and intelligent industrial automation rigs.",
+      lead: "Ishan Chaturvedi",
+      description: "Constructing physical autonomous machines: 5-DOF 3D-printed robotic arms, animatronic eye mechanisms, autonomous line followers, hybrid utility buggies, and decentralized drone swarms.",
+      keyTopics: [
+        "5-DOF Articulated Arm Kinematics",
+        "LIDAR SLAM & RTK-GPS Navigation",
+        "Differential Drive & Optical IR Tracking",
+        "Multi-Agent UAV Swarm Formations"
+      ],
+      equation: "\\tau = \\mathbf{M}(\\theta)\\ddot{\\theta} + \\mathbf{C}(\\theta, \\dot{\\theta})\\dot{\\theta} + \\mathbf{g}(\\theta)",
+      equationLabel: "Manipulator Dynamic Formulation"
     },
     {
       id: "electronics-embedded",
-      code: "EE-03",
-      name: "Electronics & Embedded Systems",
-      summary: "High-speed PCB layout, custom RISC-V HDL cores, FPGA logic synthesis, and precision mixed-signal instrumentation.",
-      lead: "Keshav Gupta",
-      description: "Bridging atoms and logic gates. We design multi-layer impedance-controlled circuit boards, synthesize pipelined processor cores in Verilog, and engineer sub-nanosecond analog-to-digital measurement systems.",
+      code: "EE-06",
+      name: "Electronics, IoT & Embedded Systems",
+      summary: "Schematic capture, multi-layer PCB design, low-power microcontroller firmware, and connected industrial IoT sensor mesh.",
+      lead: "Ishan Chaturvedi & Aryan Singh",
+      description: "From discrete 74LS TTL logic gates to 220V industrial automation control panels and Wi-Fi IoT microcontrollers, our fellows build hardware that bridges bare silicon and real-world power.",
       keyTopics: [
-        "KiCad 8 High-Speed Differential Routing",
-        "RISC-V (RV32I) Microarchitecture Pipelining",
-        "FPGA RTL Synthesis in SystemVerilog",
-        "Ultra-Low Noise Mixed-Signal Front Ends"
+        "Discrete 74LS TTL Logic & ALU Architecture",
+        "220V Industrial Control Panels (IEC 60204-1)",
+        "ESP32 & STM32 Firmware Engineering",
+        "Biometric RFID & Environmental IoT Nodes"
       ],
-      equation: "Z_0 = \\frac{87}{\\sqrt{\\epsilon_r + 1.41}} \\ln\\left(\\frac{5.98h}{0.8w + t}\\right)",
-      equationLabel: "Microstrip Impedance Formulation"
-    },
-    {
-      id: "higher-mathematics",
-      code: "MA-04",
-      name: "Higher Mathematics",
-      summary: "Abstract algebra, topological data analysis, differential forms, spectral graph theory, and functional analysis.",
-      lead: "Dhruv Ghoshal & Core Contributors",
-      description: "Mathematics is our shared lingua franca. We investigate algebraic topology for high-dimensional signal manifolds, Lie group symmetries in physical models, and complex analysis for harmonic boundary problems.",
-      keyTopics: [
-        "Topological Data Analysis & Persistent Homology",
-        "Lie Algebras, SO(3) & SU(2) Symmetries",
-        "Harmonic Analysis & Uncertainty Bounds",
-        "Galois Theory & Modular Structures"
-      ],
-      equation: "\\beta_k = \\text{dim}(\\ker \\partial_k / \\text{im} \\partial_{k+1})",
-      equationLabel: "k-th Betti Number / Homology"
-    },
-    {
-      id: "cybersecurity-systems",
-      code: "CS-05",
-      name: "Cybersecurity & Systems",
-      summary: "Post-quantum lattice cryptography, physical side-channel fault injection, binary exploitation, and kernel internals.",
-      lead: "Keshav Gupta",
-      description: "Security analyzed at the deepest layers of execution: voltage glitching microcontrollers, evaluating Module-LWE against quantum oracle attacks, auditing firmware binaries, and reverse-engineering proprietary RF protocols.",
-      keyTopics: [
-        "Post-Quantum Cryptography (ML-KEM)",
-        "Power Analysis & Electromagnetic Fault Injection",
-        "Binary Reverse Engineering & ROP Chains",
-        "Zero-Trust Microkernel Isolation"
-      ],
-      equation: "\\mathbf{A}\\mathbf{s} + \\mathbf{e} = \\mathbf{t} \\pmod q, \\quad \\|\\mathbf{s}\\|, \\|\\mathbf{e}\\| < \\beta",
-      equationLabel: "Learning With Errors (LWE)"
-    },
-    {
-      id: "scientific-research",
-      code: "RS-06",
-      name: "Scientific & Technical Research",
-      summary: "Applied physics, computational modeling, cosmic ray scintillation, and open-source lab instrumentation.",
-      lead: "Ishaan Chaturvedi & Core Contributors",
-      description: "Interdisciplinary scientific inquiry grounded in empirical data. From building muon detectors with Silicon Photomultipliers (SiPM) to numerical modeling of nonlinear wave mechanics, our members publish reproducible research notes.",
-      keyTopics: [
-        "Cosmic Ray Muon Scintillation Detectors",
-        "Scientific Computing with JAX & Julia",
-        "Phase-Contrast Optical Microscopy",
-        "Open-Hardware Laboratory Measurement Tools"
-      ],
-      equation: "i\\hbar \\frac{\\partial}{\\partial t}\\Psi(\\mathbf{r}, t) = \\left(-\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\mathbf{r})\\right)\\Psi(\\mathbf{r}, t)",
-      equationLabel: "Time-Dependent Schrödinger Formulation"
+      equation: "S = A \\oplus B \\oplus C_{\\text{in}}, \\quad C_{\\text{out}} = (A \\cdot B) + (C_{\\text{in}} \\cdot (A \\oplus B))",
+      equationLabel: "Full Adder Boolean Formulation"
     }
   ],
 
   projects: [
     {
-      id: "helios-sdr",
-      title: "Helios SDR: Passive Radar & RF Spectrum Mapper",
-      domain: "Radio Frequency & Wireless",
-      domainId: "rf-wireless",
-      badge: "RF / DSP / Radar",
-      lead: "Ishaan Chaturvedi",
-      collaborators: ["Aarav Sharma", "Tanvi Desai", "Rohan Mehta"],
+      id: "aeris-10-radar",
+      title: "AERIS-10: 10.5 GHz Phased Array Radar",
+      domain: "Communication & Signal Processing Systems",
+      domainId: "communication-dsp",
+      badge: "10.5 GHz / FPGA / Phased Array",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Hardware Lab Fellows", "RF & Microwave Guild"],
       status: "Hardware Prototype",
-      abstract: "A dual-channel coherent software-defined radio receiver array tuned to 2.4 GHz ISM and broadcast FM bands. Utilizes ambient commercial transmissions as illuminators of opportunity to extract bistatic Doppler and range signatures without emitting detectable RF power.",
+      abstract: "An open-source 10.5 GHz X-band phased array radar utilizing Pulse Linear Frequency Modulation (PLFM). Features ±45° electronic beam steering in elevation and azimuth, FPGA-accelerated pulse compression, Doppler FFT, MTI, and CFAR target tracking across modular RF, synthesizer, and power management planes.",
       technicalSpecs: {
-        architecture: "Dual AD9361 SDR transceivers with shared TCXO reference",
-        processing: "FPGA Cross-Ambiguity Function (CAF) acceleration & C++ DSP pipeline",
-        samplingRate: "20 MSps coherent I/Q capture across 56 MHz bandwidth",
-        deliverable: "Real-time range-Doppler map rendering at 30 fps"
+        centerFrequency: "10.5 GHz (X-Band)",
+        beamSteering: "±45° Electronic Azimuth & Elevation",
+        fpgaCompute: "Xilinx Artix-7 (XC7A50T) Signal Processing",
+        rfFrontend: "ADAR1000 4-Ch Phase Shifters & ADTR1107 PAs/LNAs",
+        detectionRange: "3 km (Patch Array) / 20 km (Slotted Waveguide)"
       },
-      tags: ["SDR", "Passive Radar", "DSP", "FPGA", "Microwave"],
-      github: "https://github.com/melerigamy/helios-sdr",
-      metrics: "Sub-5m range resolution at 800m observation radius."
+      tags: ["PLFM Radar", "10.5 GHz", "Phased Array", "Artix-7 FPGA", "Beamforming"],
+      github: "https://github.com/linkedwithishaan/PLFM_RADAR",
+      metrics: "Sub-meter range resolution with full electronic phase steering.",
+      image: "/assets/drive/comm-system-setup.jpg"
     },
     {
-      id: "tensor-prune",
-      title: "TensorPrune: 4-Bit Neural Engine for Microcontrollers",
-      domain: "Artificial Intelligence & ML",
-      domainId: "ai-ml",
-      badge: "AI / TinyML / C",
-      lead: "Dhruv Ghoshal",
-      collaborators: ["Ananya Sen", "Kartik Pillai", "Devansh Patel"],
-      status: "Open Source",
-      abstract: "A lightweight post-training quantization and structured weight pruning compiler tailored for resource-constrained ARM Cortex-M4 and ESP32 silicon. Compresses CNN and Transformer blocks down to 4-bit uniform weights with zero float32 emulated overhead.",
+      id: "aiot-urban-farming",
+      title: "AIoT Controlled Environment Agriculture System",
+      domain: "Sustainable and Green Technologies",
+      domainId: "sustainable-tech",
+      badge: "AIoT / Aeroponics / Closed-Loop",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["MSIT Urban Farming Research Team"],
+      status: "Bench & Field Tested",
+      abstract: "An automated controlled-environment agriculture platform integrating high-pressure aeroponics (80–100 PSI micro-mist) and dual-mode hydroponics (NFT & DWC). An edge layer of microcontrollers executes real-time PID and fuzzy-logic automated nutrient dosing, backed by a 220V IP54 industrial control panel, environmental sensor arrays, and computer vision phenotyping.",
       technicalSpecs: {
-        architecture: "Pure C99 runtime with zero external heap allocation",
-        quantization: "Asymmetric INT4 / INT8 hybrid quantization with Hessian ranking",
-        memoryFootprint: "< 32 KB SRAM execution footprint; 180 KB flash ROM",
-        speedup: "3.4x faster inference compared to standard CMSIS-NN baseline"
+        atomization: "80–100 PSI High-Pressure & Ultrasonic Mist",
+        sensoryMatrix: "Atlas Scientific pH/EC, SHT30, MH-Z19B CO2, TSL2591 PAR",
+        controlLogic: "Edge PID Automation & Peristaltic Dosing Relays",
+        resourceEfficiency: "90% Water Reduction & 25–40% Yield Increase",
+        powerSystem: "220V AC IP54 Distribution Panel with LOTO Interlocks"
       },
-      tags: ["TinyML", "Quantization", "Embedded C", "Cortex-M4"],
-      github: "https://github.com/melerigamy/tensor-prune",
-      metrics: "84.2% top-1 accuracy on CIFAR-10 at only 18 KB weights."
+      tags: ["AIoT", "Aeroponics", "Hydroponics", "PID Automation", "Clean Tech"],
+      github: "https://github.com/linkedwithishaan",
+      metrics: "90% water conservation with ±0.2°C closed-loop thermal regulation.",
+      image: "/assets/drive/aiot-urban-farm-1.jpg"
     },
     {
-      id: "hyperion-rv32",
-      title: "Hyperion: 5-Stage RV32I Processor with Crypto Extensions",
-      domain: "Electronics & Embedded Systems",
+      id: "industrial-control-panel-220v",
+      title: "220V Industrial Automation & Power Distribution Panel",
+      domain: "Electronics, IoT & Embedded Systems",
       domainId: "electronics-embedded",
-      badge: "FPGA / Verilog / RISC-V",
-      lead: "Keshav Gupta",
-      collaborators: ["Arjun Rao", "Neha Nambiar", "Siddharth Jain"],
-      status: "FPGA Validated",
-      abstract: "A complete 5-stage classic RISC pipeline implemented in SystemVerilog, synthesizable on Xilinx Artix-7 hardware. Features dedicated instruction extensions for hardware-accelerated finite field polynomial multiplication and constant-time AES rounds.",
+      badge: "220V AC / IP54 / IEC 60204-1",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Aryan Singh", "Dhruv Ghosal"],
+      status: "Fabricated & Operational",
+      abstract: "An industrial-grade 220V AC (50Hz) power distribution unit engineered to IEC 60204-1 safety standards. Features an IP54 metal enclosure, Type-C 6kA DIN-rail mounted circuit breakers, 24V DC regulated SMPS, dual-switch Permissive AND safety interlock (Key Switch + Rotary Selector), category-0 emergency stop, and real-time HMI operator telemetry.",
       technicalSpecs: {
-        pipeline: "Classic IF-ID-EX-MEM-WB with branch prediction and forwarding unit",
-        extensions: "RV32I base integer ISA + custom Zcrypto instruction set",
-        clockFrequency: "120 MHz on Artix-7 XC7A35T without timing violations",
-        peripherals: "Integrated Wishbone bus, UART, SPI master, and dual timer interrupts"
+        mainsPower: "220V AC (50Hz) Single-Phase Industrial Grid",
+        circuitProtection: "Type-C Curve 6kA Miniature Circuit Breakers",
+        safetyProtocol: "Permissive AND Logic (Key Switch + LOTO E-Stop)",
+        dcLogicSupply: "24V Regulated SMPS with Optocoupled Isolation",
+        wiringHarness: "2.5mm² Copper Wiring (20A Trunking Ampacity)"
       },
-      tags: ["RISC-V", "SystemVerilog", "Artix-7", "Crypto ASIC"],
-      github: "https://github.com/melerigamy/hyperion-rv32",
-      metrics: "1.28 CoreMark/MHz benchmark score on physical silicon."
+      tags: ["Industrial Panel", "MCB", "Power Distribution", "HMI", "IEC 60204-1"],
+      github: "https://github.com/linkedwithishaan/CONTROL-PANEL-",
+      metrics: "6kA short-circuit interrupt capacity with zero-voltage logic isolation.",
+      image: "/assets/drive/esp32-module.jpg"
     },
     {
-      id: "noether-tda",
-      title: "Noether: Topological Signal Analysis for Sensor Arrays",
-      domain: "Higher Mathematics",
-      domainId: "higher-mathematics",
-      badge: "Topology / Signal Analysis",
-      lead: "Dhruv Ghoshal & Ananya Sen",
-      collaborators: ["Vikramaditya Bose", "Meera Iyer"],
-      status: "Research Draft",
-      abstract: "Applies algebraic topology and persistent homology to reconstruct high-dimensional phase space manifolds from sparse RF receiver arrays. Accurately distinguishes anomalous signal jamming from environmental multipath degradation through persistence diagrams.",
+      id: "8-bit-ttl-alu",
+      title: "Discrete 74LS TTL 8-Bit Arithmetic Logic Unit",
+      domain: "Electronics, IoT & Embedded Systems",
+      domainId: "electronics-embedded",
+      badge: "74LS TTL / Logic Design / Hardware",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Digital Electronics Lab Cohort"],
+      status: "Hardware Verified",
+      abstract: "A physical 8-bit Arithmetic Logic Unit constructed entirely from discrete 74LS series Transistor-Transistor Logic (TTL) integrated circuits. Features a dual-bus architecture supporting ripple-carry addition and two's complement subtraction via dynamic XOR inverters, alongside bitwise logic (AND, OR, XOR, NOT) multiplexed through 74LS157 selectors with sub-55ns critical path delay.",
       technicalSpecs: {
-        framework: "Custom C++ Ripser wrapper with Python JIT bindings",
-        metric: "Vietoris-Rips filtration over sliding delay-coordinate embeddings",
-        robustness: "Preserves zero- and one-dimensional topological invariants under -10 dB SNR",
-        applications: "Distributed spectrum surveillance and sensor network fault diagnosis"
+        arithmeticCore: "Cascaded 74LS283 4-Bit Fast-Carry Adders",
+        logicElements: "74LS86 XOR, 74LS08 AND, 74LS32 OR, 74LS04 Inverter",
+        dataRouting: "74LS157 2-to-1 Multiplexers & 74LS173 Registers",
+        criticalPathDelay: "≈ 51 ns Combinational Latency (MHz capable)",
+        signalIntegrity: "100nF Ceramic Decoupling per IC Power Pin"
       },
-      tags: ["Topology", "Persistent Homology", "Signal Processing"],
-      github: "https://github.com/melerigamy/noether-tda",
-      metrics: "99.1% detection rate on phase-scrambled multipath channels."
+      tags: ["TTL Logic", "ALU", "Computer Architecture", "Digital Electronics", "74LS283"],
+      github: "https://github.com/linkedwithishaan/8-BIT-ALU-DIGTAL-ELECTRONICS-PROJECT",
+      metrics: "Full 8-bit unsigned/signed arithmetic verified with ~51ns delay.",
+      image: "/assets/drive/digital-circuit-board.jpg"
     },
     {
-      id: "zerotrace-pqc",
-      title: "ZeroTrace: Constant-Time Post-Quantum Key Exchange",
-      domain: "Cybersecurity & Systems",
-      domainId: "cybersecurity-systems",
-      badge: "Post-Quantum / Cryptography",
-      lead: "Keshav Gupta",
-      collaborators: ["Pooja Reddy", "Kabir Nair", "Yashvardhan Kulkarni"],
-      status: "Audited",
-      abstract: "A high-assurance implementation of Module Learning With Errors (ML-KEM) key encapsulation written in Rust with verified constant-time assembly primitives. Hardened against power analysis attacks and electromagnetic leakage during polynomial reduction.",
+      id: "autonomous-hybrid-buggy",
+      title: "Autonomous AI-Enabled Hybrid Utility Buggy",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "NVIDIA Jetson / SLAM / Hybrid EV",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Automotive & Robotics Stewards"],
+      status: "System Prototype",
+      abstract: "A heavy-duty autonomous hybrid utility vehicle engineered for complex unstructured environments. Blends a petrol engine with 48V/72V BLDC electric drive, NVIDIA Jetson Nano edge AI compute, 2D/3D LIDAR SLAM mapping, RTK-GPS centimeter localization, 360° thermal vision, environmental gas/AQI monitoring, and an autonomous drone launch dock.",
       technicalSpecs: {
-        securityLevel: "NIST Category 3 (equivalent to AES-192 against quantum adversaries)",
-        timingSecurity: "100% constant-time verified via Dudect statistical t-test harness",
-        keySizes: "Public key 1184 bytes; ciphertext 1088 bytes; shared secret 32 bytes",
-        hardwareSupport: "Optimized AVX2 vector instructions and ARM Cortex-M4 assembly"
+        powertrain: "Hybrid Petrol (150–250cc) + 48V/72V BLDC Electric Motor",
+        edgeAiCompute: "NVIDIA Jetson Nano with STM32/ESP32 CAN Bus Hub",
+        spatialNavigation: "2D/3D LIDAR SLAM + IMU + RTK-GPS Waypoints",
+        surveillanceStack: "360° Pan-Tilt + Thermal Night Vision + Drone Dock",
+        auxiliaryPower: "Quick-Swap Li-ion Pack + Solar Canopy AC/DC Outputs"
       },
-      tags: ["Rust", "Post-Quantum", "Side-Channel", "Cryptography"],
-      github: "https://github.com/melerigamy/zerotrace-pqc",
-      metrics: "Zero measurable timing variance across 10 million test samples."
+      tags: ["Autonomous Vehicle", "Jetson Nano", "LIDAR SLAM", "CAN Bus", "Robotics"],
+      github: "https://github.com/linkedwithishaan",
+      metrics: "Centimeter-grade RTK positioning with real-time 3D spatial SLAM.",
+      image: "/assets/drive/robotics-3.jpg"
     },
     {
-      id: "chronos-tdc",
-      title: "Chronos: Sub-Nanosecond Time-to-Digital Converter",
-      domain: "Scientific & Technical Research",
-      domainId: "scientific-research",
-      badge: "Instrumentation / Analog",
-      lead: "Ishaan Chaturvedi",
-      collaborators: ["Divya Krishnan", "Pranav Joshi", "Rhea Sengupta"],
-      status: "Lab Bench Testing",
-      abstract: "A modular, open-source scientific instrument utilizing FPGA tapped delay lines and ultra-fast analog comparators to measure particle coincidence intervals with 65-picosecond resolution. Designed specifically for university cosmic ray telescope arrays.",
+      id: "aqi-environmental-station",
+      title: "Real-Time AQI Environmental Telemetry Station",
+      domain: "Sustainable and Green Technologies",
+      domainId: "sustainable-tech",
+      badge: "PM2.5 / Laser Scattering / IoT",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Environmental Sensing Group"],
+      status: "Deployed & Monitoring",
+      abstract: "A continuous environmental monitoring terminal measuring particulate matter (PM2.5 & PM10), volatile organic compounds (VOCs), ambient temperature, and barometric pressure. Interfaced to an ESP microcontroller running C++ telemetry firmware, the system streams live air quality analytics to a dedicated dashboard.",
       technicalSpecs: {
-        resolution: "65 picoseconds LSB bin width across 8 coherent channels",
-        jitter: "< 18 ps RMS differential channel-to-channel jitter",
-        interface: "USB-C High-Speed streaming raw timestamp buffers to Python analytics dashboard",
-        detectors: "Compatible with plastic scintillators and silicon photomultipliers (SiPM)"
+        particulateSensing: "Laser Scattering PM2.5 and PM10 Detector",
+        gasMicroclimate: "MQ-series VOC Array + DHT22 Temperature/Humidity",
+        controller: "ESP32 Microcontroller with Wi-Fi Telemetry",
+        dashboard: "Real-time AQI Analytics & Parameter Threshold Warnings",
+        powerSource: "Continuous DC Supply with Solar Battery Backup"
       },
-      tags: ["Instrumentation", "Picosecond TDC", "Cosmic Rays", "FPGA"],
-      github: "https://github.com/melerigamy/chronos-tdc",
-      metrics: "Successfully detected 14,200 atmospheric muon coincidence events."
+      tags: ["AQI", "PM2.5", "Environmental IoT", "ESP32", "Laser Scattering"],
+      github: "https://github.com/linkedwithishaan/AQI-MONITORING",
+      metrics: "Sub-second particulate measurement with cloud telemetry logging.",
+      image: "/assets/drive/aqi-dashboard.png"
+    },
+    {
+      id: "5dof-robotic-arm",
+      title: "5-DOF 3D-Printed Robotic Manipulator Arm",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "5-DOF / MG995 / Additive Mfg",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Mechanical & Robotics Fellows"],
+      status: "Fabricated & Calibrated",
+      abstract: "A 5-Degrees-of-Freedom articulated robotic manipulator engineered using Fusion 360 and fabricated via additive PLA 3D printing. Driven by five MG995 high-torque metal-gear servomotors, the arm replicates human arm kinematics (base rotation, shoulder, elbow, wrist pitch, and end-effector gripper) controlled via an Arduino PWM engine.",
+      technicalSpecs: {
+        kinematicDegrees: "5-DOF (Base, Shoulder, Elbow, Wrist Pitch, Gripper)",
+        actuation: "5x MG995 High-Torque Metal Gear Servos (11 kg-cm)",
+        chassisMaterial: "High-Infill PLA 3D Printed Custom Linkages",
+        controlArchitecture: "Arduino Uno with Dedicated 5V/5A Power Rail",
+        controlModes: "Autonomous G-Code / Manual Multi-Potentiometer"
+      },
+      tags: ["Robotic Arm", "5-DOF", "MG995 Servos", "3D Printing", "Arduino"],
+      github: "https://github.com/linkedwithishaan/ROBOTIC-ARM-",
+      metrics: "Repeatable 5-axis trajectory interpolation with 11 kg-cm torque.",
+      image: "/assets/drive/robotics-1.png"
+    },
+    {
+      id: "hid-robotic-eyes",
+      title: "HID-Controlled Animatronic Robotic Eyes",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "Animatronics / PySerial / ESP32",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["MSIT Robotics Group"],
+      status: "Hardware Verified",
+      abstract: "An animatronic facial interaction system featuring 3D printed mechanical eyeball and eyelid mechanisms. Python scripts capture real-time Human Interface Device (HID) keyboard inputs, transmitting serialized motion packets over USB to an ESP32 microcontroller that drives micro-servo arrays for realistic horizontal, vertical, and blinking dynamics.",
+      technicalSpecs: {
+        mechanicalAssembly: "Custom 3D Printed Dual-Orbit Eyeball & Eyelid Frame",
+        actuatorMatrix: "Multiple SG90 Micro-Servos for Saccadic Movement",
+        embeddedControl: "ESP32 Generating Synchronized PWM Motion Angles",
+        hostSoftware: "Python PySerial Real-Time Input Interpretation Engine",
+        responseLatency: "Sub-15ms Serial Command-to-Actuation Delay"
+      },
+      tags: ["Animatronics", "ESP32", "Python HID", "Servos", "Human-Robot Interaction"],
+      github: "https://github.com/linkedwithishaan/ROBOTIC-EYE",
+      metrics: "Sub-15ms low-latency multi-axis gaze and eyelid synchronization.",
+      image: "/assets/drive/robotics-2.png"
+    },
+    {
+      id: "autonomous-line-follower",
+      title: "Autonomous Optical Line Following Robot Car",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "Differential Drive / IR Array / Arduino",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["First-Year Robotics Cohort"],
+      status: "Track Tested",
+      abstract: "A high-speed autonomous mobile robot designed for automated factory material transit. Integrates high-contrast infrared (IR) reflection sensors with an LM393 comparator network, Arduino Uno microcontroller, and an L293D dual H-bridge motor driver regulating differential DC motor velocities with closed-loop feedback.",
+      technicalSpecs: {
+        sensorArray: "High-Sensitivity IR Optical Reflex Pairs with LM393",
+        controller: "Arduino Uno Processing Differential Steering Logic",
+        driverShield: "L293D Triple-IC Motor Driver Shield (4-Motor Capable)",
+        drivetrain: "Dual High-Torque Geared DC Motors with Rubber Traction Wheels",
+        powerSubsystem: "External 7–12V DC Battery Pack with Master Isolation"
+      },
+      tags: ["Line Follower", "L293D", "IR Sensors", "Autonomous Navigation", "Arduino"],
+      github: "https://github.com/linkedwithishaan/ROBOTIC-LINE-FOLLOWER",
+      metrics: "Continuous high-speed trajectory tracking on complex curved paths.",
+      image: "/assets/drive/robotics-1.png"
+    },
+    {
+      id: "smart-soil-irrigation",
+      title: "IoT Cloud Smart Soil Monitoring & Irrigation System",
+      domain: "Sustainable and Green Technologies",
+      domainId: "sustainable-tech",
+      badge: "ESP8266 / Arduino Cloud / Automation",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["IoT Systems Cohort"],
+      status: "Operational",
+      abstract: "A precision agricultural IoT node built around the ESP8266 NodeMCU. Measures capacitive soil moisture, DHT11 air temperature and relative humidity, optical rain presence, and PIR intrusion. Features automated relay-driven water pump actuation, cloud dashboard monitoring via Arduino IoT Cloud, and automated Google Sheets data logging.",
+      technicalSpecs: {
+        microcontroller: "ESP8266 NodeMCU Wi-Fi SoC",
+        sensoryStack: "Capacitive Soil Moisture, DHT11, Rain Board, PIR Sensor",
+        pumpActuation: "Optocoupled 5V Relay Driving Submersible Water Pump",
+        cloudTelemetry: "Arduino IoT Cloud Dashboard & Google Apps Script Logging",
+        safetyOverride: "Automated Rain Detection Cutoff to Prevent Over-Irrigation"
+      },
+      tags: ["Smart Agriculture", "ESP8266", "Arduino Cloud", "Automated Irrigation", "IoT"],
+      github: "https://github.com/linkedwithishaan/IOT-Basesd-soil-monitoring-system-",
+      metrics: "Autonomous moisture-triggered irrigation with cloud telemetry sync.",
+      image: "/assets/drive/aiot-urban-farm-2.jpg"
+    },
+    {
+      id: "smart-water-testing-kit",
+      title: "Portable Multi-Parameter Water Quality Testing Kit",
+      domain: "Sustainable and Green Technologies",
+      domainId: "sustainable-tech",
+      badge: "Analog Sensors / LCD / Water Safety",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Environmental Instrumentation Fellows"],
+      status: "Calibrated & Validated",
+      abstract: "A self-contained water safety assessment terminal measuring water pH, Nephelometric Turbidity Units (NTU), and Total Dissolved Solids (TDS ppm). Analog sensor voltages are captured by an Arduino Uno ADC, evaluated against calibrated polynomial formulas, and rendered in real time on an HD44780 16×2 LCD screen.",
+      technicalSpecs: {
+        controller: "Arduino Uno R3 with 10-Bit ADC Multichannel Sampling",
+        phSensing: "Analog Glass Combination Electrode (0–14 pH Range)",
+        turbidity: "Optical Light Scattering Sensor Measuring Suspended Solids (NTU)",
+        tdsMeasurement: "Conductivity Probe with 3rd-Order Polynomial PPM Mapping",
+        display: "16×2 HD44780 Dot-Matrix LCD in 4-Bit Power-Saving Mode"
+      },
+      tags: ["Water Quality", "Turbidity NTU", "pH Sensor", "TDS ppm", "Arduino"],
+      github: "https://github.com/linkedwithishaan/WATER-TESTING-KIT",
+      metrics: "Simultaneous tripartite analysis (pH, NTU, PPM) updated every 2s.",
+      image: "/assets/drive/water-sensor-kit.jpg"
+    },
+    {
+      id: "multi-stage-water-filter",
+      title: "Multi-Stage Physical Water Filtration & Treatment Rig",
+      domain: "Sustainable and Green Technologies",
+      domainId: "sustainable-tech",
+      badge: "Physical Separation / Media Filtration",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Green Tech Research Group"],
+      status: "Empirical Testing",
+      abstract: "An empirical fluid filtration apparatus designed to evaluate multi-stage sediment separation, particulate adsorption, and flow rate dynamics. Features structured media strata (activated granular carbon, fine silica, coarse quartz) to clarify greywater and urban runoff prior to secondary agricultural or potable disinfection.",
+      technicalSpecs: {
+        filtrationStages: "Triple-Stage Gradient (Coarse Sediment, Sand, Activated Carbon)",
+        flowDynamics: "Characterized Gravity Flow & Pump-Assisted Circulation",
+        monitoring: "Differential Flow Rate & Pre/Post Turbidity Analysis",
+        application: "Pre-Treatment for Hydroponic Irrigation & Rainwater Harvesting"
+      },
+      tags: ["Water Filtration", "Clean Tech", "Sediment Separation", "Environmental"],
+      github: "https://github.com/linkedwithishaan",
+      metrics: "High-efficiency mechanical particulate removal across media gradient.",
+      image: "/assets/drive/water-filtration-rig.jpg"
+    },
+    {
+      id: "aviation-band-rx",
+      title: "Aviation Band VHF AM Receiver Module (118–136 MHz)",
+      domain: "Communication & Signal Processing Systems",
+      domainId: "communication-dsp",
+      badge: "118–136 MHz / VHF / AM Demod",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["RF & Wireless Communications Guild"],
+      status: "Bench Tested",
+      abstract: "A dedicated RF receiver module engineered for intercepting and demodulating civilian aviation band voice communications and ACARS telemetry between 118 MHz and 136 MHz. Features tuned LC resonant front-end filtering, a low-noise amplifier (LNA), superheterodyne mixer, and audio amplification stage for antenna signal extraction.",
+      technicalSpecs: {
+        tuningSpectrum: "118 MHz – 136 MHz VHF Civil Aviation Band",
+        modulation: "Amplitude Modulation (AM) Voice & ACARS Data",
+        rfFrontEnd: "High-Selectivity LC Bandpass Filter & Low-Noise Preamplifier",
+        interfacing: "BNC Antenna Port & High-Fidelity Audio Line-Out Stage"
+      },
+      tags: ["Aviation Band", "VHF", "RF Receiver", "AM Demodulation", "Antennas"],
+      github: "https://github.com/linkedwithishaan/Aviation-Band-Rx-Module-",
+      metrics: "Clear analog voice demodulation across the 118–136 MHz spectrum.",
+      image: "/assets/drive/comm-system-setup.jpg"
+    },
+    {
+      id: "rtl-sdr-dsp-suite",
+      title: "RTL-SDR Wideband Spectrum Surveillance & DSP Suite",
+      domain: "Communication & Signal Processing Systems",
+      domainId: "communication-dsp",
+      badge: "24 MHz – 1.7 GHz / SDR / GNU Radio",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["RF Systems Fellows"],
+      status: "Operational",
+      abstract: "A software-defined radio workstation for wideband RF spectrum exploration from 24 MHz to 1.7 GHz using RTL2832U/R820T2 hardware. Implements digital signal processing flowgraphs in GNU Radio for real-time IQ demodulation, ADS-B commercial flight tracking, NOAA satellite weather APT imagery, and FM broadcast decoding.",
+      technicalSpecs: {
+        tuningRange: "24 MHz to 1766 MHz Continuous Coverage",
+        adcArchitecture: "8-Bit RTL2832U with up to 3.2 MSps Raw I/Q Stream",
+        dspPipeline: "GNU Radio Flowgraphs with FIR Decimation & Complex FFT",
+        protocolsDecoded: "ADS-B Mode-S (1090 MHz), NOAA APT (137 MHz), Narrowband FM"
+      },
+      tags: ["RTL-SDR", "Software-Defined Radio", "DSP", "ADS-B", "Spectrum Analysis"],
+      github: "https://github.com/linkedwithishaan/RTL-SDR-Projects",
+      metrics: "Continuous 3.2 MSps IQ stream with multi-band demodulation pipelines.",
+      image: "/assets/drive/comm-system-setup.jpg"
+    },
+    {
+      id: "esp32-marauder-apparatus",
+      title: "ESP32 Marauder Wireless Environment Diagnostic Terminal",
+      domain: "Communication & Signal Processing Systems",
+      domainId: "communication-dsp",
+      badge: "802.11 / BLE / Packet Sniffing",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Cybersecurity & Hardware Fellows"],
+      status: "Bench Tested",
+      abstract: "A portable, self-contained wireless audit device built around the ESP32 dual-core microcontroller and an SPI color TFT display. Executes 802.11 b/g/n packet sniffing, Wi-Fi beacon inspection, BLE advertising scans, and wireless network diagnostic auditing with full on-screen visual telemetry.",
+      technicalSpecs: {
+        siliconPlatform: "ESP32 Xtensa Dual-Core 32-Bit Microcontroller",
+        displayInterface: "ILI9341 2.8\" Color TFT via High-Speed 4-Wire SPI",
+        radiosInspected: "2.4 GHz 802.11 b/g/n Wi-Fi & Bluetooth 4.2 LE",
+        formFactor: "Self-Contained Handheld with LiPo Charge Controller"
+      },
+      tags: ["ESP32", "Marauder", "Wireless Diagnostics", "Packet Sniffing", "BLE"],
+      github: "https://github.com/linkedwithishaan",
+      metrics: "Autonomous portable wireless packet capture without computer tether.",
+      image: "/assets/drive/esp32-module.jpg"
+    },
+    {
+      id: "drone-swarm-network",
+      title: "Autonomous Drone Swarm Distributed Telemetry Mesh",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "Swarm UAV / Decentralized Mesh",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Robotics & UAV Research Team"],
+      status: "Architecture & Simulation",
+      abstract: "A decentralized multi-UAV robotic swarm architecture. Investigates cooperative flight formations, inter-drone mesh communication protocols, collision avoidance dynamics, and distributed target search algorithms running on lightweight flight controller hardware.",
+      technicalSpecs: {
+        topology: "Decentralized Multi-Node Ad-Hoc RF Telemetry Mesh",
+        flightControls: "ArduPilot / Betaflight Embedded Avionics Integration",
+        swarmAlgorithm: "Distributed Flocking & Dynamic Obstacle Repulsion",
+        missionScope: "Coordinated Wide-Area Environmental & Aerial Search"
+      },
+      tags: ["Drone Swarm", "UAV", "Mesh Telemetry", "Autonomous Flight", "Robotics"],
+      github: "https://github.com/linkedwithishaan/DRONE-SWARM-PROJECT",
+      metrics: "Multi-agent decentralized coordination without single point of failure.",
+      image: "/assets/drive/robotics-3.jpg"
+    },
+    {
+      id: "arduino-mini-cnc",
+      title: "Dual-Axis G-Code Mini CNC Vector Plotter",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "G-Code / GRBL / Micro-Steppers",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Hardware & Prototyping Cohort"],
+      status: "Functional Rig",
+      abstract: "A compact 2.5D computer numerical control (CNC) plotting machine constructed using repurposed precision stepper mechanisms, an Arduino Uno running GRBL firmware, and motor driver stages. Converts vector SVG files into standard G-code to execute sub-millimeter trajectory drafting.",
+      technicalSpecs: {
+        driveMechanics: "Dual Optical Carriage Stepper Assemblies (X/Y Axes)",
+        zAxisActuator: "Micro-Servo Pen Lift & Lower Mechanism",
+        firmware: "GRBL G-Code Motion Interpreter on ATmega328P",
+        toolpathSoftware: "Inkscape Vector Export with G-Code Extensions"
+      },
+      tags: ["CNC Plotter", "GRBL", "G-Code", "Stepper Motors", "Arduino"],
+      github: "https://github.com/linkedwithishaan/Arduino-Mini-CNC-Plotter",
+      metrics: "Sub-millimeter pen plotting accuracy with standard G-code input.",
+      image: "/assets/drive/robotics-1.png"
+    },
+    {
+      id: "biometric-rfid-access",
+      title: "Integrated Biometric Fingerprint & 13.56 MHz RFID Terminal",
+      domain: "Electronics, IoT & Embedded Systems",
+      domainId: "electronics-embedded",
+      badge: "Biometrics / RFID / Embedded C++",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Embedded Systems Fellows"],
+      status: "Deployed Prototype",
+      abstract: "A standalone access validation and attendance terminal integrating an optical biometric fingerprint scanner with an RC522 13.56 MHz RFID card reader. Managed by an Arduino/ESP controller with an EEPROM credential database and a 16×2 character display for real-time verification.",
+      technicalSpecs: {
+        rfidTransceiver: "MFRC522 13.56 MHz Contactless Smart Card Reader (SPI)",
+        biometricSensor: "Optical Fingerprint Scanner with Onboard Minutiae DSP",
+        userInterface: "16×2 HD44780 LCD with Piezo Buzzer Feedback",
+        firmwareStorage: "On-Chip Non-Volatile EEPROM Key Whitelist"
+      },
+      tags: ["RFID", "Fingerprint", "Biometrics", "Embedded C++", "Access Control"],
+      github: "https://github.com/linkedwithishaan/FINGERPRINT-BASED-ATTENDANCE-SYSTEM-",
+      metrics: "Sub-second dual-factor authentication with localized logging.",
+      image: "/assets/drive/esp32-module.jpg"
+    },
+    {
+      id: "autonomous-obstacle-car",
+      title: "Ultrasonic Sonar Obstacle-Avoiding Robotic Platform",
+      domain: "Robotics and Intelligent Automation",
+      domainId: "robotics-automation",
+      badge: "Sonar / Pan-Tilt / Autonomous",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["Robotics Cohort"],
+      status: "Operational Platform",
+      abstract: "A self-navigating wheeled mobile robot that utilizes an HC-SR04 ultrasonic distance sensor mounted on an active servo panning horn. Continuously surveys the forward hemisphere, computes obstacle distance vectors, and executes non-holonomic avoidance maneuvers through an L293D motor driver.",
+      technicalSpecs: {
+        rangingSensor: "HC-SR04 40 kHz Ultrasonic Transducer (2cm – 400cm)",
+        scanningMount: "180° Micro-Servo Azimuth Panning Bracket",
+        driveArchitecture: "4-Wheel DC Gearmotors Driven by L293D H-Bridge",
+        navigationAlgorithm: "Forward Distance Thresholding & Comparative Side Clearances"
+      },
+      tags: ["Obstacle Avoidance", "Ultrasonic", "Robotic Car", "L293D", "Arduino"],
+      github: "https://github.com/linkedwithishaan/ROBOTIC-CAR",
+      metrics: "Proactive distance detection from 2cm to 4m with real-time steering.",
+      image: "/assets/drive/robotics-2.png"
+    },
+    {
+      id: "wifi-controlled-lcd",
+      title: "Wi-Fi Networked Industrial Message & Status Terminal",
+      domain: "Electronics, IoT & Embedded Systems",
+      domainId: "electronics-embedded",
+      badge: "Wi-Fi / Web Server / Embedded",
+      lead: "Ishan Chaturvedi",
+      collaborators: ["IoT Systems Cohort"],
+      status: "Operational",
+      abstract: "A networked information terminal utilizing an ESP8266 Wi-Fi SoC hosting an embedded HTTP web server. Permits operators on the local network to transmit alphanumeric status alerts, system diagnostics, and emergency bulletins directly to a 16×2 or 20×4 liquid crystal display.",
+      technicalSpecs: {
+        networkController: "ESP8266 802.11 b/g/n Microcontroller",
+        webArchitecture: "Lightweight Asynchronous HTTP Server with HTML Form",
+        displayOutput: "LiquidCrystal I2C Dot-Matrix Display",
+        networkSecurity: "WPA2-PSK Authentication & Dedicated AP Mode"
+      },
+      tags: ["ESP8266", "Wi-Fi Server", "LCD Terminal", "IoT", "Embedded C++"],
+      github: "https://github.com/linkedwithishaan/WIFI-CONTROLED-LCD-PANEL-",
+      metrics: "Instant local-area network message dispatch with persistent display.",
+      image: "/assets/drive/esp32-module.jpg"
     }
   ],
 
