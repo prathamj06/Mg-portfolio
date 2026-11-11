@@ -32,7 +32,7 @@ export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filters = [
-    { label: "All Systems (20)", id: "all" },
+    { label: `All Systems (${COMMUNITY_DATA.projects.length})`, id: "all" },
     { label: "AI & Machine Learning", id: "ai-ml" },
     { label: "Sustainable & Green Tech", id: "sustainable-tech" },
     { label: "Communication & Signal Processing", id: "communication-dsp" },
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
   };
 
   const stats = [
-    { tag: "INVENTORY", value: "20", label: "Engineered Systems", desc: "Physical laboratory builds & deployable firmware" },
+    { tag: "INVENTORY", value: `${COMMUNITY_DATA.projects.length}`, label: "Engineered Systems", desc: "Physical laboratory builds & deployable firmware" },
     { tag: "SPECTRUM", value: "06", label: "Core Disciplines", desc: "AI, Green Tech, DSP, Antennas, Robotics, IoT" },
     { tag: "INTEGRITY", value: "100%", label: "Open Science", desc: "Public schematics, BOMs, codebases & docs" },
     { tag: "MENTORSHIP", value: "1:1", label: "Apprentice Model", desc: "First-principles guidance directly from day one" },
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
               Hardware Prototypes &amp; Systems.
             </h1>
             <p className="font-sans text-lg sm:text-2xl text-ink-secondary/95 font-light leading-relaxed max-w-4xl border-l-2 border-accent/40 pl-6 sm:pl-8">
-              An open-access engineering catalog of 20 verified physical builds, high-frequency RF apparatuses, autonomous robotics, and edge AI architectures developed by Melerigamy fellows at MSIT.
+              An open-access engineering catalog of 13 verified physical builds, high-frequency RF apparatuses, autonomous robotics, and edge AI architectures developed by Melerigamy fellows at MSIT.
             </p>
           </div>
 

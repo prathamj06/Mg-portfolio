@@ -112,7 +112,7 @@ export const COMMUNITY_DATA: CommunityData = {
     tagline: "An unofficial technical collective exploring RF, AI/ML, electronics, mathematics, and scientific research.",
     cohortSize: "30+ First-Year Members",
     domainsCount: 6,
-    activeProjectsCount: 20,
+    activeProjectsCount: 13,
     sessionsConducted: 8,
     contactEmail: "melerigamy.research@gmail.com",
     githubOrg: "https://github.com/melerigamy",
@@ -276,9 +276,9 @@ export const COMMUNITY_DATA: CommunityData = {
     {
       id: "aeris-10-radar",
       title: "AERIS-10: 10.5 GHz Phased Array Radar",
-      domain: "Communication & Signal Processing Systems",
-      domainId: "communication-dsp",
-      badge: "10.5 GHz / FPGA / Phased Array",
+      domain: "Antenna Design and Electromagnetics",
+      domainId: "antenna-electromagnetics",
+      badge: "10.5 GHz / Patch Array / FPGA",
       lead: "Ishan Chaturvedi",
       collaborators: ["Hardware Lab Fellows", "RF & Microwave Guild"],
       status: "Hardware Prototype",
@@ -337,7 +337,7 @@ export const COMMUNITY_DATA: CommunityData = {
       tags: ["Industrial Panel", "MCB", "Power Distribution", "HMI", "IEC 60204-1"],
       github: "https://github.com/linkedwithishaan/CONTROL-PANEL-",
       metrics: "6kA short-circuit interrupt capacity with zero-voltage logic isolation.",
-      image: "/assets/drive/esp32-module.jpg"
+      image: "/assets/drive/control-panel-220v.jpg"
     },
     {
       id: "8-bit-ttl-alu",
@@ -362,28 +362,6 @@ export const COMMUNITY_DATA: CommunityData = {
       image: "/assets/drive/digital-circuit-board.jpg"
     },
     {
-      id: "autonomous-hybrid-buggy",
-      title: "Autonomous AI-Enabled Hybrid Utility Buggy",
-      domain: "Robotics and Intelligent Automation",
-      domainId: "robotics-automation",
-      badge: "NVIDIA Jetson / SLAM / Hybrid EV",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["Automotive & Robotics Stewards"],
-      status: "System Prototype",
-      abstract: "A heavy-duty autonomous hybrid utility vehicle engineered for complex unstructured environments. Blends a petrol engine with 48V/72V BLDC electric drive, NVIDIA Jetson Nano edge AI compute, 2D/3D LIDAR SLAM mapping, RTK-GPS centimeter localization, 360° thermal vision, environmental gas/AQI monitoring, and an autonomous drone launch dock.",
-      technicalSpecs: {
-        powertrain: "Hybrid Petrol (150–250cc) + 48V/72V BLDC Electric Motor",
-        edgeAiCompute: "NVIDIA Jetson Nano with STM32/ESP32 CAN Bus Hub",
-        spatialNavigation: "2D/3D LIDAR SLAM + IMU + RTK-GPS Waypoints",
-        surveillanceStack: "360° Pan-Tilt + Thermal Night Vision + Drone Dock",
-        auxiliaryPower: "Quick-Swap Li-ion Pack + Solar Canopy AC/DC Outputs"
-      },
-      tags: ["Autonomous Vehicle", "Jetson Nano", "LIDAR SLAM", "CAN Bus", "Robotics"],
-      github: "https://github.com/linkedwithishaan",
-      metrics: "Centimeter-grade RTK positioning with real-time 3D spatial SLAM.",
-      image: "/assets/drive/robotics-3.jpg"
-    },
-    {
       id: "aqi-environmental-station",
       title: "Real-Time AQI Environmental Telemetry Station",
       domain: "Sustainable and Green Technologies",
@@ -406,28 +384,6 @@ export const COMMUNITY_DATA: CommunityData = {
       image: "/assets/drive/aqi-dashboard.png"
     },
     {
-      id: "5dof-robotic-arm",
-      title: "5-DOF 3D-Printed Robotic Manipulator Arm",
-      domain: "Robotics and Intelligent Automation",
-      domainId: "robotics-automation",
-      badge: "5-DOF / MG995 / Additive Mfg",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["Mechanical & Robotics Fellows"],
-      status: "Fabricated & Calibrated",
-      abstract: "A 5-Degrees-of-Freedom articulated robotic manipulator engineered using Fusion 360 and fabricated via additive PLA 3D printing. Driven by five MG995 high-torque metal-gear servomotors, the arm replicates human arm kinematics (base rotation, shoulder, elbow, wrist pitch, and end-effector gripper) controlled via an Arduino PWM engine.",
-      technicalSpecs: {
-        kinematicDegrees: "5-DOF (Base, Shoulder, Elbow, Wrist Pitch, Gripper)",
-        actuation: "5x MG995 High-Torque Metal Gear Servos (11 kg-cm)",
-        chassisMaterial: "High-Infill PLA 3D Printed Custom Linkages",
-        controlArchitecture: "Arduino Uno with Dedicated 5V/5A Power Rail",
-        controlModes: "Autonomous G-Code / Manual Multi-Potentiometer"
-      },
-      tags: ["Robotic Arm", "5-DOF", "MG995 Servos", "3D Printing", "Arduino"],
-      github: "https://github.com/linkedwithishaan/ROBOTIC-ARM-",
-      metrics: "Repeatable 5-axis trajectory interpolation with 11 kg-cm torque.",
-      image: "/assets/drive/robotics-1.png"
-    },
-    {
       id: "hid-robotic-eyes",
       title: "HID-Controlled Animatronic Robotic Eyes",
       domain: "Robotics and Intelligent Automation",
@@ -447,7 +403,7 @@ export const COMMUNITY_DATA: CommunityData = {
       tags: ["Animatronics", "ESP32", "Python HID", "Servos", "Human-Robot Interaction"],
       github: "https://github.com/linkedwithishaan/ROBOTIC-EYE",
       metrics: "Sub-15ms low-latency multi-axis gaze and eyelid synchronization.",
-      image: "/assets/drive/robotics-2.png"
+      image: "/assets/drive/robotics-1.png"
     },
     {
       id: "autonomous-line-follower",
@@ -469,7 +425,7 @@ export const COMMUNITY_DATA: CommunityData = {
       tags: ["Line Follower", "L293D", "IR Sensors", "Autonomous Navigation", "Arduino"],
       github: "https://github.com/linkedwithishaan/ROBOTIC-LINE-FOLLOWER",
       metrics: "Continuous high-speed trajectory tracking on complex curved paths.",
-      image: "/assets/drive/robotics-1.png"
+      image: "/assets/drive/robotics-2.png"
     },
     {
       id: "smart-soil-irrigation",
@@ -491,7 +447,7 @@ export const COMMUNITY_DATA: CommunityData = {
       tags: ["Smart Agriculture", "ESP8266", "Arduino Cloud", "Automated Irrigation", "IoT"],
       github: "https://github.com/linkedwithishaan/IOT-Basesd-soil-monitoring-system-",
       metrics: "Autonomous moisture-triggered irrigation with cloud telemetry sync.",
-      image: "/assets/drive/aiot-urban-farm-2.jpg"
+      image: "/assets/drive/soil-monitoring.jpg"
     },
     {
       id: "smart-water-testing-kit",
@@ -537,48 +493,6 @@ export const COMMUNITY_DATA: CommunityData = {
       image: "/assets/drive/water-filtration-rig.jpg"
     },
     {
-      id: "aviation-band-rx",
-      title: "Aviation Band VHF AM Receiver Module (118–136 MHz)",
-      domain: "Communication & Signal Processing Systems",
-      domainId: "communication-dsp",
-      badge: "118–136 MHz / VHF / AM Demod",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["RF & Wireless Communications Guild"],
-      status: "Bench Tested",
-      abstract: "A dedicated RF receiver module engineered for intercepting and demodulating civilian aviation band voice communications and ACARS telemetry between 118 MHz and 136 MHz. Features tuned LC resonant front-end filtering, a low-noise amplifier (LNA), superheterodyne mixer, and audio amplification stage for antenna signal extraction.",
-      technicalSpecs: {
-        tuningSpectrum: "118 MHz – 136 MHz VHF Civil Aviation Band",
-        modulation: "Amplitude Modulation (AM) Voice & ACARS Data",
-        rfFrontEnd: "High-Selectivity LC Bandpass Filter & Low-Noise Preamplifier",
-        interfacing: "BNC Antenna Port & High-Fidelity Audio Line-Out Stage"
-      },
-      tags: ["Aviation Band", "VHF", "RF Receiver", "AM Demodulation", "Antennas"],
-      github: "https://github.com/linkedwithishaan/Aviation-Band-Rx-Module-",
-      metrics: "Clear analog voice demodulation across the 118–136 MHz spectrum.",
-      image: "/assets/drive/comm-system-setup.jpg"
-    },
-    {
-      id: "rtl-sdr-dsp-suite",
-      title: "RTL-SDR Wideband Spectrum Surveillance & DSP Suite",
-      domain: "Communication & Signal Processing Systems",
-      domainId: "communication-dsp",
-      badge: "24 MHz – 1.7 GHz / SDR / GNU Radio",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["RF Systems Fellows"],
-      status: "Operational",
-      abstract: "A software-defined radio workstation for wideband RF spectrum exploration from 24 MHz to 1.7 GHz using RTL2832U/R820T2 hardware. Implements digital signal processing flowgraphs in GNU Radio for real-time IQ demodulation, ADS-B commercial flight tracking, NOAA satellite weather APT imagery, and FM broadcast decoding.",
-      technicalSpecs: {
-        tuningRange: "24 MHz to 1766 MHz Continuous Coverage",
-        adcArchitecture: "8-Bit RTL2832U with up to 3.2 MSps Raw I/Q Stream",
-        dspPipeline: "GNU Radio Flowgraphs with FIR Decimation & Complex FFT",
-        protocolsDecoded: "ADS-B Mode-S (1090 MHz), NOAA APT (137 MHz), Narrowband FM"
-      },
-      tags: ["RTL-SDR", "Software-Defined Radio", "DSP", "ADS-B", "Spectrum Analysis"],
-      github: "https://github.com/linkedwithishaan/RTL-SDR-Projects",
-      metrics: "Continuous 3.2 MSps IQ stream with multi-band demodulation pipelines.",
-      image: "/assets/drive/comm-system-setup.jpg"
-    },
-    {
       id: "esp32-marauder-apparatus",
       title: "ESP32 Marauder Wireless Environment Diagnostic Terminal",
       domain: "Communication & Signal Processing Systems",
@@ -600,67 +514,25 @@ export const COMMUNITY_DATA: CommunityData = {
       image: "/assets/drive/esp32-module.jpg"
     },
     {
-      id: "drone-swarm-network",
-      title: "Autonomous Drone Swarm Distributed Telemetry Mesh",
-      domain: "Robotics and Intelligent Automation",
-      domainId: "robotics-automation",
-      badge: "Swarm UAV / Decentralized Mesh",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["Robotics & UAV Research Team"],
-      status: "Architecture & Simulation",
-      abstract: "A decentralized multi-UAV robotic swarm architecture. Investigates cooperative flight formations, inter-drone mesh communication protocols, collision avoidance dynamics, and distributed target search algorithms running on lightweight flight controller hardware.",
-      technicalSpecs: {
-        topology: "Decentralized Multi-Node Ad-Hoc RF Telemetry Mesh",
-        flightControls: "ArduPilot / Betaflight Embedded Avionics Integration",
-        swarmAlgorithm: "Distributed Flocking & Dynamic Obstacle Repulsion",
-        missionScope: "Coordinated Wide-Area Environmental & Aerial Search"
-      },
-      tags: ["Drone Swarm", "UAV", "Mesh Telemetry", "Autonomous Flight", "Robotics"],
-      github: "https://github.com/linkedwithishaan/DRONE-SWARM-PROJECT",
-      metrics: "Multi-agent decentralized coordination without single point of failure.",
-      image: "/assets/drive/robotics-3.jpg"
-    },
-    {
-      id: "arduino-mini-cnc",
-      title: "Dual-Axis G-Code Mini CNC Vector Plotter",
-      domain: "Robotics and Intelligent Automation",
-      domainId: "robotics-automation",
-      badge: "G-Code / GRBL / Micro-Steppers",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["Hardware & Prototyping Cohort"],
-      status: "Functional Rig",
-      abstract: "A compact 2.5D computer numerical control (CNC) plotting machine constructed using repurposed precision stepper mechanisms, an Arduino Uno running GRBL firmware, and motor driver stages. Converts vector SVG files into standard G-code to execute sub-millimeter trajectory drafting.",
-      technicalSpecs: {
-        driveMechanics: "Dual Optical Carriage Stepper Assemblies (X/Y Axes)",
-        zAxisActuator: "Micro-Servo Pen Lift & Lower Mechanism",
-        firmware: "GRBL G-Code Motion Interpreter on ATmega328P",
-        toolpathSoftware: "Inkscape Vector Export with G-Code Extensions"
-      },
-      tags: ["CNC Plotter", "GRBL", "G-Code", "Stepper Motors", "Arduino"],
-      github: "https://github.com/linkedwithishaan/Arduino-Mini-CNC-Plotter",
-      metrics: "Sub-millimeter pen plotting accuracy with standard G-code input.",
-      image: "/assets/drive/robotics-1.png"
-    },
-    {
       id: "biometric-rfid-access",
       title: "Integrated Biometric Fingerprint & 13.56 MHz RFID Terminal",
       domain: "Electronics, IoT & Embedded Systems",
       domainId: "electronics-embedded",
       badge: "Biometrics / RFID / Embedded C++",
       lead: "Ishan Chaturvedi",
-      collaborators: ["Embedded Systems Fellows"],
+      collaborators: ["Aryan Singh", "Dhruv Ghosal", "Keshav Gupta"],
       status: "Deployed Prototype",
-      abstract: "A standalone access validation and attendance terminal integrating an optical biometric fingerprint scanner with an RC522 13.56 MHz RFID card reader. Managed by an Arduino/ESP controller with an EEPROM credential database and a 16×2 character display for real-time verification.",
+      abstract: "A standalone access validation and attendance terminal engineered for the MSIT ONGC Lab, integrating an optical biometric fingerprint scanner with an RC522 13.56 MHz RFID card reader and real-time color status display. Managed by an ESP microcontroller with cloud telemetry synchronization to Vercel and local non-volatile credential verification.",
       technicalSpecs: {
         rfidTransceiver: "MFRC522 13.56 MHz Contactless Smart Card Reader (SPI)",
-        biometricSensor: "Optical Fingerprint Scanner with Onboard Minutiae DSP",
-        userInterface: "16×2 HD44780 LCD with Piezo Buzzer Feedback",
-        firmwareStorage: "On-Chip Non-Volatile EEPROM Key Whitelist"
+        biometricSensor: "Optical Fingerprint Scanner with Minutiae Extraction DSP",
+        userInterface: "Color TFT Display with MSIT ONGC Lab Auto Check-In/Out UI",
+        cloudSync: "Vercel Real-Time Telemetry & Local EEPROM Credential Cache"
       },
       tags: ["RFID", "Fingerprint", "Biometrics", "Embedded C++", "Access Control"],
       github: "https://github.com/linkedwithishaan/FINGERPRINT-BASED-ATTENDANCE-SYSTEM-",
-      metrics: "Sub-second dual-factor authentication with localized logging.",
-      image: "/assets/drive/esp32-module.jpg"
+      metrics: "Sub-second dual-factor authentication with Vercel cloud synchronization.",
+      image: "/assets/drive/biometric-rfid.jpg"
     },
     {
       id: "autonomous-obstacle-car",
@@ -681,28 +553,7 @@ export const COMMUNITY_DATA: CommunityData = {
       tags: ["Obstacle Avoidance", "Ultrasonic", "Robotic Car", "L293D", "Arduino"],
       github: "https://github.com/linkedwithishaan/ROBOTIC-CAR",
       metrics: "Proactive distance detection from 2cm to 4m with real-time steering.",
-      image: "/assets/drive/robotics-2.png"
-    },
-    {
-      id: "wifi-controlled-lcd",
-      title: "Wi-Fi Networked Industrial Message & Status Terminal",
-      domain: "Electronics, IoT & Embedded Systems",
-      domainId: "electronics-embedded",
-      badge: "Wi-Fi / Web Server / Embedded",
-      lead: "Ishan Chaturvedi",
-      collaborators: ["IoT Systems Cohort"],
-      status: "Operational",
-      abstract: "A networked information terminal utilizing an ESP8266 Wi-Fi SoC hosting an embedded HTTP web server. Permits operators on the local network to transmit alphanumeric status alerts, system diagnostics, and emergency bulletins directly to a 16×2 or 20×4 liquid crystal display.",
-      technicalSpecs: {
-        networkController: "ESP8266 802.11 b/g/n Microcontroller",
-        webArchitecture: "Lightweight Asynchronous HTTP Server with HTML Form",
-        displayOutput: "LiquidCrystal I2C Dot-Matrix Display",
-        networkSecurity: "WPA2-PSK Authentication & Dedicated AP Mode"
-      },
-      tags: ["ESP8266", "Wi-Fi Server", "LCD Terminal", "IoT", "Embedded C++"],
-      github: "https://github.com/linkedwithishaan/WIFI-CONTROLED-LCD-PANEL-",
-      metrics: "Instant local-area network message dispatch with persistent display.",
-      image: "/assets/drive/esp32-module.jpg"
+      image: "/assets/drive/obstacle-car.jpg"
     }
   ],
 
